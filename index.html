@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Eşarp ve Şal Dünyası — Zarif, zamansız ve özenle seçilmiş eşarp ve şallar.">
+<meta name="description" content="Eşarp ve Şal Dünyası - Zarif, zamansız ve özenle seçilmiş eşarp ve şallar.">
 
-<title>Eşarp ve Şal Dünyası | Premium Koleksiyon</title>
+<title>Eşarp & Şal | Premium Collection</title>
 
 <style>
 :root{
@@ -19,7 +19,7 @@
   --soft:#eadbd0;
   --line:rgba(45,33,30,.13);
   --green:#25d366;
-  --shadow:0 25px 70px rgba(48,30,24,.14);
+  --shadow:0 20px 60px rgba(48,30,24,.14);
 }
 
 *{
@@ -32,17 +32,18 @@ html{
 
 body{
   margin:0;
-  font-family:"Segoe UI",Arial,sans-serif;
+  font-family:Arial,"Segoe UI",sans-serif;
   background:var(--cream);
   color:var(--ink);
   overflow-x:hidden;
 }
 
-body.loading{
+body.no-scroll{
   overflow:hidden;
 }
 
-button,input,textarea{
+button,
+input{
   font:inherit;
 }
 
@@ -50,9 +51,7 @@ a{
   color:inherit;
 }
 
-/* =========================
-   LOADER
-========================= */
+/* LOADER */
 
 .loader{
   position:fixed;
@@ -62,137 +61,55 @@ a{
   place-items:center;
   background:#2a1e1a;
   color:#f6e8da;
-  transition:opacity .7s ease,visibility .7s ease;
+  transition:.6s ease;
 }
 
-.loader.hide{
+.loader.hidden{
   opacity:0;
   visibility:hidden;
   pointer-events:none;
 }
 
-.loader-inner{
+.loader-content{
   text-align:center;
-  animation:loaderReveal 1s ease both;
 }
 
 .loader-logo{
-  font:400 clamp(35px,7vw,65px) Georgia,serif;
-  letter-spacing:-.04em;
+  font:400 52px Georgia,serif;
 }
 
 .loader-sub{
   margin-top:12px;
   color:#c9a77d;
   font-size:9px;
-  font-weight:800;
-  letter-spacing:.35em;
+  font-weight:bold;
+  letter-spacing:.3em;
   text-transform:uppercase;
 }
 
 .loader-line{
-  width:80px;
+  width:70px;
   height:1px;
-  margin:28px auto 0;
-  background:#b58a52;
-  animation:loaderLine 1.5s ease infinite;
+  margin:25px auto 0;
+  background:var(--gold);
 }
 
-@keyframes loaderReveal{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:none}
-}
-
-@keyframes loaderLine{
-  0%,100%{transform:scaleX(.3);opacity:.4}
-  50%{transform:scaleX(1);opacity:1}
-}
-
-/* =========================
-   PETALS
-========================= */
-
-.petals{
-  position:fixed;
-  inset:0;
-  z-index:5;
-  pointer-events:none;
-  overflow:hidden;
-}
-
-.petal{
-  position:absolute;
-  top:-60px;
-  width:12px;
-  height:18px;
-  border-radius:80% 15% 80% 15%;
-  background:linear-gradient(135deg,#fff8f3,#d8a9a5);
-  opacity:.65;
-  animation:fall linear infinite;
-}
-
-.petal:nth-child(1){left:4%;animation-duration:12s}
-.petal:nth-child(2){left:12%;animation-duration:16s;animation-delay:-8s}
-.petal:nth-child(3){left:23%;animation-duration:13s;animation-delay:-5s}
-.petal:nth-child(4){left:34%;animation-duration:18s;animation-delay:-11s}
-.petal:nth-child(5){left:47%;animation-duration:14s;animation-delay:-2s}
-.petal:nth-child(6){left:58%;animation-duration:19s;animation-delay:-7s}
-.petal:nth-child(7){left:70%;animation-duration:15s;animation-delay:-9s}
-.petal:nth-child(8){left:81%;animation-duration:17s;animation-delay:-4s}
-.petal:nth-child(9){left:91%;animation-duration:13s;animation-delay:-6s}
-
-@keyframes fall{
-  0%{transform:translate3d(0,-80px,0) rotate(0)}
-  25%{transform:translate3d(45px,25vh,0) rotate(100deg)}
-  50%{transform:translate3d(-40px,50vh,0) rotate(220deg)}
-  75%{transform:translate3d(60px,75vh,0) rotate(300deg)}
-  100%{transform:translate3d(-30px,110vh,0) rotate(430deg)}
-}
-
-/* =========================
-   ANNOUNCEMENT
-========================= */
+/* ANNOUNCEMENT */
 
 .announcement{
   position:relative;
   z-index:20;
-  overflow:hidden;
+  padding:10px;
   background:#2b1e1b;
   color:#f4e5d5;
+  text-align:center;
   font-size:10px;
-  font-weight:700;
-  letter-spacing:.16em;
+  font-weight:bold;
+  letter-spacing:.15em;
   text-transform:uppercase;
-  white-space:nowrap;
 }
 
-.announcement-track{
-  display:flex;
-  width:max-content;
-  animation:marquee 28s linear infinite;
-}
-
-.announcement-track span{
-  display:flex;
-  align-items:center;
-  gap:28px;
-  padding:10px 30px;
-}
-
-.announcement-track i{
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background:var(--gold);
-}
-
-@keyframes marquee{
-  to{transform:translateX(-50%)}
-}
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
   position:sticky;
@@ -201,39 +118,37 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:25px;
-  padding:17px clamp(18px,5vw,72px);
-  background:rgba(247,240,232,.94);
+  padding:17px clamp(18px,5vw,70px);
+  background:rgba(247,240,232,.96);
   border-bottom:1px solid var(--line);
-  backdrop-filter:blur(18px);
+  backdrop-filter:blur(15px);
 }
 
 .logo{
   text-decoration:none;
-  font:400 clamp(21px,2.2vw,31px)/1 Georgia,serif;
-  letter-spacing:-.03em;
+  font:400 30px Georgia,serif;
 }
 
 .logo small{
   display:block;
-  margin-top:6px;
+  margin-top:5px;
   color:#8b6d5d;
-  font:700 8px/1 "Segoe UI",Arial,sans-serif;
-  letter-spacing:.32em;
+  font:700 8px Arial,sans-serif;
+  letter-spacing:.3em;
   text-transform:uppercase;
 }
 
 nav{
   display:flex;
   align-items:center;
-  gap:clamp(10px,2vw,27px);
+  gap:25px;
 }
 
 nav a{
   text-decoration:none;
   color:#5a4740;
   font-size:10px;
-  font-weight:800;
+  font-weight:bold;
   letter-spacing:.1em;
   text-transform:uppercase;
 }
@@ -246,74 +161,61 @@ nav a:hover{
   border:0;
   padding:11px 17px;
   background:var(--ink);
-  color:white;
+  color:#fff;
   cursor:pointer;
   font-size:10px;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
+  font-weight:bold;
 }
 
 .mobile-menu{
   display:none;
   border:0;
-  background:transparent;
-  font-size:25px;
+  background:none;
+  font-size:27px;
   cursor:pointer;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
-  position:relative;
-  z-index:2;
-  min-height:680px;
+  min-height:650px;
   display:grid;
-  grid-template-columns:1.05fr .95fr;
+  grid-template-columns:1fr 1fr;
   align-items:center;
-  gap:clamp(40px,7vw,100px);
-  padding:clamp(55px,8vw,105px) clamp(20px,8vw,120px);
-  overflow:hidden;
+  gap:70px;
+  padding:90px clamp(20px,8vw,120px);
   background:
-    radial-gradient(circle at 12% 18%,#fffaf5 0,transparent 34%),
+    radial-gradient(circle at 10% 15%,#fffaf5 0,transparent 35%),
     linear-gradient(115deg,#f4e7dc,#e4cdbd);
 }
 
 .hero-copy{
-  max-width:680px;
-  animation:heroText 1.2s .3s ease both;
-}
-
-@keyframes heroText{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:none}
+  max-width:650px;
 }
 
 .eyebrow{
   display:flex;
   align-items:center;
-  gap:13px;
-  margin-bottom:24px;
+  gap:12px;
+  margin-bottom:22px;
   color:#8a654d;
   font-size:10px;
-  font-weight:800;
-  letter-spacing:.23em;
+  font-weight:bold;
+  letter-spacing:.2em;
   text-transform:uppercase;
 }
 
 .eyebrow:before{
   content:"";
-  width:42px;
+  width:40px;
   height:1px;
   background:var(--gold);
 }
 
 .hero h1{
-  margin:0 0 24px;
-  font:400 clamp(54px,7vw,100px)/.88 Georgia,serif;
-  letter-spacing:-.055em;
+  margin:0 0 25px;
+  font:400 clamp(55px,7vw,95px)/.9 Georgia,serif;
+  letter-spacing:-.05em;
 }
 
 .hero h1 em{
@@ -322,10 +224,10 @@ nav a:hover{
 }
 
 .hero-copy p{
-  max-width:510px;
+  max-width:520px;
   color:#66514a;
   font-size:17px;
-  line-height:1.75;
+  line-height:1.8;
 }
 
 .primary-btn{
@@ -333,59 +235,46 @@ nav a:hover{
   align-items:center;
   justify-content:center;
   margin-top:18px;
-  padding:16px 25px;
+  padding:15px 24px;
   border:1px solid var(--ink);
   background:var(--ink);
-  color:white;
+  color:#fff;
   text-decoration:none;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.15em;
-  text-transform:uppercase;
   cursor:pointer;
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:.14em;
+  text-transform:uppercase;
   transition:.25s;
 }
 
 .primary-btn:hover{
-  transform:translateY(-3px);
   background:#6c4a43;
+  transform:translateY(-2px);
 }
 
 .hero-visual{
   position:relative;
   width:min(100%,440px);
   justify-self:center;
-  animation:heroImage 1.2s .5s ease both;
-}
-
-@keyframes heroImage{
-  from{opacity:0;transform:translateX(35px)}
-  to{opacity:1;transform:none}
-}
-
-.hero-visual:before{
-  content:"";
-  position:absolute;
-  inset:-24px 35px 28px -26px;
-  border:1px solid rgba(112,76,64,.3);
 }
 
 .hero-art{
   position:relative;
-  height:510px;
+  height:500px;
   overflow:hidden;
   background:
-    radial-gradient(circle at 30% 25%,#f6d9c5 0 12%,transparent 13%),
-    radial-gradient(circle at 70% 60%,#b67f70 0 16%,transparent 17%),
-    linear-gradient(145deg,#7b5149,#d3a28e 48%,#765047);
+    radial-gradient(circle at 25% 25%,#f1cfc5 0 12%,transparent 13%),
+    radial-gradient(circle at 75% 70%,#9c6259 0 18%,transparent 19%),
+    linear-gradient(145deg,#70443e,#d2a08d 50%,#795047);
   box-shadow:25px 28px 60px rgba(71,48,40,.18);
 }
 
 .hero-art:before{
   content:"";
   position:absolute;
-  inset:8%;
-  border:1px solid rgba(255,255,255,.3);
+  inset:10%;
+  border:1px solid rgba(255,255,255,.35);
   transform:rotate(12deg);
 }
 
@@ -395,36 +284,32 @@ nav a:hover{
   left:50%;
   top:50%;
   transform:translate(-50%,-50%) rotate(-12deg);
-  color:rgba(255,248,241,.7);
-  font:italic 70px Georgia,serif;
+  color:rgba(255,248,241,.65);
+  font:italic 65px Georgia,serif;
 }
 
 .seal{
   position:absolute;
-  right:-32px;
-  bottom:38px;
-  z-index:2;
-  width:110px;
-  height:110px;
-  border-radius:50%;
+  right:-25px;
+  bottom:35px;
+  width:105px;
+  height:105px;
   display:grid;
   place-items:center;
-  text-align:center;
+  border-radius:50%;
   background:#f4e6d7;
   border:1px solid var(--line);
   color:#6d4e43;
-  font:italic 16px Georgia,serif;
-  transform:rotate(-8deg);
+  text-align:center;
+  font:italic 15px Georgia,serif;
   box-shadow:0 15px 35px rgba(62,38,30,.12);
 }
 
-/* =========================
-   TRUST
-========================= */
+/* TRUST */
 
 .trust{
   position:relative;
-  z-index:3;
+  z-index:5;
   max-width:1100px;
   margin:-1px auto 0;
   display:grid;
@@ -435,18 +320,18 @@ nav a:hover{
 }
 
 .trust-item{
-  padding:27px 28px;
+  padding:27px;
   border-right:1px solid var(--line);
 }
 
 .trust-item:last-child{
-  border:0;
+  border-right:0;
 }
 
 .trust-icon{
-  margin-bottom:12px;
+  margin-bottom:10px;
   color:var(--gold);
-  font-size:20px;
+  font-size:21px;
 }
 
 .trust-item strong{
@@ -461,14 +346,18 @@ nav a:hover{
   line-height:1.6;
 }
 
-/* =========================
-   PRODUCTS
-========================= */
+/* SECTIONS */
+
+.products,
+.why,
+.reviews,
+.experience,
+.gift{
+  padding:100px 20px;
+}
 
 .products{
-  position:relative;
-  z-index:2;
-  padding:105px 20px 120px;
+  background:var(--cream);
 }
 
 .section-heading{
@@ -482,37 +371,43 @@ nav a:hover{
   align-items:end;
 }
 
-.section-heading small{
+.section-heading small,
+.center-heading small,
+.gift-copy small,
+.contact-banner small{
   color:#98734d;
   font-size:10px;
-  font-weight:800;
+  font-weight:bold;
   letter-spacing:.2em;
   text-transform:uppercase;
 }
 
-.section-heading h2{
-  margin:9px 0 0;
-  font:400 clamp(40px,5vw,64px)/1 Georgia,serif;
+.section-heading h2,
+.center-heading h2{
+  margin:10px 0 0;
+  font:400 clamp(40px,5vw,64px) Georgia,serif;
 }
 
 .section-heading p{
   max-width:330px;
   margin:0;
   color:#806d63;
-  line-height:1.65;
+  line-height:1.7;
   font-size:14px;
 }
+
+/* PRODUCTS */
 
 .product-grid{
   max-width:1100px;
   margin:auto;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:24px;
+  gap:25px;
 }
 
 .product:nth-child(2){
-  margin-top:58px;
+  margin-top:50px;
 }
 
 .product-image{
@@ -520,28 +415,19 @@ nav a:hover{
   height:410px;
   overflow:hidden;
   cursor:pointer;
-}
-
-.product-image:after{
-  content:"Hızlı İncele";
-  position:absolute;
-  left:50%;
-  bottom:20px;
-  transform:translate(-50%,20px);
-  padding:10px 16px;
-  background:rgba(255,250,246,.93);
-  color:var(--ink);
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  opacity:0;
   transition:.3s;
 }
 
-.product:hover .product-image:after{
-  opacity:1;
-  transform:translate(-50%,0);
+.product-image:hover{
+  transform:translateY(-5px);
+}
+
+.product-image:before{
+  content:"";
+  position:absolute;
+  inset:12%;
+  border:1px solid rgba(255,255,255,.35);
+  transform:rotate(18deg);
 }
 
 .product-image.one{
@@ -572,18 +458,6 @@ nav a:hover{
     linear-gradient(145deg,#684237,#c99577);
 }
 
-.product-image:before{
-  content:"";
-  position:absolute;
-  inset:12%;
-  border:1px solid rgba(255,255,255,.35);
-  transform:rotate(18deg);
-}
-
-.product:hover .product-image{
-  filter:saturate(1.1);
-}
-
 .product-badge{
   position:absolute;
   top:15px;
@@ -593,57 +467,53 @@ nav a:hover{
   background:#fffaf5;
   color:#765147;
   font-size:8px;
-  font-weight:800;
-  letter-spacing:.12em;
+  font-weight:bold;
+  letter-spacing:.1em;
   text-transform:uppercase;
 }
 
 .product-info{
-  padding:21px 4px 0;
+  padding:20px 4px;
 }
 
 .product-info h3{
-  margin:0 0 9px;
+  margin:0 0 8px;
   font:400 24px Georgia,serif;
 }
 
 .product-info p{
   color:#806d63;
   line-height:1.6;
-  margin:0 0 12px;
 }
 
 .price{
-  margin:0 0 6px;
-  font:400 21px Georgia,serif;
   color:var(--ink)!important;
+  font:400 21px Georgia,serif;
 }
 
 .stock{
-  margin:0 0 15px!important;
-  color:#806d63!important;
   font-size:10px!important;
-  font-weight:800;
+  font-weight:bold;
   letter-spacing:.08em;
   text-transform:uppercase;
 }
 
 .product-actions{
   display:grid;
-  grid-template-columns:1fr auto;
+  grid-template-columns:1fr 48px;
   gap:8px;
 }
 
-.product-action{
-  width:100%;
+.product-action,
+.quick-view{
   padding:13px;
   border:1px solid var(--ink);
   background:transparent;
   color:var(--ink);
   cursor:pointer;
   font-size:10px;
-  font-weight:800;
-  letter-spacing:.14em;
+  font-weight:bold;
+  letter-spacing:.1em;
   text-transform:uppercase;
 }
 
@@ -653,43 +523,20 @@ nav a:hover{
 }
 
 .quick-view{
-  width:46px;
-  border:1px solid var(--line);
+  border-color:var(--line);
   background:#f8eee7;
-  cursor:pointer;
-  color:var(--brown);
+  font-size:18px;
 }
 
-/* =========================
-   WHY
-========================= */
+/* WHY */
 
 .why{
-  padding:105px 20px;
   background:#f0e2d7;
 }
 
-.why-inner{
-  max-width:1100px;
-  margin:auto;
-}
-
 .center-heading{
+  margin:0 auto 55px;
   text-align:center;
-  margin-bottom:55px;
-}
-
-.center-heading small{
-  color:#98734d;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-}
-
-.center-heading h2{
-  margin:12px 0;
-  font:400 clamp(40px,5vw,62px) Georgia,serif;
 }
 
 .center-heading p{
@@ -700,6 +547,8 @@ nav a:hover{
 }
 
 .why-grid{
+  max-width:1100px;
+  margin:auto;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:15px;
@@ -707,21 +556,21 @@ nav a:hover{
 
 .why-card{
   padding:35px 25px;
-  text-align:center;
   background:rgba(255,250,246,.75);
   border:1px solid rgba(80,55,45,.1);
+  text-align:center;
   transition:.3s;
 }
 
 .why-card:hover{
-  transform:translateY(-6px);
+  transform:translateY(-5px);
   box-shadow:var(--shadow);
 }
 
 .why-card .icon{
   margin-bottom:17px;
   color:var(--gold);
-  font-size:29px;
+  font-size:28px;
 }
 
 .why-card h3{
@@ -736,20 +585,17 @@ nav a:hover{
   line-height:1.7;
 }
 
-/* =========================
-   EDITORIAL
-========================= */
+/* EDITORIAL */
 
 .editorial{
   display:grid;
   grid-template-columns:1.1fr .9fr;
-  min-height:550px;
+  min-height:540px;
   background:#3a2925;
   color:#f5eadd;
 }
 
 .editorial-image{
-  min-height:550px;
   background:
     radial-gradient(circle at 25% 30%,#c49b76 0 14%,transparent 15%),
     radial-gradient(circle at 70% 65%,#745043 0 20%,transparent 21%),
@@ -757,21 +603,22 @@ nav a:hover{
 }
 
 .editorial-copy{
-  display:grid;
-  align-content:center;
-  padding:clamp(50px,8vw,110px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px;
 }
 
 .editorial-copy small{
   color:#c6a879;
-  letter-spacing:.22em;
-  text-transform:uppercase;
   font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
 }
 
 .editorial-copy h2{
-  margin:20px 0 22px;
-  font:400 clamp(42px,5vw,70px)/.98 Georgia,serif;
+  margin:20px 0;
+  font:400 clamp(42px,5vw,68px)/1 Georgia,serif;
 }
 
 .editorial-copy p{
@@ -784,15 +631,11 @@ nav a:hover{
   width:max-content;
   background:#f5eadd;
   color:#3a2925;
-  border-color:#f5eadd;
 }
 
-/* =========================
-   GIFT
-========================= */
+/* GIFT */
 
 .gift{
-  padding:100px 20px;
   background:#fffaf6;
 }
 
@@ -814,14 +657,6 @@ nav a:hover{
   box-shadow:var(--shadow);
 }
 
-.gift-copy small{
-  color:#98734d;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-}
-
 .gift-copy h2{
   margin:15px 0;
   font:400 clamp(40px,5vw,60px) Georgia,serif;
@@ -837,8 +672,8 @@ nav a:hover{
   align-items:center;
   gap:12px;
   margin:22px 0;
-  font-size:13px;
   color:#5d4942;
+  font-size:13px;
 }
 
 .gift-check input{
@@ -847,12 +682,9 @@ nav a:hover{
   accent-color:var(--brown);
 }
 
-/* =========================
-   REVIEWS
-========================= */
+/* REVIEWS */
 
 .reviews{
-  padding:105px 20px;
   background:#eadbd0;
 }
 
@@ -873,25 +705,20 @@ nav a:hover{
 .stars{
   color:#b58a52;
   letter-spacing:4px;
-  margin-bottom:18px;
 }
 
 .review p{
   color:#66534b;
   line-height:1.8;
-  font-size:14px;
 }
 
 .review strong{
   font:400 18px Georgia,serif;
 }
 
-/* =========================
-   EXPERIENCE
-========================= */
+/* EXPERIENCE */
 
 .experience{
-  padding:120px 20px;
   background:#fbf5ef;
 }
 
@@ -907,7 +734,7 @@ nav a:hover{
 .experience-heading small{
   color:#a17b52;
   font-size:10px;
-  font-weight:800;
+  font-weight:bold;
   letter-spacing:.25em;
   text-transform:uppercase;
 }
@@ -915,14 +742,10 @@ nav a:hover{
 .experience-heading h2{
   margin:12px 0 0;
   font:400 clamp(42px,5vw,68px)/.95 Georgia,serif;
-  letter-spacing:-.04em;
 }
 
 .experience-heading p{
-  max-width:420px;
-  margin:0;
   color:#76635b;
-  font-size:15px;
   line-height:1.8;
 }
 
@@ -936,32 +759,25 @@ nav a:hover{
 }
 
 .experience-card{
-  min-height:290px;
+  min-height:280px;
   padding:35px 28px;
   border-right:1px solid var(--line);
-  transition:.3s;
 }
 
 .experience-card:last-child{
   border-right:0;
 }
 
-.experience-card:hover{
-  background:#f2e6dc;
-  transform:translateY(-4px);
-}
-
 .experience-number{
   display:block;
-  margin-bottom:35px;
+  margin-bottom:30px;
   color:#b28a54;
   font-size:11px;
-  font-weight:800;
-  letter-spacing:.15em;
+  font-weight:bold;
 }
 
 .experience-icon{
-  margin-bottom:20px;
+  margin-bottom:18px;
   color:#8a624d;
   font:25px Georgia,serif;
 }
@@ -978,42 +794,16 @@ nav a:hover{
   line-height:1.7;
 }
 
-/* =========================
-   SIGNATURE
-========================= */
+/* SIGNATURE */
 
 .signature{
-  position:relative;
-  overflow:hidden;
-  padding:130px 20px;
-  text-align:center;
+  padding:120px 20px;
   background:#382824;
   color:#f5e9df;
-}
-
-.signature:before,
-.signature:after{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  border:1px solid rgba(201,168,125,.18);
-  border-radius:50%;
-}
-
-.signature:before{
-  top:-100px;
-  left:-80px;
-}
-
-.signature:after{
-  right:-100px;
-  bottom:-120px;
+  text-align:center;
 }
 
 .signature-inner{
-  position:relative;
-  z-index:2;
   max-width:700px;
   margin:auto;
 }
@@ -1029,7 +819,7 @@ nav a:hover{
 .signature small{
   color:#c8a878;
   font-size:10px;
-  font-weight:800;
+  font-weight:bold;
   letter-spacing:.25em;
   text-transform:uppercase;
 }
@@ -1043,39 +833,23 @@ nav a:hover{
   max-width:500px;
   margin:0 auto 30px;
   color:#d3c3b8;
-  font-size:15px;
   line-height:1.9;
 }
 
-.signature .primary-btn{
-  background:#f5e9df;
-  border-color:#f5e9df;
-  color:#382824;
-}
-
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
 .contact-banner{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:50px;
+  gap:40px;
   padding:80px max(20px,8vw);
   background:#eadbd0;
 }
 
-.contact-banner small{
-  color:#99714d;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.22em;
-}
-
 .contact-banner h2{
   margin:12px 0 18px;
-  font:400 clamp(38px,4vw,56px)/1 Georgia,serif;
+  font:400 clamp(38px,4vw,56px) Georgia,serif;
 }
 
 .contact-banner p{
@@ -1087,14 +861,10 @@ nav a:hover{
 
 .contact-whatsapp{
   flex-shrink:0;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
   min-width:245px;
   padding:24px 30px;
-  border:1px solid #4b332b;
   background:#4b332b;
-  color:white;
+  color:#fff;
   text-decoration:none;
   transition:.25s;
 }
@@ -1105,8 +875,10 @@ nav a:hover{
 }
 
 .contact-whatsapp span{
+  display:block;
+  margin-bottom:6px;
   font-size:10px;
-  font-weight:800;
+  font-weight:bold;
   letter-spacing:.2em;
   text-transform:uppercase;
 }
@@ -1115,9 +887,7 @@ nav a:hover{
   font:400 22px Georgia,serif;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
   padding:70px max(20px,8vw) 25px;
@@ -1160,7 +930,12 @@ footer{
   text-decoration:none;
   font-size:13px;
 }
--bottom{
+
+.footer-links a:hover{
+  color:#fff;
+}
+
+.footer-bottom{
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -1171,10 +946,6 @@ footer{
   font-size:11px;
 }
 
-.footer-bottom span{
-  letter-spacing:.04em;
-}
-
 .footer-social{
   display:flex;
   gap:15px;
@@ -1183,22 +954,18 @@ footer{
 .footer-social a{
   color:#bcaea6;
   text-decoration:none;
-  font-size:13px;
-  transition:.25s;
 }
 
 .footer-social a:hover{
   color:#c4a16f;
 }
 
-/* =========================
-   WHATSAPP FLOAT
-========================= */
+/* WHATSAPP */
 
 .whatsapp-float{
   position:fixed;
-  right:22px;
-  bottom:22px;
+  right:20px;
+  bottom:20px;
   z-index:9000;
   width:58px;
   height:58px;
@@ -1206,26 +973,19 @@ footer{
   place-items:center;
   border-radius:50%;
   background:var(--green);
-  color:white;
+  color:#fff;
   text-decoration:none;
   font-size:25px;
-  box-shadow:0 12px 30px rgba(37,211,102,.28);
-  transition:.25s;
+  box-shadow:0 10px 30px rgba(37,211,102,.3);
 }
 
-.whatsapp-float:hover{
-  transform:translateY(-5px) scale(1.04);
-}
-
-/* =========================
-   CART PANEL
-========================= */
+/* CART */
 
 .cart-overlay{
   position:fixed;
   inset:0;
   z-index:9998;
-  background:rgba(30,20,17,.48);
+  background:rgba(30,20,17,.5);
   opacity:0;
   visibility:hidden;
   transition:.3s;
@@ -1244,12 +1004,12 @@ footer{
   width:min(430px,92vw);
   height:100vh;
   padding:30px;
-  background:#fffaf6;
-  box-shadow:-20px 0 60px rgba(40,25,20,.18);
-  transform:translateX(105%);
-  transition:.4s ease;
   display:flex;
   flex-direction:column;
+  background:#fffaf6;
+  box-shadow:-20px 0 60px rgba(40,25,20,.2);
+  transform:translateX(105%);
+  transition:.35s ease;
 }
 
 .cart-panel.open{
@@ -1258,8 +1018,8 @@ footer{
 
 .cart-header{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   padding-bottom:20px;
   border-bottom:1px solid var(--line);
 }
@@ -1273,10 +1033,9 @@ footer{
   width:38px;
   height:38px;
   border:1px solid var(--line);
-  background:transparent;
+  background:none;
   cursor:pointer;
   font-size:20px;
-  color:var(--ink);
 }
 
 .cart-items{
@@ -1289,13 +1048,12 @@ footer{
   padding:60px 10px;
   text-align:center;
   color:#806d63;
-  font-size:14px;
   line-height:1.7;
 }
 
 .cart-item{
   display:grid;
-  grid-template-columns:70px 1fr auto;
+  grid-template-columns:60px 1fr auto;
   gap:14px;
   align-items:center;
   padding:15px 0;
@@ -1303,13 +1061,13 @@ footer{
 }
 
 .cart-thumb{
-  width:70px;
-  height:80px;
+  width:60px;
+  height:70px;
   background:linear-gradient(145deg,#795047,#d3a28e);
 }
 
 .cart-item h4{
-  margin:0 0 7px;
+  margin:0 0 6px;
   font:400 17px Georgia,serif;
 }
 
@@ -1320,10 +1078,9 @@ footer{
 
 .cart-remove{
   border:0;
-  background:transparent;
+  background:none;
   color:#98734d;
   cursor:pointer;
-  font-size:11px;
 }
 
 .cart-footer{
@@ -1334,7 +1091,6 @@ footer{
 .cart-total{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   margin-bottom:18px;
 }
 
@@ -1342,7 +1098,6 @@ footer{
   color:#806d63;
   font-size:12px;
   text-transform:uppercase;
-  letter-spacing:.1em;
 }
 
 .cart-total strong{
@@ -1354,17 +1109,15 @@ footer{
   padding:16px;
   border:0;
   background:var(--ink);
-  color:white;
+  color:#fff;
   cursor:pointer;
   font-size:10px;
-  font-weight:800;
+  font-weight:bold;
   letter-spacing:.15em;
   text-transform:uppercase;
 }
 
-/* =========================
-   MODAL
-========================= */
+/* MODAL */
 
 .modal{
   position:fixed;
@@ -1392,13 +1145,6 @@ footer{
   display:grid;
   grid-template-columns:1fr 1fr;
   background:#fffaf6;
-  box-shadow:0 30px 90px rgba(20,12,9,.3);
-  transform:translateY(20px) scale(.97);
-  transition:.3s;
-}
-
-.modal.open .modal-box{
-  transform:none;
 }
 
 .modal-image{
@@ -1407,14 +1153,14 @@ footer{
 }
 
 .modal-content{
-  padding:45px;
   align-self:center;
+  padding:45px;
 }
 
 .modal-content small{
   color:#98734d;
   font-size:9px;
-  font-weight:800;
+  font-weight:bold;
   letter-spacing:.2em;
   text-transform:uppercase;
 }
@@ -1427,7 +1173,6 @@ footer{
 .modal-content p{
   color:#76635b;
   line-height:1.8;
-  font-size:14px;
 }
 
 .modal-price{
@@ -1442,21 +1187,15 @@ footer{
   z-index:2;
   width:40px;
   height:40px;
-  border:1px solid rgba(50,35,30,.15);
+  border:1px solid var(--line);
   background:#fffaf6;
   cursor:pointer;
   font-size:20px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
 @media(max-width:900px){
-
-  header{
-    padding:15px 20px;
-  }
 
   nav{
     display:none;
@@ -1481,11 +1220,10 @@ footer{
 
   .hero{
     grid-template-columns:1fr;
-    padding-top:65px;
+    text-align:center;
   }
 
   .hero-copy{
-    text-align:center;
     margin:auto;
   }
 
@@ -1496,10 +1234,6 @@ footer{
   .hero-copy p{
     margin-left:auto;
     margin-right:auto;
-  }
-
-  .hero-visual{
-    max-width:420px;
   }
 
   .trust{
@@ -1523,7 +1257,7 @@ footer{
   }
 
   .editorial-image{
-    min-height:400px;
+    min-height:350px;
   }
 
   .gift-inner{
@@ -1546,10 +1280,6 @@ footer{
     border-right:0;
   }
 
-  .experience-card:nth-child(-n+2){
-    border-bottom:1px solid var(--line);
-  }
-
   .contact-banner{
     flex-direction:column;
     align-items:flex-start;
@@ -1562,21 +1292,21 @@ footer{
 
 @media(max-width:600px){
 
-  .announcement{
-    font-size:8px;
+  header{
+    padding:15px 18px;
+  }
+
+  .logo{
+    font-size:23px;
   }
 
   .hero{
     min-height:auto;
-    padding:60px 20px 80px;
+    padding:65px 20px 80px;
   }
 
   .hero h1{
-    font-size:52px;
-  }
-
-  .hero-copy p{
-    font-size:15px;
+    font-size:54px;
   }
 
   .hero-art{
@@ -1587,7 +1317,6 @@ footer{
     right:-5px;
     width:90px;
     height:90px;
-    font-size:13px;
   }
 
   .trust{
@@ -1599,13 +1328,16 @@ footer{
     border-bottom:1px solid var(--line);
   }
 
+  .trust-item:last-child{
+    border-bottom:0;
+  }
+
   .products,
   .why,
   .reviews,
   .experience,
   .gift{
-    padding-top:75px;
-    padding-bottom:75px;
+    padding:70px 20px;
   }
 
   .section-heading{
@@ -1616,545 +1348,9 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .product-image{
-    height:430px;
-  }
-
-  .why-grid{
-    grid-template-columns:1fr;
-  }
-
-  .editorial-image{
-    min-height:300px;
-  }
-
-  .editorial-copy{
-    padding:60px 25px;
-  }
-
-  .gift-image{
-    min-height:300px;
-  }
-
-  .experience-grid{
-    grid-template-columns:1fr;
-  }
-
-  .experience-card,
-  .experience-card:nth-child(2){
-    border-right:0;
-    border-bottom:1px solid var(--line);
-  }
-
-  .experience-card:last-child{
-    border-bottom:0;
-  }
-
-  .contact-banner{
-    padding:65px 20px;
-  }
-
-  footer{
-    padding:55px 20px 20px;
-  }
-
-  .footer-links{
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-    margin:40px 0;
-  }
-
-  .footer-bottom{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .modal-box{
-    grid-template-columns:1fr;
-  }
-
-  .modal-image{
-    min-height:260px;
-  }
-
-  .modal-content{
-    padding:30px;
-  }
-
-  .whatsapp-float{
-    right:16px;
-    bottom:16px;
-    width:54px;
-    height:54px;
-  }
-}
-
-/* =========================
-   REDUCED MOTION
-========================= */
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *:before,
-  *:after{
-    scroll-behavior:auto!important;
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-  }
-}
-</style>
-</head>
-
-<body class="loading">
-
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-inner">
-    <div class="loader-logo">Eşarp & Şal</div>
-    <div class="loader-sub">Zarifliğin İmzası</div>
-    <div class="loader-line"></div>
-  </div>
-</div>
-
-<!-- PETALS -->
-<div class="petals" aria-hidden="true">
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-</div>
-
-<!-- ANNOUNCEMENT -->
-<div class="announcement">
-  <div class="announcement-track">
-    <span>Yeni sezon koleksiyonu <i></i> Ücretsiz kargo <i></i> Özenli paketleme <i></i> Zarif dokunuşlar <i></i></span>
-    <span>Yeni sezon koleksiyonu <i></i> Ücretsiz kargo <i></i> Özenli paketleme <i></i> Zarif dokunuşlar <i></i></span>
-  </div>
-</div>
-
-<!-- HEADER -->
-<header>
-  <a href="#home" class="logo">
-    Eşarp & Şal
-    <small>Premium Collection</small>
-  </a>
-
-  <nav id="nav">
-    <a href="#home">Ana Sayfa</a>
-    <a href="#products">Koleksiyon</a>
-    <a href="#why">Hikâyemiz</a>
-    <a href="#reviews">Yorumlar</a>
-    <a href="#contact">İletişim</a>
-    <button class="cart-button" onclick="toggleCart()">Sepet <span id="cartCount">0</span></button>
-  </nav>
-
-  <button class="mobile-menu" onclick="toggleMenu()" aria-label="Menüyü aç">☰</button>
-</header>
-
-<!-- HERO -->
-<main id="home">
-
-<section class="hero">
-  <div class="hero-copy">
-    <div class="eyebrow">Yeni sezon • Özel koleksiyon</div>
-
-    <h1>
-      Zarafeti<br>
-      <em>dokunun.</em>
-    </h1>
-
-    <p>
-      Günlük şıklığı ve özel anları tamamlayan,
-      özenle seçilmiş eşarp ve şallarla
-      stilinize zamansız bir dokunuş katın.
-    </p>
-
-    <a href="#products" class="primary-btn">Koleksiyonu Keşfet</a>
-  </div>
-
-  <div class="hero-visual">
-    <div class="hero-art"></div>
-    <div class="seal">Özenle<br>Seçildi</div>
-  </div>
-</section>
-
-<!-- TRUST -->
-<section class="trust">
-  <div class="trust-item">
-    <div class="trust-icon">✦</div>
-    <strong>Özenle Seçilen</strong>
-    <span>Her parça kalite ve zarafet kriterleriyle seçilir.</span>
-  </div>
-
-  <div class="trust-item">
-    <div class="trust-icon">◇</div>
-    <strong>Şık Paketleme</strong>
-    <span>Siparişiniz size ulaşmadan önce özenle hazırlanır.</span>
-  </div>
-
-  <div class="trust-item">
-    <div class="trust-icon">♡</div>
-    <strong>Güvenli Alışveriş</strong>
-    <span>Sorularınız için hızlı ve kolay iletişim.</span>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section class="products" id="products">
-
-  <div class="section-heading">
-    <div>
-      <small>Seçkin parçalar</small>
-      <h2>Koleksiyon</h2>
-    </div>
-
-    <p>
-      Renk, doku ve desenleriyle her stile
-      eşlik edecek zamansız parçalar.
-    </p>
-  </div>
-
-  <div class="product-grid">
-
-    <article class="product">
-      <div class="product-image one" onclick="openModal('İpek Dokunuş','1.250 TL','Gül kurusu tonlarında zarif ve yumuşak dokulu özel parça.')">
-        <span class="product-badge">Yeni</span>
-      </div>
-
-      <div class="product-info">
-        <h3>İpek Dokunuş</h3>
-        <p>Gül kurusu · Zarif doku</p>
-        <p class="price">1.250 TL</p>
-        <p class="stock">Stokta</p>
-
-        <div class="product-actions">
-          <button class="product-action" onclick="addToCart('İpek Dokunuş',1250)">Sepete Ekle</button>
-          <button class="quick-view" onclick="openModal('İpek Dokunuş','1.250 TL','Gül kurusu tonlarında zarif ve yumuşak dokulu özel parça.')">＋</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image two" onclick="openModal('Toprak Tonları','1.150 TL','Sıcak toprak tonlarıyla doğal ve sofistike görünüm.')">
-        <span class="product-badge">Çok Sevilen</span>
-      </div>
-
-      <div class="product-info">
-        <h3>Toprak Tonları</h3>
-        <p>Kahve · Bej · Doğal tonlar</p>
-        <p class="price">1.150 TL</p>
-        <p class="stock">Stokta</p>
-
-        <div class="product-actions">
-          <button class="product-action" onclick="addToCart('Toprak Tonları',1150)">Sepete Ekle</button>
-          <button class="quick-view" onclick="openModal('Toprak Tonları','1.150 TL','Sıcak toprak tonlarıyla doğal ve sofistike görünüm.')">＋</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image three" onclick="openModal('Lavanta Akşamı','1.350 TL','Lavanta ve mürdüm tonlarının romantik buluşması.')">
-        <span class="product-badge">Yeni</span>
-      </div>
-
-      <div class="product-info">
-        <h3>Lavanta Akşamı</h3>
-        <p>Mürdüm · Lavanta · Soft</p>
-        <p class="price">1.350 TL</p>
-        <p class="stock">Stokta</p>
-
-        <div class="product-actions">
-          <button class="product-action" onclick="addToCart('Lavanta Akşamı',1350)">Sepete Ekle</button>
-          <button class="quick-view" onclick="openModal('Lavanta Akşamı','1.350 TL','Lavanta ve mürdüm tonlarının romantik buluşması.')">＋</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product">
-      <div class="product-image four" onclick="openModal('Akşam Gülü','1.290 TL','Sıcak gül ve tarçın tonlarıyla dikkat çekici bir parça.')">
-        <span class="product-badge">Sınırlı</span>
-      </div>
-
-      <div class="product-info">
-        <h3>Akşam Gülü</h3>
-        <p>Gül · Tarçın · Sıcak tonlar</p>
-        <p class="price">1.290 TL</p>
-        <p class="stock">Son 3 ürün</p>
-
-        <div class="product-actions">
-          <button class="product-action" onclick="addToCart('Akşam Gülü',1290)">Sepete Ekle</button>
-          <button class="quick-view" onclick="openModal('Akşam Gülü','1.290 TL','Sıcak gül ve tarçın tonlarıyla dikkat çekici bir parça.')">＋</button>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- WHY -->
-<section class="why" id="why">
-  <div class="why-inner">
-
-    <div class="center-heading">
-      <small>Neden biz?</small>
-      <h2>Detaylarda saklı güzellik</h2>
-      <p>
-        Sadece bir aksesuar değil, günlük stilinizin
-        kendine özgü imzası olması için tasarlanan
-        bir alışveriş deneyimi.
-      </p>
-    </div>
-
-    <div class="why-grid">
-
-      <div class="why-card">
-        <div class="icon">✦</div>
-        <h3>Seçkin Kalite</h3>
-        <p>
-          Kumaş, doku ve renk uyumuna
-          dikkat ederek seçim yapıyoruz.
-        </p>
-      </div>
-
-      <div class="why-card">
-        <div class="icon">♢</div>
-        <h3>Zamansız Stil</h3>
-        <p>
-          Sezon geçse de kullanabileceğiniz
-          sade ve zarif tasarımlar.
-        </p>
-      </div>
-
-      <div class="why-card">
-        <div class="icon">♡</div>
-        <h3>Özenli Hazırlık</h3>
-        <p>
-          Her sipariş küçük bir hediye
-          gibi hazırlanır ve paketlenir.
-        </p>
-      </div>
-
-      <div class="why-card">
-        <div class="icon">∞</div>
-        <h3>Kolay İletişim</h3>
-        <p>
-          Sorularınız için hızlıca WhatsApp
-          üzerinden bize ulaşabilirsiniz.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- EDITORIAL -->
-<section class="editorial">
-  <div class="editorial-image"></div>
-
-  <div class="editorial-copy">
-    <small>Bizim yaklaşımımız</small>
-
-    <h2>Şıklık,<br>abartısız olandır.</h2>
-
-    <p>
-      Her kadının kendi tarzını özgürce ifade edebilmesi
-      için sade, zarif ve kolay kombinlenebilen parçalar
-      seçiyoruz. Çünkü gerçek şıklığın yüksek sesle
-      konuşmasına gerek yoktur.
-    </p>
-
-    <a href="#products" class="primary-btn">Parçaları Gör</a>
-  </div>
-</section>
-
-<!-- GIFT -->
-<section class="gift">
-
-  <div class="gift-inner">
-
-    <div class="gift-image"></div>
-
-    <div class="gift-copy">
-      <small>Size özel</small>
-
-      <h2>Hediye etmeyi güzelleştirin.</h2>
-
-      <p>
-        Sevdiğiniz biri için seçtiğiniz parçayı
-        özel notunuzla birlikte gönderebilirsiniz.
-      </p>
-
-      <label class="gift-check">
-        <input type="checkbox" id="giftCheck">
-        Hediye paketi ve özel not istiyorum
-      </label>
-
-      <a href="#contact" class="primary-btn">Hediye Seçeneğini Sor</a>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- REVIEWS -->
-<section class="reviews" id="reviews">
-
-  <div class="center-heading">
-    <small>Gerçek deneyimler</small>
-    <h2>Bizimle alışveriş yapanlar</h2>
-  </div>
-
-  <div class="reviews-grid">
-
-    <article class="review">
-      <div class="stars">★★★★★</div>
-      <p>
-        “Rengi fotoğraflardakinden bile güzel.
-        Paketleme de gerçekten çok özenliydi.”
-      </p>
-      <strong>— Zeynep</strong>
-    </article>
-
-    <article class="review">
-      <div class="stars">★★★★★</div>
-      <p>
-        “Kumaşın dokusu çok hoş ve günlük kullanım
-        için tam aradığım gibi. Tekrar sipariş vereceğim.”
-      </p>
-      <strong>— Elif</strong>
-    </article>
-
-    <article class="review">
-      <div class="stars">★★★★★</div>
-      <p>
-        “Hediye olarak aldım. Paketleme ve küçük
-        not detayı çok güzel düşünülmüş.”
-      </p>
-      <strong>— Merve</strong>
-    </article>
-
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="experience">
-
-  <div class="experience-heading">
-    <div>
-      <small>Alışveriş deneyimi</small>
-      <h2>Her adımda<br>özen.</h2>
-    </div>
-
-    <p>
-      İlk bakıştan paketi açtığınız ana kadar
-      sade, güven veren ve keyifli bir deneyim
-      sunmak için tasarlandı.
-    </p>
-  </div>
-
-  <div class="experience-grid">
-
-    <div class="experience-card">
-      <span class="experience-number">01</span>
-      <div class="experience-icon">◇</div>
-      <h3>Keşfedin</h3>
-      <p>
-        Koleksiyondaki renk ve dokular
-        arasından size uygun parçayı bulun.
-      </p>
-    </div>
-
-    <div class="experience-card">
-      <span class="experience-number">02</span>
-      <div class="experience-icon">♡</div>
-      <h3>Seçin</h3>
-      <p>
-        Beğendiğiniz ürünleri sepetinize
-        ekleyerek siparişinizi oluşturun.
-      </p>
-    </div>
-
-    <div class="experience-card">
-      <span class="experience-number">03</span>
-      <div class="experience-icon">✦</div>
-      <h3>Hazırlayalım</h3>
-      <p>
-        Siparişinizi kontrol edip
-        özenli şekilde paketleyelim.
-      </p>
-    </div>
-
-    <div class="experience-card">
-      <span class="experience-number">04</span>
-      <div class="experience-icon">∞</div>
-      <h3>Keyfini Çıkarın</h3>
-      <p>
-        Yeni parçanızı stilinizin
-        vazgeçilmez bir parçası yapın.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- SIGNATURE -->
-<section class="signature">
-
-  <div class="signature-inner">
-    <span class="signature-line"></span>
-
-    <small>İmzamız</small>
-
-    <h2>Zarafet bir seçimdir.</h2>
-
-    <p>
-      Bazen tek bir renk, tek bir dokunuş
-      ve doğru bir detay bütün görünümü değiştirir.
-      Biz o detayı sizin için seçiyoruz.
-    </p>
-
-    <a href="#products" class="primary-btn">Koleksiyona Dön</a>
-  </div>
-
-</section>
-
-<!-- CONTACT -->
-<section class="contact-banner" id="contact">
-
-  <div>
-    <small>Bir sorunuz mu var?</small>
-
-    <h2>Size yardımcı olalım.</h2>
-
-    <p>
-      Ürünler, renkler, hediye seçenekleri veya
-      siparişiniz hakkında bilgi almak için
-      WhatsApp üzerinden bize yazabilirsiniz.
-    </p>
-  </div>
-
-  <a
-    class="contact-whatsapp"
-    href="https://wa.me/905555555555"
-    target="_blank"
-    rel="noopener"
-  >
-    <span>WhatsApp</span>
-    <strong>+90 555 555 55 55</strong>
-  </a>
-
-</section>
-
-</main>
-
-<!-- FOOTER -->
+  .product
+  
+  <!-- FOOTER -->
 <footer>
 
   <div class="footer-brand">
@@ -2182,42 +1378,77 @@ footer{
   </div>
 
   <div class="footer-bottom">
-    <span>© 2026 Eşarp & Şal. Tüm hakları saklıdır.</span>
+
+    <span>
+      © 2026 Eşarp & Şal. Tüm hakları saklıdır.
+    </span>
 
     <div class="footer-social">
       <a href="#" aria-label="Instagram">Instagram</a>
       <a href="#" aria-label="TikTok">TikTok</a>
     </div>
+
   </div>
 
 </footer>
 
-<!-- CART OVERLAY -->
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-<!-- CART -->
-<aside class="cart-panel" id="cartPanel">
+<!-- CART OVERLAY -->
+<div
+  class="cart-overlay"
+  id="cartOverlay"
+  onclick="toggleCart()"
+></div>
+
+
+<!-- CART PANEL -->
+<aside
+  class="cart-panel"
+  id="cartPanel"
+  aria-label="Sepet"
+>
 
   <div class="cart-header">
+
     <h3>Sepetiniz</h3>
-    <button class="cart-close" onclick="toggleCart()" aria-label="Sepeti kapat">×</button>
+
+    <button
+      class="cart-close"
+      onclick="toggleCart()"
+      aria-label="Sepeti kapat"
+    >
+      ×
+    </button>
+
   </div>
 
+
   <div class="cart-items" id="cartItems">
+
     <div class="empty-cart">
       Sepetiniz şu anda boş.<br>
       Koleksiyondan bir parça seçebilirsiniz.
     </div>
+
   </div>
+
 
   <div class="cart-footer">
 
     <div class="cart-total">
+
       <span>Toplam</span>
-      <strong id="cartTotal">0 TL</strong>
+
+      <strong id="cartTotal">
+        0 TL
+      </strong>
+
     </div>
 
-    <button class="checkout-btn" onclick="checkout()">
+    <button
+      class="checkout-btn"
+      onclick="checkout()"
+    >
       WhatsApp'tan Sipariş Ver
     </button>
 
@@ -2225,23 +1456,45 @@ footer{
 
 </aside>
 
+
 <!-- QUICK VIEW MODAL -->
-<div class="modal" id="productModal" onclick="closeModal(event)">
+<div
+  class="modal"
+  id="productModal"
+  onclick="closeModal(event)"
+>
 
   <div class="modal-box">
 
-    <button class="modal-close" onclick="closeModal()" aria-label="Kapat">×</button>
+    <button
+      class="modal-close"
+      onclick="closeModal()"
+      aria-label="Kapat"
+    >
+      ×
+    </button>
 
-    <div class="modal-image" id="modalImage"></div>
+
+    <div
+      class="modal-image"
+      id="modalImage"
+    ></div>
+
 
     <div class="modal-content">
+
       <small>Ürün detayı</small>
 
-      <h2 id="modalTitle">Ürün</h2>
+      <h2 id="modalTitle">
+        Ürün
+      </h2>
 
       <p id="modalDescription"></p>
 
-      <div class="modal-price" id="modalPrice"></div>
+      <div
+        class="modal-price"
+        id="modalPrice"
+      ></div>
 
       <button
         class="primary-btn"
@@ -2250,11 +1503,13 @@ footer{
       >
         Sepete Ekle
       </button>
+
     </div>
 
   </div>
 
 </div>
+
 
 <!-- WHATSAPP FLOAT -->
 <a
@@ -2263,7 +1518,10 @@ footer{
   target="_blank"
   rel="noopener"
   aria-label="WhatsApp"
->☏</a>
+>
+  ☏
+</a>
+
 
 <script>
 
@@ -2276,8 +1534,11 @@ window.addEventListener("load", function(){
   const loader = document.getElementById("loader");
 
   setTimeout(function(){
+
     loader.classList.add("hide");
+
     document.body.classList.remove("loading");
+
   }, 900);
 
 });
@@ -2302,26 +1563,45 @@ function toggleMenu(){
 
 let cart = [];
 
+
 function addToCart(name, price){
 
-  const existing = cart.find(item => item.name === name);
+  const existing = cart.find(function(item){
+
+    return item.name === name;
+
+  });
+
 
   if(existing){
+
     existing.qty++;
+
   }else{
+
     cart.push({
-      name:name,
-      price:price,
-      qty:1
+
+      name: name,
+      price: price,
+      qty: 1
+
     });
+
   }
+
 
   updateCart();
 
-  const panel = document.getElementById("cartPanel");
-  const overlay = document.getElementById("cartOverlay");
+
+  const panel =
+    document.getElementById("cartPanel");
+
+  const overlay =
+    document.getElementById("cartOverlay");
+
 
   panel.classList.add("open");
+
   overlay.classList.add("open");
 
 }
@@ -2329,20 +1609,36 @@ function addToCart(name, price){
 
 function updateCart(){
 
-  const cartItems = document.getElementById("cartItems");
-  const cartCount = document.getElementById("cartCount");
-  const cartTotal = document.getElementById("cartTotal");
+  const cartItems =
+    document.getElementById("cartItems");
+
+  const cartCount =
+    document.getElementById("cartCount");
+
+  const cartTotal =
+    document.getElementById("cartTotal");
+
 
   let count = 0;
+
   let total = 0;
 
-  cart.forEach(item => {
+
+  cart.forEach(function(item){
+
     count += item.qty;
+
     total += item.price * item.qty;
+
   });
 
+
   cartCount.textContent = count;
-  cartTotal.textContent = total.toLocaleString("tr-TR") + " TL";
+
+
+  cartTotal.textContent =
+    total.toLocaleString("tr-TR") + " TL";
+
 
   if(cart.length === 0){
 
@@ -2354,38 +1650,50 @@ function updateCart(){
     `;
 
     return;
+
   }
 
-  cartItems.innerHTML = cart.map((item,index) => `
 
-    <div class="cart-item">
+  cartItems.innerHTML = cart.map(function(item,index){
 
-      <div class="cart-thumb"></div>
+    return `
 
-      <div>
-        <h4>${item.name}</h4>
-        <div class="cart-item-price">
-          ${item.qty} × ${item.price.toLocaleString("tr-TR")} TL
+      <div class="cart-item">
+
+        <div class="cart-thumb"></div>
+
+        <div>
+
+          <h4>
+            ${item.name}
+          </h4>
+
+          <div class="cart-item-price">
+            ${item.qty} ×
+            ${item.price.toLocaleString("tr-TR")} TL
+          </div>
+
         </div>
+
+        <button
+          class="cart-remove"
+          onclick="removeFromCart(${index})"
+        >
+          Sil
+        </button>
+
       </div>
 
-      <button
-        class="cart-remove"
-        onclick="removeFromCart(${index})"
-      >
-        Sil
-      </button>
+    `;
 
-    </div>
-
-  `).join("");
+  }).join("");
 
 }
 
 
 function removeFromCart(index){
 
-  cart.splice(index,1);
+  cart.splice(index, 1);
 
   updateCart();
 
@@ -2394,14 +1702,23 @@ function removeFromCart(index){
 
 function toggleCart(){
 
-  const panel = document.getElementById("cartPanel");
-  const overlay = document.getElementById("cartOverlay");
+  const panel =
+    document.getElementById("cartPanel");
+
+  const overlay =
+    document.getElementById("cartOverlay");
+
 
   panel.classList.toggle("open");
+
   overlay.classList.toggle("open");
 
 }
 
+
+/* =========================
+   WHATSAPP CHECKOUT
+========================= */
 
 function checkout(){
 
@@ -2410,11 +1727,15 @@ function checkout(){
     alert("Sepetiniz boş.");
 
     return;
+
   }
 
-  let message = "Merhaba, sipariş vermek istiyorum:%0A%0A";
 
-  cart.forEach(item => {
+  let message =
+    "Merhaba, sipariş vermek istiyorum:\n\n";
+
+
+  cart.forEach(function(item){
 
     message +=
       "• " +
@@ -2422,23 +1743,38 @@ function checkout(){
       " x" +
       item.qty +
       " — " +
-      (item.price * item.qty).toLocaleString("tr-TR") +
-      " TL%0A";
+      (
+        item.price * item.qty
+      ).toLocaleString("tr-TR") +
+      " TL\n";
 
   });
 
+
   const total = cart.reduce(
-    (sum,item) => sum + item.price * item.qty,
+    function(sum,item){
+
+      return sum +
+        item.price * item.qty;
+
+    },
     0
   );
 
+
   message +=
-    "%0AToplam: " +
+    "\nToplam: " +
     total.toLocaleString("tr-TR") +
     " TL";
 
+
+  const whatsappURL =
+    "https://wa.me/905555555555?text=" +
+    encodeURIComponent(message);
+
+
   window.open(
-    "https://wa.me/905555555555?text=" + message,
+    whatsappURL,
     "_blank"
   );
 
@@ -2452,31 +1788,62 @@ function checkout(){
 let selectedProduct = null;
 
 
-function openModal(title,price,description){
+function openModal(
+  title,
+  price,
+  description
+){
 
   selectedProduct = {
-    title:title,
-    price:price,
-    description:description
+
+    title: title,
+    price: price,
+    description: description
+
   };
 
-  document.getElementById("modalTitle").textContent = title;
 
-  document.getElementById("modalPrice").textContent = price;
-
-  document.getElementById("modalDescription").textContent = description;
-
-  document.getElementById("productModal").classList.add("open");
-
-  document.body.style.overflow = "hidden";
+  document.getElementById(
+    "modalTitle"
+  ).textContent = title;
 
 
-  document.getElementById("modalAddButton").onclick = function(){
+  document.getElementById(
+    "modalPrice"
+  ).textContent = price;
+
+
+  document.getElementById(
+    "modalDescription"
+  ).textContent = description;
+
+
+  document.getElementById(
+    "productModal"
+  ).classList.add("open");
+
+
+  document.body.style.overflow =
+    "hidden";
+
+
+  document.getElementById(
+    "modalAddButton"
+  ).onclick = function(){
 
     const numericPrice =
-      parseInt(price.replace(/\./g,"").replace(" TL",""));
+      parseInt(
+        price
+          .replace(/\./g,"")
+          .replace(" TL","")
+      );
 
-    addToCart(title,numericPrice);
+
+    addToCart(
+      title,
+      numericPrice
+    );
+
 
     closeModal();
 
@@ -2489,12 +1856,19 @@ function closeModal(event){
 
   if(
     event &&
-    event.target !== document.getElementById("productModal")
+    event.target !==
+    document.getElementById("productModal")
   ){
+
     return;
+
   }
 
-  document.getElementById("productModal").classList.remove("open");
+
+  document.getElementById(
+    "productModal"
+  ).classList.remove("open");
+
 
   document.body.style.overflow = "";
 
@@ -2505,77 +1879,107 @@ function closeModal(event){
    ESCAPE
 ========================= */
 
-document.addEventListener("keydown",function(event){
+document.addEventListener(
+  "keydown",
+  function(event){
 
-  if(event.key === "Escape"){
+    if(event.key === "Escape"){
 
-    document.getElementById("productModal").classList.remove("open");
+      document.getElementById(
+        "productModal"
+      ).classList.remove("open");
 
-    document.getElementById("cartPanel").classList.remove("open");
 
-    document.getElementById("cartOverlay").classList.remove("open");
+      document.getElementById(
+        "cartPanel"
+      ).classList.remove("open");
 
-    document.body.style.overflow = "";
+
+      document.getElementById(
+        "cartOverlay"
+      ).classList.remove("open");
+
+
+      document.body.style.overflow = "";
+
+    }
 
   }
-
-});
+);
 
 
 /* =========================
    NAV CLOSE
 ========================= */
 
-document.querySelectorAll("nav a").forEach(function(link){
+document
+  .querySelectorAll("nav a")
+  .forEach(function(link){
 
-  link.addEventListener("click",function(){
+    link.addEventListener(
+      "click",
+      function(){
 
-    document.getElementById("nav").classList.remove("open");
+        document
+          .getElementById("nav")
+          .classList.remove("open");
+
+      }
+    );
 
   });
-
-});
 
 
 /* =========================
    GIFT CHECKBOX
 ========================= */
 
-const giftCheck = document.getElementById("giftCheck");
+const giftCheck =
+  document.getElementById("giftCheck");
+
 
 if(giftCheck){
 
-  giftCheck.addEventListener("change",function(){
+  giftCheck.addEventListener(
+    "change",
+    function(){
 
-    if(this.checked){
+      if(this.checked){
 
-      alert(
-        "Hediye paketi seçeneğiniz not edildi. Sipariş sırasında WhatsApp üzerinden detayları iletebilirsiniz."
-      );
+        alert(
+          "Hediye paketi seçeneğiniz not edildi. " +
+          "Sipariş sırasında WhatsApp üzerinden " +
+          "detayları iletebilirsiniz."
+        );
+
+      }
 
     }
-
-  });
+  );
 
 }
 
 
 /* =========================
-   CLOSE CART ON RESIZE
+   CLOSE MENU ON RESIZE
 ========================= */
 
-window.addEventListener("resize",function(){
+window.addEventListener(
+  "resize",
+  function(){
 
-  if(window.innerWidth > 900){
+    if(window.innerWidth > 900){
 
-    document.getElementById("nav").classList.remove("open");
+      document
+        .getElementById("nav")
+        .classList.remove("open");
+
+    }
 
   }
-
-});
+);
 
 </script>
 
 </body>
 </html>
-.footer
