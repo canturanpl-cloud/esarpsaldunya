@@ -1373,1104 +1373,6 @@ footer p {
     text-align: center;
 }
 
-.whatsapp {
-    display: block;
-
-    width: 100%;
-
-    padding: 15px;
-
-    background: #25D366;
-
-    color: white;
-
-    text-align: center;
-
-    text-decoration: none;
-
-    border-radius: 5px;
-
-    font-weight: bold;
-}
-
-/* =========================================
-   CHECKOUT
-========================================= */
-
-.checkout-backdrop {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 4000;
-
-    display: none;
-
-    place-items: center;
-
-    padding: 20px;
-
-    background:
-        rgba(54,37,32,.68);
-
-    backdrop-filter: blur(5px);
-}
-
-.checkout-backdrop.open {
-    display: grid;
-}
-
-.checkout-panel {
-    width: min(620px,100%);
-
-    max-height: 92vh;
-
-    overflow: auto;
-
-    padding: 30px;
-
-    border-radius: 14px;
-
-    background: #fffaf7;
-
-    box-shadow:
-        0 24px 70px
-        rgba(31,19,15,.28);
-}
-
-.checkout-title {
-    display: flex;
-
-    align-items: start;
-
-    justify-content: space-between;
-
-    gap: 20px;
-}
-
-.checkout-title h2 {
-    margin: 0 0 6px;
-
-    font-family: Georgia,serif;
-}
-
-.checkout-title p {
-    margin: 0 0 24px;
-
-    color: #76645d;
-}
-
-.checkout-grid {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 15px;
-}
-
-.checkout-field {
-    display: grid;
-
-    gap: 6px;
-}
-
-.checkout-field.full {
-    grid-column: 1/-1;
-}
-
-.checkout-field label {
-    font-size: 13px;
-
-    font-weight: bold;
-}
-
-.checkout-field input,
-.checkout-field textarea {
-    width: 100%;
-
-    padding: 12px;
-
-    border:
-        1px solid #d9c9c1;
-
-    border-radius: 6px;
-
-    background: white;
-
-    font: inherit;
-
-    color: #493832;
-}
-
-.iban-details {
-    margin: 0 0 20px;
-
-    padding: 18px;
-
-    border:
-        1px solid #dbc8be;
-
-    border-radius: 10px;
-
-    background: #f7ede7;
-}
-
-.iban-details small {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: #806b61;
-}
-
-.iban-owner {
-    margin-bottom: 14px;
-
-    font-family: Georgia,serif;
-
-    font-size: 18px;
-
-    color: #4d342d;
-}
-
-.iban-row {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-.iban-number {
-    flex: 1;
-
-    overflow-wrap: anywhere;
-
-    font-family:
-        ui-monospace,
-        monospace;
-
-    font-size: 15px;
-
-    font-weight: bold;
-}
-
-.copy-iban {
-    flex: none;
-
-    padding: 8px 11px;
-
-    border:
-        1px solid #b99482;
-
-    border-radius: 6px;
-
-    background: #fffaf7;
-
-    color: #5b3a32;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.iban-note {
-    margin: 14px 0 0;
-
-    color: #6f5a51;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-}
-
-.checkout-error {
-    min-height: 20px;
-
-    margin: 12px 0;
-
-    color: #a42f2f;
-
-    font-size: 14px;
-}
-
-.checkout-submit {
-    width: 100%;
-
-    padding: 15px;
-
-    border: 0;
-
-    border-radius: 6px;
-
-    background: #5b3a32;
-
-    color: white;
-
-    font-weight: bold;
-
-    font-size: 16px;
-
-    cursor: pointer;
-}
-
-.empty {
-    text-align: center;
-
-    color: #777;
-
-    margin-top: 40px;
-}
-
-/* =========================================
-   MOBİL
-========================================= */
-
-@media(max-width:800px) {
-
-    header {
-        display: block;
-
-        text-align: center;
-    }
-
-    nav {
-        justify-content: center;
-
-        flex-wrap: wrap;
-
-        margin-top: 14px;
-    }
-
-    .hero {
-        min-height: auto;
-
-        grid-template-columns: 1fr;
-
-        padding-top: 65px;
-    }
-
-    .hero-visual {
-        width: min(83%,400px);
-    }
-
-    .hero-visual img {
-        height: 440px;
-    }
-
-    .trust-strip {
-        grid-template-columns: 1fr;
-
-        margin: 0 20px;
-    }
-
-    .trust-item {
-        border-right: 0;
-
-        border-bottom:
-            1px solid var(--line);
-    }
-
-    .section-heading {
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .product:nth-child(2) {
-        margin-top: 0;
-    }
-
-    .editorial {
-        grid-template-columns: 1fr;
-    }
-
-    .editorial-image {
-        min-height: 400px;
-    }
-}
-
-@media(max-width:700px) {
-
-    .hero h2 {
-        font-size: 55px;
-    }
-
-    .product-image {
-        height: 440px;
-    }
-
-    .checkout-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .checkout-field.full {
-        grid-column: auto;
-    }
-
-    .cart {
-        width: 100%;
-    }
-
-    .hero-seal {
-        right: -10px;
-    }
-
-    .floating-flower {
-        opacity: .35;
-    }
-
-    .sakura {
-        opacity: .38;
-    }
-}
-
-@media(prefers-reduced-motion: reduce) {
-
-    .announcement-track,
-    .floating-flower,
-    .sakura {
-        animation: none;
-    }
-
-    html {
-        scroll-behavior: auto;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- =========================================
-     DUYURU
-========================================= -->
-
-<div class="announcement">
-
-    <div class="announcement-track">
-
-        <span>
-
-            ₺1.500 üzeri ücretsiz kargo
-
-            <i></i>
-
-            Seçili ürünlerde ikinci ürüne %15 indirim
-
-            <i></i>
-
-            IBAN ile güvenli ödeme
-
-            <i></i>
-
-            Özenli hediye paketi
-
-            <i></i>
-
-        </span>
-
-        <span aria-hidden="true">
-
-            ₺1.500 üzeri ücretsiz kargo
-
-            <i></i>
-
-            Seçili ürünlerde ikinci ürüne %15 indirim
-
-            <i></i>
-
-            IBAN ile güvenli ödeme
-
-            <i></i>
-
-            Özenli hediye paketi
-
-            <i></i>
-
-        </span>
-
-    </div>
-
-</div>
-
-<!-- =========================================
-     HEADER
-========================================= -->
-
-<header>
-
-    <h1>
-
-        Eşarp ve Şal Dünyası
-
-        <span>
-            İstanbul · 2026
-        </span>
-
-    </h1>
-
-    <nav>
-
-        <a href="#">
-            Ana Sayfa
-        </a>
-
-        <a href="#urunler">
-            Ürünler
-        </a>
-
-        <a href="#hakkimizda">
-            Hakkımızda
-        </a>
-
-        <a href="#iletisim">
-            İletişim
-        </a>
-
-        <span
-            class="cart-button"
-            onclick="sepetAc()">
-
-            Sepet ·
-            <span id="sepetSayisi">0</span>
-
-        </span>
-
-    </nav>
-
-</header>
-
-<!-- =========================================
-     HERO
-========================================= -->
-
-<section class="hero">
-
-    <!-- MEVCUT ÇİÇEKLER -->
-
-    <div class="floating-flower flower-1"></div>
-    <div class="floating-flower flower-2"></div>
-    <div class="floating-flower flower-3"></div>
-    <div class="floating-flower flower-4"></div>
-    <div class="floating-flower flower-5"></div>
-
-    <!-- YENİ SAKURA ÇİÇEKLERİ -->
-
-    <div class="sakura sakura-1"></div>
-    <div class="sakura sakura-2"></div>
-    <div class="sakura sakura-3"></div>
-    <div class="sakura sakura-4"></div>
-    <div class="sakura sakura-5"></div>
-    <div class="sakura sakura-6"></div>
-    <div class="sakura sakura-7"></div>
-
-    <div class="hero-copy">
-
-        <div class="eyebrow">
-            Yeni sezon seçkisi
-        </div>
-
-        <h2>
-
-            İmzanız<br>
-
-            <em>
-                zarafet
-            </em>
-
-            olsun.
-
-        </h2>
-
-        <p>
-
-            Her bağlayışta başka bir hikâye anlatan,
-            dokusu ve deseni özenle seçilmiş eşarp ve şallar.
-            Günün ritmine eşlik eden zamansız parçaları keşfedin.
-
-        </p>
-
-        <a
-            href="#urunler"
-            class="button">
-
-            Koleksiyonu Keşfet
-
-        </a>
-
-    </div>
-
-    <div class="hero-visual">
-
-        <img
-            src="assets/products/gul-bahcesi-sal.webp"
-            alt="Gül Bahçesi Şal"
-        >
-
-        <div class="hero-seal">
-
-            Yeni<br>
-
-            Koleksiyon
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================
-     GÜVEN
-========================================= -->
-
-<div class="trust-strip">
-
-    <div class="trust-item">
-
-        <strong>
-            Özenle Seçildi
-        </strong>
-
-        <span>
-            Her desen, gardırobunuzla uyum için seçilir.
-        </span>
-
-    </div>
-
-    <div class="trust-item">
-
-        <strong>
-            Güvenli Alışveriş
-        </strong>
-
-        <span>
-            IBAN ve WhatsApp üzerinden kolay sipariş.
-        </span>
-
-    </div>
-
-    <div class="trust-item">
-
-        <strong>
-            Butik Paketleme
-        </strong>
-
-        <span>
-            Siparişiniz hediyeye hazır özenle paketlenir.
-        </span>
-
-    </div>
-
-</div>
-
-<!-- =========================================
-     ÜRÜNLER
-========================================= -->
-
-<section
-    class="products"
-    id="urunler">
-
-    <div
-        id="paymentMessage"
-        class="payment-message">
-    </div>
-
-    <div class="section-heading">
-
-        <div>
-
-            <small>
-                Sezonun seçkisi
-            </small>
-
-            <h2>
-                Yeni Koleksiyon
-            </h2>
-
-        </div>
-
-        <p>
-
-            Yumuşak dokular, incelikli desenler
-            ve gün boyu konfor için bir araya getirilen favoriler.
-
-        </p>
-
-    </div>
-
-    <div class="product-grid">
-
-        <!-- ÜRÜN 1 -->
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="assets/products/gul-bahcesi-sal.webp"
-                    alt="Gül Bahçesi Şal"
-                    loading="lazy"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-                <h3>
-                    Gül Bahçesi Şal
-                </h3>
-
-                <p>
-                    Zarif desenli, özel tasarım şal.
-                </p>
-
-                <p class="price">
-                    ₺1.899
-                </p>
-
-                <p class="stock">
-
-                    Stok:
-                    <span id="stok1">
-                        250
-                    </span>
-
-                    adet
-
-                </p>
-
-                <button
-                    onclick="sepeteEkle(1)">
-
-                    Sepete Ekle
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- ÜRÜN 2 -->
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="assets/products/kahve-tonlari-esarp.jpg"
-                    alt="Aydınlık ve Gece Tonları Eşarp"
-                    loading="lazy"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-
-                <h3>
-                    Aydınlık ve Gece Tonları Eşarp
-                </h3>
-
-                <p>
-                    Zarif renk geçişleriyle özel tasarım eşarp.
-                </p>
-
-                <p class="price">
-                    ₺1.899
-                </p>
-
-                <p class="stock">
-                    Stok:
-                    <span id="stok2">250</span>
-                    adet
-                </p>
-
-                <button onclick="sepeteEkle(2)">
-                    Sepete Ekle
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- ÜRÜN 3 -->
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="assets/products/vintage-pudra-sal.jpg"
-                    alt="Vintage Huzur Şal"
-                    loading="lazy"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-                <h3>
-                    Vintage Huzur Şal
-                </h3>
-
-                <p>
-                    Yumuşak dokulu, zamansız ve zarif şal.
-                </p>
-
-                <p class="price">
-                    ₺1.899
-                </p>
-
-                <p class="stock">
-                    Stok:
-                    <span id="stok3">250</span>
-                    adet
-                </p>
-
-                <button onclick="sepeteEkle(3)">
-                    Sepete Ekle
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- EDİTORYAL -->
-
-<section class="editorial">
-
-    <div class="editorial-image"></div>
-
-    <div class="editorial-copy">
-
-        <small>
-            Editoryal · 01
-        </small>
-
-        <h2>
-            Bir aksesuar değil,
-            <br>
-            kişisel bir imza.
-        </h2>
-
-        <p>
-            Sade bir görünümü tek dokunuşla dönüştüren eşarplar;
-            omuzda, saçta ya da çantada…
-            Koleksiyonumuz, her gün yeniden yorumlayabileceğiniz
-            renk ve desenlerden oluşuyor.
-        </p>
-
-        <a href="#urunler" class="button">
-            Seçkiyi İncele
-        </a>
-
-    </div>
-
-</section>
-
-<!-- HAKKIMIZDA -->
-
-<section class="about" id="hakkimizda">
-
-    <div>
-
-        <h2>
-            Hikâyemiz
-        </h2>
-
-        <p>
-            Modanın geçici ritmi yerine kalıcı bir stil duygusuna
-            inanıyoruz. Eşarp ve Şal Dünyası olarak renk, desen
-            ve dokuyu özenle bir araya getiriyor; her kombinde
-            kendiniz gibi hissettiren parçaları sizlerle buluşturuyoruz.
-            Her sipariş, butik deneyimin bir parçası olarak özenle hazırlanıyor.
-        </p>
-
-    </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer id="iletisim">
-
-    <h3>
-        Eşarp ve Şal Dünyası
-    </h3>
-
-    <p>
-        📞 0531 308 96 29
-    </p>
-
-    <p>
-        ✉ canturanpl@gmail.com
-    </p>
-
-    <p>
-        © 2026 Eşarp ve Şal Dünyası
-    </p>
-
-</footer>
-
-<!-- SEPET -->
-
-<div class="cart" id="cart">
-
-    <div class="cart-header">
-
-        <h2>
-            🛒 Sepetim
-        </h2>
-
-        <button
-            class="close-cart"
-            onclick="sepetKapat()">
-            ✕
-        </button>
-
-    </div>
-
-    <div id="sepetIcerik"></div>
-
-    <div class="cart-total">
-
-        Toplam:
-        ₺<span id="toplam">0</span>
-
-    </div>
-
-    <button
-        class="bank-payment"
-        style="width:100%;padding:15px;border-radius:5px;font-weight:bold;cursor:pointer;"
-        onclick="odemeFormunuAc()">
-
-        IBAN ile Sipariş Oluştur
-
-    </button>
-
-    <p class="secure-note">
-        Sipariş bilgilerinizi doldurduktan sonra
-        WhatsApp üzerinden siparişiniz oluşturulur.
-    </p>
-
-    <a
-        id="whatsappButton"
-        class="whatsapp"
-        href="#"
-        target="_blank">
-
-        💬 WhatsApp'tan Sipariş Ver
-
-    </a>
-
-</div>
-
-<!-- ÖDEME FORMU -->
-
-<div
-    class="checkout-backdrop"
-    id="checkoutBackdrop"
-    role="dialog"
-    aria-modal="true">
-
-    <div class="checkout-panel">
-
-        <div class="checkout-title">
-
-            <div>
-
-                <h2>
-                    Sipariş Bilgileri
-                </h2>
-
-                <p>
-                    Siparişinizi oluşturmak için bilgilerinizi doldurun.
-                </p>
-
-            </div>
-
-            <button
-                class="close-cart"
-                onclick="odemeFormunuKapat()">
-
-                ✕
-
-            </button>
-
-        </div>
-
-        <div class="iban-details open">
-
-            <small>
-                Hesap sahibi
-            </small>
-
-            <div class="iban-owner">
-                EŞREF CAN TURAN
-            </div>
-
-            <small>
-                IBAN
-            </small>
-
-            <div class="iban-row">
-
-                <span class="iban-number">
-                    TR58 0015 7000 0000 0203 1694 54
-                </span>
-
-                <button
-                    class="copy-iban"
-                    onclick="ibanKopyala()"
-                    id="copyIbanButton">
-
-                    Kopyala
-
-                </button>
-
-            </div>
-
-            <p class="iban-note">
-
-                Siparişinizi oluşturduktan sonra WhatsApp açılacaktır.
-                Havale açıklamasına adınızı ve soyadınızı yazabilirsiniz.
-
-            </p>
-
-        </div>
-
-        <form id="checkoutForm">
-
-            <div class="checkout-grid">
-
-                <div class="checkout-field">
-
-                    <label for="customerName">
-                        Ad
-                    </label>
-
-                    <input
-                        id="customerName"
-                        name="name"
-                        required>
-
-                </div>
-
-                <div class="checkout-field">
-
-                    <label for="customerSurname">
-                        Soyad
-                    </label>
-
-                    <input
-                        id="customerSurname"
-                        name="surname"
-                        required>
-
-                </div>
-
-                <div class="checkout-field">
-
-                    <label for="customerPhone">
-                        Telefon
-                    </label>
-
-                    <input
-                        id="customerPhone"
-                        name="phone"
-                        type="tel"
-                        placeholder="05xx xxx xx xx"
-                        required>
-
-                </div>
-
-                <div class="checkout-field">
-
-                    <label for="customerEmail">
-                        E-posta
-                    </label>
-
-                    <input
-                        id="customerEmail"
-                        name="email"
-                        type="email"
-                        required>
-
-                </div>
-
-                <div class="checkout-field">
-
-                    <label for="customerCity">
-                        Şehir
-                    </label>
-
-                    <input
-                        id="customerCity"
-                        name="city"
-                        required>
-
-                </div>
-
-                <div class="checkout-field">
-
-                    <label for="customerZip">
-                        Posta Kodu
-                    </label>
-
-                    <input
-                        id="customerZip"
-                        name="zipCode"
-                        required>
-
-                </div>
-
-                <div class="checkout-field full">
-
-                    <label for="customerAddress">
-                        Açık Adres
-                    </label>
-
-                    <textarea
-                        id="customerAddress"
-                        name="address"
-                        rows="3"
-                        required></textarea>
-
-                </div>
-
-            </div>
-
-            <div
-                class="checkout-error"
-                id="checkoutError">
-            </div>
-
-            <button
-                class="checkout-submit"
-                type="submit">
-
-                WhatsApp'tan Sipariş Oluştur
-
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
 <script>
 
 /* =========================================
@@ -2512,15 +1414,6 @@ const IBAN =
 const HESAP_SAHIBI =
     "EŞREF CAN TURAN";
 
-/*
-    BURAYA GERÇEK WHATSAPP NUMARANIZI YAZIN.
-
-    Örnek:
-    905313089629
-
-    Başında + olmamalıdır.
-*/
-
 const WHATSAPP_TELEFON =
     "905313089629";
 
@@ -2530,6 +1423,8 @@ const WHATSAPP_TELEFON =
 ========================================= */
 
 function sepeteEkle(id) {
+
+    if (!urunler[id]) return;
 
     if (!sepet[id]) {
 
@@ -2564,19 +1459,24 @@ function sepetGuncelle() {
     const alan =
         document.getElementById("sepetIcerik");
 
+    if (!alan) return;
+
     alan.innerHTML = "";
 
     let toplam = 0;
     let adet = 0;
 
-    for (let id in sepet) {
+    for (const id in sepet) {
 
         const urun = urunler[id];
         const miktar = sepet[id];
 
-        toplam +=
+        if (!urun) continue;
+
+        const araToplam =
             urun.fiyat * miktar;
 
+        toplam += araToplam;
         adet += miktar;
 
         alan.innerHTML += `
@@ -2595,8 +1495,11 @@ function sepetGuncelle() {
                 <div class="quantity">
 
                     <button
+                        type="button"
                         onclick="adetAzalt(${id})">
+
                         −
+
                     </button>
 
                     <strong>
@@ -2604,13 +1507,17 @@ function sepetGuncelle() {
                     </strong>
 
                     <button
+                        type="button"
                         onclick="adetArtir(${id})">
+
                         +
+
                     </button>
 
                 </div>
 
                 <button
+                    type="button"
                     class="remove"
                     onclick="urunSil(${id})">
 
@@ -2619,6 +1526,7 @@ function sepetGuncelle() {
                 </button>
 
             </div>
+
         `;
     }
 
@@ -2633,12 +1541,22 @@ function sepetGuncelle() {
         `;
     }
 
-    document.getElementById("toplam")
-        .textContent =
-        toplam.toLocaleString("tr-TR");
+    const toplamAlan =
+        document.getElementById("toplam");
 
-    document.getElementById("sepetSayisi")
-        .textContent = adet;
+    if (toplamAlan) {
+
+        toplamAlan.textContent =
+            toplam.toLocaleString("tr-TR");
+    }
+
+    const sepetSayisi =
+        document.getElementById("sepetSayisi");
+
+    if (sepetSayisi) {
+
+        sepetSayisi.textContent = adet;
+    }
 }
 
 
@@ -2647,6 +1565,8 @@ function sepetGuncelle() {
 ========================================= */
 
 function adetArtir(id) {
+
+    if (!urunler[id]) return;
 
     if (sepet[id] < urunler[id].stok) {
 
@@ -2657,7 +1577,6 @@ function adetArtir(id) {
     } else {
 
         alert("Bu ürün için stok kalmadı.");
-
     }
 }
 
@@ -2668,6 +1587,8 @@ function adetArtir(id) {
 
 function adetAzalt(id) {
 
+    if (!sepet[id]) return;
+
     if (sepet[id] > 1) {
 
         sepet[id]--;
@@ -2675,7 +1596,6 @@ function adetAzalt(id) {
     } else {
 
         delete sepet[id];
-
     }
 
     sepetGuncelle();
@@ -2700,9 +1620,13 @@ function urunSil(id) {
 
 function sepetAc() {
 
-    document
-        .getElementById("cart")
-        .classList.add("open");
+    const cart =
+        document.getElementById("cart");
+
+    if (cart) {
+
+        cart.classList.add("open");
+    }
 }
 
 
@@ -2712,44 +1636,72 @@ function sepetAc() {
 
 function sepetKapat() {
 
-    document
-        .getElementById("cart")
-        .classList.remove("open");
+    const cart =
+        document.getElementById("cart");
+
+    if (cart) {
+
+        cart.classList.remove("open");
+    }
 }
 
 
 /* =========================================
-   CHECKOUT AÇ
+   ÖDEME FORMUNU AÇ
 ========================================= */
 
 function odemeFormunuAc() {
 
-    if (Object.keys(sepet).length === 0) {
+    if (
+        Object.keys(sepet).length === 0
+    ) {
 
-        alert("Önce sepete ürün ekleyin.");
+        alert(
+            "Önce sepete ürün ekleyin."
+        );
 
         return;
     }
 
-    document
-        .getElementById("checkoutBackdrop")
-        .classList.add("open");
+    const backdrop =
+        document.getElementById(
+            "checkoutBackdrop"
+        );
 
-    document
-        .getElementById("customerName")
-        .focus();
+    if (backdrop) {
+
+        backdrop.classList.add("open");
+    }
+
+    const name =
+        document.getElementById(
+            "customerName"
+        );
+
+    if (name) {
+
+        setTimeout(() => {
+            name.focus();
+        }, 100);
+    }
 }
 
 
 /* =========================================
-   CHECKOUT KAPAT
+   ÖDEME FORMUNU KAPAT
 ========================================= */
 
 function odemeFormunuKapat() {
 
-    document
-        .getElementById("checkoutBackdrop")
-        .classList.remove("open");
+    const backdrop =
+        document.getElementById(
+            "checkoutBackdrop"
+        );
+
+    if (backdrop) {
+
+        backdrop.classList.remove("open");
+    }
 }
 
 
@@ -2760,21 +1712,28 @@ function odemeFormunuKapat() {
 async function ibanKopyala() {
 
     const button =
-        document.getElementById("copyIbanButton");
+        document.getElementById(
+            "copyIbanButton"
+        );
 
     try {
 
-        await navigator.clipboard.writeText(IBAN);
+        await navigator.clipboard.writeText(
+            IBAN
+        );
 
-        button.textContent =
-            "Kopyalandı ✓";
-
-        setTimeout(() => {
+        if (button) {
 
             button.textContent =
-                "Kopyala";
+                "Kopyalandı ✓";
 
-        },1800);
+            setTimeout(() => {
+
+                button.textContent =
+                    "Kopyala";
+
+            }, 1800);
+        }
 
     } catch {
 
@@ -2786,14 +1745,18 @@ async function ibanKopyala() {
 
 
 /* =========================================
-   WHATSAPP SİPARİŞİ
+   WHATSAPP SİPARİŞ
 ========================================= */
 
 function whatsappSiparis(customer) {
 
-    if (Object.keys(sepet).length === 0) {
+    if (
+        Object.keys(sepet).length === 0
+    ) {
 
-        alert("Sepetiniz boş.");
+        alert(
+            "Sepetiniz boş."
+        );
 
         return;
     }
@@ -2802,7 +1765,7 @@ function whatsappSiparis(customer) {
 
     const satirlar = [];
 
-    for (let id in sepet) {
+    for (const id in sepet) {
 
         const urun =
             urunler[id];
@@ -2810,60 +1773,102 @@ function whatsappSiparis(customer) {
         const miktar =
             sepet[id];
 
+        if (!urun) continue;
+
         const araToplam =
             urun.fiyat * miktar;
 
         toplam += araToplam;
 
         satirlar.push(
-            `• ${urun.ad} - ${miktar} adet - ₺${araToplam.toLocaleString("tr-TR")}`
+            `• ${urun.ad} × ${miktar} = ₺${araToplam.toLocaleString("tr-TR")}`
         );
     }
 
-    let mesaj = [
 
-        "Merhaba, Eşarp ve Şal Dünyası web sitesinden sipariş vermek istiyorum.",
+    const mesaj = [
+
+        "🌸 MERHABA, EŞARP VE ŞAL DÜNYASI 🌸",
+
         "",
+
+        "Web sitenizden sipariş vermek istiyorum.",
+
+        "",
+
+        "🛍️ SİPARİŞ DETAYLARI",
+
+        "",
+
         ...satirlar,
+
         "",
-        `Toplam: ₺${toplam.toLocaleString("tr-TR")}`,
+
+        `💰 TOPLAM: ₺${toplam.toLocaleString("tr-TR")}`,
+
         "",
-        "Müşteri Bilgileri:",
+
+        "👤 MÜŞTERİ BİLGİLERİ",
+
+        "",
+
         `Ad Soyad: ${customer.name} ${customer.surname}`,
+
         `Telefon: ${customer.phone}`,
+
         `E-posta: ${customer.email}`,
+
         `Şehir: ${customer.city}`,
+
         `Posta Kodu: ${customer.zipCode}`,
+
         `Adres: ${customer.address}`,
+
         "",
+
+        "💳 ÖDEME BİLGİLERİ",
+
+        "",
+
         "Ödeme: IBAN / Havale",
-        "",
+
         `Hesap Sahibi: ${HESAP_SAHIBI}`,
-        `IBAN: ${IBAN}`
+
+        `IBAN: ${IBAN}`,
+
+        "",
+
+        "Siparişimi onaylamak istiyorum."
 
     ].join("\n");
 
-    const url =
+
+    const whatsappUrl =
         "https://wa.me/" +
         WHATSAPP_TELEFON +
         "?text=" +
         encodeURIComponent(mesaj);
 
+
     window.open(
-        url,
-        "_blank",
-        "noopener"
+        whatsappUrl,
+        "_blank"
     );
 }
 
 
 /* =========================================
-   FORM
+   FORM GÖNDER
 ========================================= */
 
-document
-    .getElementById("checkoutForm")
-    .addEventListener(
+const checkoutForm =
+    document.getElementById(
+        "checkoutForm"
+    );
+
+if (checkoutForm) {
+
+    checkoutForm.addEventListener(
         "submit",
         function(event) {
 
@@ -2871,13 +1876,121 @@ document
 
             const customer =
                 Object.fromEntries(
-                    new FormData(event.currentTarget).entries()
+                    new FormData(
+                        checkoutForm
+                    ).entries()
                 );
+
+
+            const error =
+                document.getElementById(
+                    "checkoutError"
+                );
+
+            if (
+                !customer.name ||
+                !customer.surname ||
+                !customer.phone ||
+                !customer.email ||
+                !customer.city ||
+                !customer.zipCode ||
+                !customer.address
+            ) {
+
+                if (error) {
+
+                    error.textContent =
+                        "Lütfen tüm alanları doldurun.";
+
+                }
+
+                return;
+            }
+
+
+            if (error) {
+
+                error.textContent = "";
+
+            }
+
 
             whatsappSiparis(customer);
 
         }
     );
+}
+
+
+/* =========================================
+   WHATSAPP BUTONU
+========================================= */
+
+const whatsappButton =
+    document.getElementById(
+        "whatsappButton"
+    );
+
+if (whatsappButton) {
+
+    whatsappButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            odemeFormunuAc();
+
+        }
+    );
+}
+
+
+/* =========================================
+   CHECKOUT DIŞINA TIKLAYINCA KAPAT
+========================================= */
+
+const checkoutBackdrop =
+    document.getElementById(
+        "checkoutBackdrop"
+    );
+
+if (checkoutBackdrop) {
+
+    checkoutBackdrop.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                checkoutBackdrop
+            ) {
+
+                odemeFormunuKapat();
+
+            }
+        }
+    );
+}
+
+
+/* =========================================
+   ESC İLE KAPAT
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            odemeFormunuKapat();
+
+            sepetKapat();
+
+        }
+    }
+);
 
 
 /* =========================================
@@ -2885,6 +1998,8 @@ document
 ========================================= */
 
 sepetGuncelle();
+
+</script>
 
 </script>
 
