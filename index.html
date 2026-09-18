@@ -31,98 +31,7 @@ body {
     color: var(--ink);
 }
 
-/* =========================
-   DEKORATİF ÇİÇEKLER
-========================= */
-
-.floating-flower {
-    position: fixed;
-    z-index: 5;
-    pointer-events: none;
-    font-size: 34px;
-    opacity: .72;
-    filter: drop-shadow(0 5px 10px rgba(70,40,30,.12));
-    animation:
-        flowerFloat 7s ease-in-out infinite,
-        flowerRotate 12s linear infinite;
-}
-
-.flower-1 {
-    left: 18px;
-    top: 22%;
-    animation-delay: 0s;
-}
-
-.flower-2 {
-    right: 22px;
-    top: 31%;
-    font-size: 42px;
-    animation-delay: -2s;
-}
-
-.flower-3 {
-    left: 35px;
-    top: 57%;
-    font-size: 28px;
-    animation-delay: -4s;
-}
-
-.flower-4 {
-    right: 35px;
-    top: 67%;
-    font-size: 32px;
-    animation-delay: -1s;
-}
-
-.flower-5 {
-    left: 8%;
-    bottom: 10%;
-    font-size: 25px;
-    animation-delay: -5s;
-}
-
-.flower-6 {
-    right: 8%;
-    bottom: 18%;
-    font-size: 27px;
-    animation-delay: -3s;
-}
-
-@keyframes flowerFloat {
-    0%, 100% {
-        transform: translateY(0) translateX(0);
-    }
-
-    50% {
-        transform: translateY(-24px) translateX(8px);
-    }
-}
-
-@keyframes flowerRotate {
-    from {
-        rotate: 0deg;
-    }
-
-    to {
-        rotate: 360deg;
-    }
-}
-
-@media (max-width: 700px) {
-    .floating-flower {
-        opacity: .38;
-        font-size: 24px;
-    }
-
-    .flower-2,
-    .flower-4 {
-        font-size: 28px;
-    }
-}
-
-/* =========================
-   DUYURU
-========================= */
+/* ÜST DUYURU */
 
 .announcement {
     overflow: hidden;
@@ -139,7 +48,7 @@ body {
 .announcement-track {
     display: inline-flex;
     min-width: max-content;
-    animation: campaignFlow 26s linear infinite;
+    animation: campaignFlow 28s linear infinite;
 }
 
 .announcement-track span {
@@ -162,28 +71,21 @@ body {
     }
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
-
     padding: 17px clamp(20px, 5vw, 72px);
-
     background: rgba(247,240,232,.94);
     color: var(--ink);
-
     border-bottom: 1px solid var(--line);
-
     backdrop-filter: blur(14px);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    text-align: left;
 }
 
 header h1 {
@@ -196,7 +98,7 @@ header h1 {
 
 header h1 span {
     display: block;
-    margin-top: 2px;
+    margin-top: 3px;
     color: #8b6d5d;
     font: 600 8px/1.2 "Avenir Next", sans-serif;
     letter-spacing: .34em;
@@ -204,20 +106,18 @@ header h1 span {
 }
 
 nav {
-    margin: 0;
     display: flex;
     align-items: center;
     gap: clamp(9px, 2vw, 28px);
 }
 
 nav a {
-    margin: 0;
     color: #5a4740;
+    text-decoration: none;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .1em;
     text-transform: uppercase;
-    text-decoration: none;
 }
 
 nav a:hover {
@@ -225,7 +125,6 @@ nav a:hover {
 }
 
 .cart-button {
-    margin: 0;
     padding: 10px 17px;
     background: var(--ink);
     color: #fffaf4;
@@ -235,47 +134,28 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
     position: relative;
     min-height: 670px;
-
-    padding: clamp(60px, 8vw, 105px)
-             clamp(20px, 8vw, 120px);
-
-    text-align: left;
-    color: var(--ink);
-
-    background:
-        radial-gradient(
-            circle at 12% 18%,
-            #fffaf4 0,
-            transparent 34%
-        ),
-        linear-gradient(
-            115deg,
-            #f4e7dc,
-            #e5d0c0
-        );
+    padding: clamp(60px, 8vw, 105px) clamp(20px, 8vw, 120px);
 
     display: grid;
-    grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(280px, .95fr);
-
+    grid-template-columns: minmax(0,1.05fr) minmax(280px,.95fr);
     align-items: center;
-
-    gap: clamp(40px, 7vw, 110px);
+    gap: clamp(40px,7vw,110px);
 
     overflow: hidden;
+
+    background:
+        radial-gradient(circle at 12% 18%, #fffaf4 0, transparent 34%),
+        linear-gradient(115deg,#f4e7dc,#e5d0c0);
 }
 
 .hero-copy {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     max-width: 680px;
 }
 
@@ -283,9 +163,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 13px;
-
     margin-bottom: 25px;
-
     color: #8a654d;
     font-size: 11px;
     font-weight: 700;
@@ -302,8 +180,8 @@ nav a:hover {
 
 .hero h2 {
     margin: 0 0 25px;
-
-    font-size: clamp(55px, 7vw, 102px);
+    font-family: Georgia, serif;
+    font-size: clamp(55px,7vw,102px);
     font-weight: 400;
     line-height: .89;
     letter-spacing: -.055em;
@@ -316,7 +194,6 @@ nav a:hover {
 
 .hero p {
     max-width: 500px;
-
     color: #66514a;
     font-size: 17px;
     line-height: 1.75;
@@ -324,25 +201,16 @@ nav a:hover {
 
 .button {
     display: inline-block;
-
     margin-top: 20px;
-
-    border-radius: 1px;
     padding: 16px 25px;
-
     background: var(--ink);
-    color: #fff;
-
+    color: white;
+    text-decoration: none;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: .16em;
     text-transform: uppercase;
-
-    text-decoration: none;
-
-    transition:
-        transform .2s ease,
-        background .2s ease;
+    transition: .2s;
 }
 
 .button:hover {
@@ -352,49 +220,38 @@ nav a:hover {
 
 .hero-visual {
     position: relative;
-    width: min(100%, 440px);
+    z-index: 5;
+    width: min(100%,440px);
     justify-self: center;
-    z-index: 2;
 }
 
 .hero-visual:before {
     content: "";
-
     position: absolute;
-
     inset: -24px 35px 28px -26px;
-
     border: 1px solid rgba(112,76,64,.3);
 }
 
 .hero-visual img {
     position: relative;
-
     width: 100%;
     height: 510px;
-
     object-fit: cover;
     object-position: center 20%;
-
     filter: saturate(.82) contrast(.96);
-
-    box-shadow:
-        25px 28px 60px rgba(71,48,40,.18);
+    box-shadow: 25px 28px 60px rgba(71,48,40,.18);
 }
 
 .hero-seal {
     position: absolute;
-
     right: -34px;
     bottom: 42px;
-
-    z-index: 3;
+    z-index: 10;
 
     width: 112px;
     height: 112px;
 
     border-radius: 50%;
-
     background: #f4e6d7;
     border: 1px solid rgba(87,59,58,.2);
 
@@ -402,34 +259,115 @@ nav a:hover {
     place-items: center;
 
     color: #6d4e43;
-
-    font: italic 16px Georgia, serif;
-
+    font: italic 16px Georgia,serif;
     text-align: center;
 
     transform: rotate(-8deg);
-
-    box-shadow:
-        0 12px 35px rgba(62,41,34,.16);
+    box-shadow: 0 12px 35px rgba(62,41,34,.16);
 }
 
-/* =========================
-   TRUST
-========================= */
+/* ÇİÇEKLER */
+
+.floating-flower {
+    position: absolute;
+    z-index: 2;
+    width: 75px;
+    height: 75px;
+    pointer-events: none;
+    opacity: .65;
+    animation: flowerFloat 10s ease-in-out infinite;
+}
+
+.floating-flower::before,
+.floating-flower::after {
+    content: "✿";
+    position: absolute;
+    color: #b88782;
+    font-size: 55px;
+}
+
+.floating-flower::before {
+    top: 0;
+    left: 0;
+    transform: rotate(20deg);
+}
+
+.floating-flower::after {
+    top: 8px;
+    left: 8px;
+    color: #d3a39b;
+    transform: rotate(-25deg) scale(.75);
+}
+
+.flower-1 {
+    top: 14%;
+    left: 4%;
+    animation-duration: 12s;
+}
+
+.flower-2 {
+    top: 68%;
+    left: 48%;
+    transform: scale(.7);
+    animation-duration: 15s;
+}
+
+.flower-3 {
+    top: 20%;
+    right: 5%;
+    transform: scale(.65);
+    animation-duration: 13s;
+}
+
+.flower-4 {
+    bottom: 7%;
+    right: 30%;
+    transform: scale(.8);
+    animation-duration: 17s;
+}
+
+.flower-5 {
+    top: 45%;
+    left: 27%;
+    transform: scale(.45);
+    animation-duration: 11s;
+}
+
+@keyframes flowerFloat {
+    0% {
+        transform: translate(0,0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(18px,-25px) rotate(90deg);
+    }
+
+    50% {
+        transform: translate(-12px,-45px) rotate(180deg);
+    }
+
+    75% {
+        transform: translate(-25px,-15px) rotate(270deg);
+    }
+
+    100% {
+        transform: translate(0,0) rotate(360deg);
+    }
+}
+
+/* GÜVEN */
 
 .trust-strip {
     position: relative;
-    z-index: 10;
+    z-index: 20;
 
     display: grid;
     grid-template-columns: repeat(3,1fr);
 
     max-width: 1100px;
-
     margin: -1px auto 0;
 
     border: 1px solid var(--line);
-
     background: var(--paper);
 }
 
@@ -444,10 +382,8 @@ nav a:hover {
 
 .trust-item strong {
     display: block;
-
     margin-bottom: 7px;
-
-    font-family: Georgia, serif;
+    font-family: Georgia,serif;
     font-size: 17px;
     font-weight: 400;
 }
@@ -457,14 +393,9 @@ nav a:hover {
     font-size: 12px;
 }
 
-/* =========================
-   PRODUCTS
-========================= */
+/* ÜRÜNLER */
 
 .products {
-    position: relative;
-    z-index: 2;
-
     padding: 110px 20px 125px;
 }
 
@@ -474,11 +405,9 @@ nav a:hover {
     align-items: end;
 
     max-width: 1100px;
-
     margin: 0 auto 48px;
 
     border-bottom: 1px solid var(--line);
-
     padding-bottom: 25px;
 }
 
@@ -491,43 +420,29 @@ nav a:hover {
 
 .products h2 {
     margin: 9px 0 0;
-
-    text-align: left;
-
-    font-size: clamp(39px, 5vw, 64px);
+    font-family: Georgia,serif;
+    font-size: clamp(39px,5vw,64px);
     font-weight: 400;
 }
 
 .section-heading p {
     max-width: 330px;
-
     margin: 0;
-
     color: #806d63;
     line-height: 1.65;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
+    grid-template-columns: repeat(3,1fr);
     max-width: 1100px;
-
     margin: auto;
-
-    align-items: start;
-
     gap: 22px;
+    align-items: start;
 }
 
 .product {
     position: relative;
-
-    border-radius: 0;
-
-    background: transparent;
-
-    box-shadow: none;
 }
 
 .product:nth-child(2) {
@@ -536,21 +451,16 @@ nav a:hover {
 
 .product-image {
     height: 410px;
-
     overflow: hidden;
-
     background: #e3d4ca;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
-
     display: block;
-
     object-fit: cover;
     object-position: center 24%;
-
     filter: saturate(.82);
 
     transition:
@@ -569,8 +479,7 @@ nav a:hover {
 
 .product-info h3 {
     margin: 0 0 10px;
-
-    font-family: Georgia, serif;
+    font-family: Georgia,serif;
     font-size: 24px;
     font-weight: 400;
 }
@@ -582,28 +491,22 @@ nav a:hover {
 
 .price {
     color: var(--ink);
-
-    font-family: Georgia, serif;
-
+    font-family: Georgia,serif;
     font-size: 21px;
     font-weight: 400;
 }
 
 .stock {
     font-size: 11px;
-
     letter-spacing: .08em;
-
     text-transform: uppercase;
 }
 
 .product button {
     width: 100%;
-
     padding: 13px;
 
     border: 1px solid var(--ink);
-
     border-radius: 0;
 
     background: transparent;
@@ -615,25 +518,19 @@ nav a:hover {
     text-transform: uppercase;
 
     cursor: pointer;
-
-    transition:
-        background .2s,
-        color .2s;
+    transition: .2s;
 }
 
 .product button:hover {
     background: var(--ink);
-    color: #fff;
+    color: white;
 }
 
-/* =========================
-   EDITORIAL
-========================= */
+/* EDİTORYAL */
 
 .editorial {
     display: grid;
     grid-template-columns: 1.1fr .9fr;
-
     min-height: 550px;
 
     background: #3a2925;
@@ -644,19 +541,16 @@ nav a:hover {
     min-height: 550px;
 
     background:
-        url('assets/products/kahve-tonlari-esarp.jpg')
+        url("assets/products/kahve-tonlari-esarp.jpg")
         center 34% / cover;
 
-    filter:
-        saturate(.65)
-        sepia(.12);
+    filter: saturate(.65) sepia(.12);
 }
 
 .editorial-copy {
     display: grid;
     align-content: center;
-
-    padding: clamp(55px, 8vw, 110px);
+    padding: clamp(55px,8vw,110px);
 }
 
 .editorial-copy small {
@@ -667,74 +561,55 @@ nav a:hover {
 
 .editorial-copy h2 {
     margin: 20px 0 22px;
-
-    font:
-        400 clamp(42px, 5vw, 70px)/.98
-        Georgia, serif;
+    font: 400 clamp(42px,5vw,70px)/.98 Georgia,serif;
 }
 
 .editorial-copy p {
     max-width: 520px;
-
     color: #d8c9bf;
-
     line-height: 1.9;
 }
 
-/* =========================
-   ABOUT
-========================= */
+/* HAKKIMIZDA */
 
 .about {
     position: relative;
-    z-index: 2;
-
+    overflow: hidden;
     padding: 100px 20px;
-
     background: #efe1d5;
-
     text-align: center;
 }
 
 .about div {
+    position: relative;
+    z-index: 5;
     max-width: 860px;
     margin: auto;
 }
 
 .about h2 {
-    font-family: Georgia, serif;
-
-    font-size: clamp(42px, 5vw, 64px);
-
+    font-family: Georgia,serif;
+    font-size: clamp(42px,5vw,64px);
     font-weight: 400;
 }
 
 .about p {
     color: #67534c;
-
     line-height: 1.8;
-
     font-size: 17px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
-    position: relative;
-    z-index: 2;
-
     padding: 65px 20px;
-
     background: #291e1b;
     color: #eaded4;
-
     text-align: center;
 }
 
 footer h3 {
-    font: 400 28px Georgia, serif;
+    font: 400 28px Georgia,serif;
 }
 
 footer p {
@@ -742,13 +617,10 @@ footer p {
     font-size: 13px;
 }
 
-/* =========================
-   SEPET
-========================= */
+/* SEPET */
 
 .cart {
     position: fixed;
-
     right: -420px;
     top: 0;
 
@@ -756,16 +628,15 @@ footer p {
     max-width: 100%;
     height: 100vh;
 
+    padding: 25px;
+
     background: white;
 
-    z-index: 2000;
+    z-index: 3000;
 
-    box-shadow:
-        -5px 0 20px rgba(0,0,0,.2);
+    box-shadow: -5px 0 20px rgba(0,0,0,.2);
 
     transition: .3s;
-
-    padding: 25px;
 
     overflow-y: auto;
 }
@@ -776,20 +647,16 @@ footer p {
 
 .cart-header {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
 
     border-bottom: 1px solid #ddd;
-
     padding-bottom: 15px;
 }
 
 .close-cart {
     border: none;
-
     background: #eee;
-
     border-radius: 50%;
 
     width: 35px;
@@ -800,7 +667,6 @@ footer p {
 
 .cart-item {
     border-bottom: 1px solid #eee;
-
     padding: 15px 0;
 }
 
@@ -810,17 +676,13 @@ footer p {
 
 .quantity {
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     margin-top: 10px;
 }
 
 .quantity button {
     border: none;
-
     background: #5b3a32;
     color: white;
 
@@ -828,80 +690,44 @@ footer p {
     height: 28px;
 
     border-radius: 4px;
-
     cursor: pointer;
 }
 
 .remove {
     margin-top: 8px;
-
     background: #b33a3a;
     color: white;
-
     border: none;
-
     padding: 7px 10px;
-
     border-radius: 4px;
-
     cursor: pointer;
 }
 
 .cart-total {
-    font-size: 22px;
-
-    font-weight: bold;
-
     margin: 25px 0;
 
     color: #5b3a32;
-}
 
-.whatsapp {
-    display: block;
-
-    width: 100%;
-
-    padding: 15px;
-
-    background: #25D366;
-
-    color: white;
-
-    text-align: center;
-
-    text-decoration: none;
-
-    border-radius: 5px;
-
+    font-size: 22px;
     font-weight: bold;
 }
 
-.card-payment {
+.card-payment,
+.bank-payment {
     width: 100%;
-
     margin-bottom: 10px;
-
     padding: 15px;
 
     border: 0;
-
     border-radius: 5px;
 
     background: #5b3a32;
-
-    color: #fff;
+    color: white;
 
     font-size: 16px;
-
     font-weight: bold;
 
     cursor: pointer;
-}
-
-.card-payment:disabled {
-    opacity: .6;
-    cursor: wait;
 }
 
 .bank-payment {
@@ -910,33 +736,38 @@ footer p {
     border: 1px solid #ccb3a7;
 }
 
-.bank-payment:hover {
-    background: #e8d5cb;
-}
-
 .secure-note {
     margin: 12px 0;
-
     color: #76645d;
-
     font-size: 12px;
-
     text-align: center;
 }
 
-/* =========================
-   CHECKOUT
-========================= */
+.whatsapp {
+    display: block;
+    width: 100%;
+    padding: 15px;
+
+    background: #25D366;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+}
+
+/* CHECKOUT */
 
 .checkout-backdrop {
     position: fixed;
-
     inset: 0;
 
-    z-index: 3000;
+    z-index: 4000;
 
     display: none;
-
     place-items: center;
 
     padding: 20px;
@@ -952,9 +783,7 @@ footer p {
 
 .checkout-panel {
     width: min(620px,100%);
-
     max-height: 92vh;
-
     overflow: auto;
 
     padding: 30px;
@@ -963,48 +792,39 @@ footer p {
 
     background: #fffaf7;
 
-    box-shadow:
-        0 24px 70px rgba(31,19,15,.28);
+    box-shadow: 0 24px 70px rgba(31,19,15,.28);
 }
 
 .checkout-title {
     display: flex;
-
     align-items: start;
-
     justify-content: space-between;
-
     gap: 20px;
 }
 
 .checkout-title h2 {
     margin: 0 0 6px;
-
-    font-family: Georgia, serif;
+    font-family: Georgia,serif;
 }
 
 .checkout-title p {
     margin: 0 0 24px;
-
     color: #76645d;
 }
 
 .checkout-grid {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 15px;
 }
 
 .checkout-field {
     display: grid;
-
     gap: 6px;
 }
 
 .checkout-field.full {
-    grid-column: 1 / -1;
+    grid-column: 1/-1;
 }
 
 .checkout-field label {
@@ -1015,35 +835,24 @@ footer p {
 .checkout-field input,
 .checkout-field textarea {
     width: 100%;
-
     padding: 12px;
 
     border: 1px solid #d9c9c1;
-
     border-radius: 6px;
 
-    background: #fff;
+    background: white;
 
     font: inherit;
-
     color: #493832;
-}
-
-.checkout-field input:focus,
-.checkout-field textarea:focus {
-    outline: 2px solid #b88972;
-    border-color: transparent;
 }
 
 .payment-methods {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
 
     gap: 10px;
 
     margin: 0 0 22px;
-
     padding: 5px;
 
     border-radius: 10px;
@@ -1055,15 +864,12 @@ footer p {
     padding: 12px;
 
     border: 1px solid transparent;
-
     border-radius: 7px;
 
     background: transparent;
-
     color: #76645d;
 
     font: inherit;
-
     font-weight: bold;
 
     cursor: pointer;
@@ -1071,24 +877,17 @@ footer p {
 
 .payment-method.active {
     border-color: #dac2b7;
-
     background: #fffaf7;
-
     color: #5b3a32;
-
-    box-shadow:
-        0 3px 12px rgba(74,48,40,.08);
 }
 
 .iban-details {
     display: none;
 
     margin: 0 0 20px;
-
     padding: 18px;
 
     border: 1px solid #dbc8be;
-
     border-radius: 10px;
 
     background: #f7ede7;
@@ -1100,42 +899,30 @@ footer p {
 
 .iban-details small {
     display: block;
-
     margin-bottom: 5px;
-
     color: #806b61;
 }
 
 .iban-owner {
     margin-bottom: 14px;
-
-    font-family: Georgia, serif;
-
+    font-family: Georgia,serif;
     font-size: 18px;
-
     color: #4d342d;
 }
 
 .iban-row {
     display: flex;
-
     align-items: center;
-
     gap: 10px;
 }
 
 .iban-number {
     flex: 1;
-
     overflow-wrap: anywhere;
 
-    font-family: ui-monospace, monospace;
-
+    font-family: ui-monospace,monospace;
     font-size: 15px;
-
     font-weight: bold;
-
-    letter-spacing: .035em;
 }
 
 .copy-iban {
@@ -1144,15 +931,12 @@ footer p {
     padding: 8px 11px;
 
     border: 1px solid #b99482;
-
     border-radius: 6px;
 
     background: #fffaf7;
-
     color: #5b3a32;
 
     font-weight: bold;
-
     cursor: pointer;
 }
 
@@ -1162,52 +946,42 @@ footer p {
     color: #6f5a51;
 
     font-size: 13px;
-
     line-height: 1.5;
 }
 
 .checkout-error {
     min-height: 20px;
-
     margin: 12px 0;
 
     color: #a42f2f;
-
     font-size: 14px;
 }
 
 .checkout-submit {
     width: 100%;
-
     padding: 15px;
 
     border: 0;
-
     border-radius: 6px;
 
     background: #5b3a32;
-
     color: white;
 
     font-weight: bold;
-
     font-size: 16px;
 
     cursor: pointer;
 }
 
-.checkout-submit:disabled {
-    opacity: .65;
-    cursor: wait;
+.empty {
+    text-align: center;
+    color: #777;
+    margin-top: 40px;
 }
 
 .payment-message {
-    display: none;
-
     max-width: 760px;
-
-    margin: 24px auto 0;
-
+    margin: 24px auto;
     padding: 15px 20px;
 
     border-radius: 8px;
@@ -1216,54 +990,33 @@ footer p {
 }
 
 .payment-message.success {
-    display: block;
-
     color: #245f3b;
-
     background: #e3f2e7;
 }
 
 .payment-message.failed {
-    display: block;
-
     color: #8a2929;
-
     background: #f8e3e0;
 }
 
-.empty {
-    text-align: center;
+/* MOBİL */
 
-    color: #777;
-
-    margin-top: 40px;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 800px) {
+@media(max-width:800px) {
 
     header {
         display: block;
-
         text-align: center;
     }
 
     nav {
         justify-content: center;
-
         flex-wrap: wrap;
-
         margin-top: 14px;
     }
 
     .hero {
         min-height: auto;
-
         grid-template-columns: 1fr;
-
         padding-top: 65px;
     }
 
@@ -1277,19 +1030,16 @@ footer p {
 
     .trust-strip {
         grid-template-columns: 1fr;
-
         margin: 0 20px;
     }
 
     .trust-item {
         border-right: 0;
-
         border-bottom: 1px solid var(--line);
     }
 
     .section-heading {
         grid-template-columns: 1fr;
-
         gap: 18px;
     }
 
@@ -1308,17 +1058,9 @@ footer p {
     .editorial-image {
         min-height: 400px;
     }
-
-    .checkout-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .checkout-field.full {
-        grid-column: auto;
-    }
 }
 
-@media (max-width: 700px) {
+@media(max-width:700px) {
 
     .hero h2 {
         font-size: 55px;
@@ -1332,12 +1074,28 @@ footer p {
         grid-template-columns: 1fr;
     }
 
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-field.full {
+        grid-column: auto;
+    }
+
     .cart {
         width: 100%;
     }
+
+    .hero-seal {
+        right: -10px;
+    }
+
+    .floating-flower {
+        opacity: .35;
+    }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion: reduce) {
 
     .announcement-track,
     .floating-flower {
@@ -1353,32 +1111,17 @@ footer p {
 
 <body>
 
-<!-- DEKORATİF ÇİÇEKLER -->
-
-<div class="floating-flower flower-1">🌸</div>
-<div class="floating-flower flower-2">🌺</div>
-<div class="floating-flower flower-3">🌷</div>
-<div class="floating-flower flower-4">🌼</div>
-<div class="floating-flower flower-5">🌹</div>
-<div class="floating-flower flower-6">🌸</div>
-
-
 <!-- DUYURU -->
 
-<div class="announcement" aria-label="Kampanyalar">
-
+<div class="announcement">
     <div class="announcement-track">
-
         <span>
             ₺1.500 üzeri ücretsiz kargo
             <i></i>
-
             Seçili ürünlerde ikinci ürüne %15 indirim
             <i></i>
-
             IBAN ile güvenli ödeme
             <i></i>
-
             Özenli hediye paketi
             <i></i>
         </span>
@@ -1386,21 +1129,15 @@ footer p {
         <span aria-hidden="true">
             ₺1.500 üzeri ücretsiz kargo
             <i></i>
-
             Seçili ürünlerde ikinci ürüne %15 indirim
             <i></i>
-
             IBAN ile güvenli ödeme
             <i></i>
-
             Özenli hediye paketi
             <i></i>
         </span>
-
     </div>
-
 </div>
-
 
 <!-- HEADER -->
 
@@ -1412,31 +1149,29 @@ footer p {
     </h1>
 
     <nav>
-
         <a href="#">Ana Sayfa</a>
-
         <a href="#urunler">Ürünler</a>
-
         <a href="#hakkimizda">Hakkımızda</a>
-
         <a href="#iletisim">İletişim</a>
 
-        <span
-            class="cart-button"
-            onclick="sepetAc()"
-        >
-            Sepet ·
-            <span id="sepetSayisi">0</span>
+        <span class="cart-button" onclick="sepetAc()">
+            Sepet · <span id="sepetSayisi">0</span>
         </span>
-
     </nav>
 
 </header>
 
-
 <!-- HERO -->
 
 <section class="hero">
+
+    <!-- DÖNEN ÇİÇEKLER -->
+
+    <div class="floating-flower flower-1"></div>
+    <div class="floating-flower flower-2"></div>
+    <div class="floating-flower flower-3"></div>
+    <div class="floating-flower flower-4"></div>
+    <div class="floating-flower flower-5"></div>
 
     <div class="hero-copy">
 
@@ -1455,23 +1190,17 @@ footer p {
             Günün ritmine eşlik eden zamansız parçaları keşfedin.
         </p>
 
-        <a
-            href="#urunler"
-            class="button"
-        >
+        <a href="#urunler" class="button">
             Koleksiyonu Keşfet
         </a>
 
     </div>
 
-
     <div class="hero-visual">
 
         <img
             src="assets/products/gul-bahcesi-sal.webp"
-            alt="Yeni sezon Gül Bahçesi Şal koleksiyonu"
-            width="1200"
-            height="1800"
+            alt="Gül Bahçesi Şal"
         >
 
         <div class="hero-seal">
@@ -1483,91 +1212,59 @@ footer p {
 
 </section>
 
-
 <!-- GÜVEN -->
 
 <div class="trust-strip">
 
     <div class="trust-item">
-
-        <strong>
-            Özenle Seçildi
-        </strong>
-
+        <strong>Özenle Seçildi</strong>
         <span>
             Her desen, gardırobunuzla uyum için seçilir.
         </span>
-
     </div>
 
-
     <div class="trust-item">
-
-        <strong>
-            Güvenli Alışveriş
-        </strong>
-
+        <strong>Güvenli Alışveriş</strong>
         <span>
-            Kart veya IBAN ile kolay ödeme seçenekleri.
+            IBAN ve WhatsApp üzerinden kolay sipariş.
         </span>
-
     </div>
 
-
     <div class="trust-item">
-
-        <strong>
-            Butik Paketleme
-        </strong>
-
+        <strong>Butik Paketleme</strong>
         <span>
             Siparişiniz hediyeye hazır özenle paketlenir.
         </span>
-
     </div>
 
 </div>
 
-
 <!-- ÜRÜNLER -->
 
-<section
-    class="products"
-    id="urunler"
->
+<section class="products" id="urunler">
 
-    <div
-        id="paymentMessage"
-        class="payment-message"
-        role="status"
-    ></div>
-
+    <div id="paymentMessage"
+         class="payment-message">
+    </div>
 
     <div class="section-heading">
 
         <div>
-
-            <small>
-                Sezonun seçkisi
-            </small>
+            <small>Sezonun seçkisi</small>
 
             <h2>
                 Yeni Koleksiyon
             </h2>
-
         </div>
 
-
         <p>
-            Yumuşak dokular, incelikli desenler ve
-            gün boyu konfor için bir araya getirilen favoriler.
+            Yumuşak dokular, incelikli desenler
+            ve gün boyu konfor için bir araya getirilen favoriler.
         </p>
 
     </div>
 
-
     <div class="product-grid">
-
 
         <!-- ÜRÜN 1 -->
 
@@ -1578,13 +1275,10 @@ footer p {
                 <img
                     src="assets/products/gul-bahcesi-sal.webp"
                     alt="Gül Bahçesi Şal"
-                    width="1200"
-                    height="1800"
                     loading="lazy"
                 >
 
             </div>
-
 
             <div class="product-info">
 
@@ -1614,7 +1308,6 @@ footer p {
 
         </div>
 
-
         <!-- ÜRÜN 2 -->
 
         <div class="product">
@@ -1624,13 +1317,10 @@ footer p {
                 <img
                     src="assets/products/kahve-tonlari-esarp.jpg"
                     alt="Aydınlık ve Gece Tonları Eşarp"
-                    width="1200"
-                    height="1800"
                     loading="lazy"
                 >
 
             </div>
-
 
             <div class="product-info">
 
@@ -1639,8 +1329,7 @@ footer p {
                 </h3>
 
                 <p>
-                    Zarif tonları bir araya getiren,
-                    özel tasarım eşarp.
+                    Zarif renk geçişleriyle özel tasarım eşarp.
                 </p>
 
                 <p class="price">
@@ -1661,7 +1350,6 @@ footer p {
 
         </div>
 
-
         <!-- ÜRÜN 3 -->
 
         <div class="product">
@@ -1671,13 +1359,10 @@ footer p {
                 <img
                     src="assets/products/vintage-pudra-sal.jpg"
                     alt="Vintage Huzur Şal"
-                    width="683"
-                    height="1024"
                     loading="lazy"
                 >
 
             </div>
-
 
             <div class="product-info">
 
@@ -1711,17 +1396,11 @@ footer p {
 
 </section>
 
-
 <!-- EDİTORYAL -->
 
 <section class="editorial">
 
-    <div
-        class="editorial-image"
-        role="img"
-        aria-label="Eşarp dokusu ve desen detayı"
-    ></div>
-
+    <div class="editorial-image"></div>
 
     <div class="editorial-copy">
 
@@ -1742,10 +1421,7 @@ footer p {
             renk ve desenlerden oluşuyor.
         </p>
 
-        <a
-            href="#urunler"
-            class="button"
-        >
+        <a href="#urunler" class="button">
             Seçkiyi İncele
         </a>
 
@@ -1753,13 +1429,9 @@ footer p {
 
 </section>
 
-
 <!-- HAKKIMIZDA -->
 
-<section
-    class="about"
-    id="hakkimizda"
->
+<section class="about" id="hakkimizda">
 
     <div>
 
@@ -1772,14 +1444,12 @@ footer p {
             inanıyoruz. Eşarp ve Şal Dünyası olarak renk, desen
             ve dokuyu özenle bir araya getiriyor; her kombinde
             kendiniz gibi hissettiren parçaları sizlerle buluşturuyoruz.
-            Her sipariş, butik deneyimin bir parçası olarak
-            özenle hazırlanıyor.
+            Her sipariş, butik deneyimin bir parçası olarak özenle hazırlanıyor.
         </p>
 
     </div>
 
 </section>
-
 
 <!-- FOOTER -->
 
@@ -1803,15 +1473,9 @@ footer p {
 
 </footer>
 
+<!-- SEPET -->
 
-<!-- =========================
-     SEPET
-========================= -->
-
-<div
-    class="cart"
-    id="cart"
->
+<div class="cart" id="cart">
 
     <div class="cart-header">
 
@@ -1821,17 +1485,13 @@ footer p {
 
         <button
             class="close-cart"
-            onclick="sepetKapat()"
-            aria-label="Sepeti kapat"
-        >
+            onclick="sepetKapat()">
             ✕
         </button>
 
     </div>
 
-
     <div id="sepetIcerik"></div>
-
 
     <div class="cart-total">
 
@@ -1840,55 +1500,39 @@ footer p {
 
     </div>
 
-
     <button
-        class="card-payment"
-        id="cardPaymentButton"
-        onclick="odemeFormunuAc()"
-    >
-        Kartla Güvenli Öde
+        class="bank-payment"
+        style="width:100%;padding:15px;border-radius:5px;font-weight:bold;cursor:pointer;"
+        onclick="odemeFormunuAc()">
+
+        IBAN ile Sipariş Oluştur
+
     </button>
-
-
-    <button
-        class="card-payment bank-payment"
-        type="button"
-        onclick="odemeFormunuAc('iban')"
-    >
-        IBAN ile Havale Yap
-    </button>
-
 
     <p class="secure-note">
-        Kartla güvenli ödeme veya IBAN ile banka havalesi
-        seçeneklerinden birini kullanabilirsiniz.
+        Sipariş bilgilerinizi doldurduktan sonra
+        WhatsApp üzerinden siparişiniz oluşturulur.
     </p>
-
 
     <a
         id="whatsappButton"
         class="whatsapp"
         href="#"
-        target="_blank"
-        onclick="whatsappSiparis()"
-    >
+        target="_blank">
+
         💬 WhatsApp'tan Sipariş Ver
+
     </a>
 
 </div>
 
-
-<!-- =========================
-     CHECKOUT
-========================= -->
+<!-- ÖDEME FORMU -->
 
 <div
     class="checkout-backdrop"
     id="checkoutBackdrop"
     role="dialog"
-    aria-modal="true"
-    aria-labelledby="checkoutHeading"
->
+    aria-modal="true">
 
     <div class="checkout-panel">
 
@@ -1896,30 +1540,602 @@ footer p {
 
             <div>
 
-                <h2 id="checkoutHeading">
-                    Teslimat Bilgileri
+                <h2>
+                    Sipariş Bilgileri
                 </h2>
 
                 <p>
-                    Ödeme öncesi sipariş bilgilerinizi tamamlayın.
+                    Siparişinizi oluşturmak için bilgilerinizi doldurun.
                 </p>
 
             </div>
 
-
             <button
                 class="close-cart"
-                type="button"
-                onclick="odemeFormunuKapat()"
-                aria-label="Kapat"
-            >
+                onclick="odemeFormunuKapat()">
+
                 ✕
+
             </button>
 
         </div>
 
+        <div class="iban-details open">
+
+            <small>
+                Hesap sahibi
+            </small>
+
+            <div class="iban-owner">
+                EŞREF CAN TURAN
+            </div>
+
+            <small>
+                IBAN
+            </small>
+
+            <div class="iban-row">
+
+                <span class="iban-number">
+                    TR58 0015 7000 0000 0203 1694 54
+                </span>
+
+                <button
+                    class="copy-iban"
+                    onclick="ibanKopyala()"
+                    id="copyIbanButton">
+
+                    Kopyala
+
+                </button>
+
+            </div>
+
+            <p class="iban-note">
+
+                Siparişinizi oluşturduktan sonra WhatsApp açılacaktır.
+                Havale açıklamasına adınızı ve soyadınızı yazabilirsiniz.
+
+            </p>
+
+        </div>
 
         <form id="checkoutForm">
 
+            <div class="checkout-grid">
+
+                <div class="checkout-field">
+
+                    <label for="customerName">
+                        Ad
+                    </label>
+
+                    <input
+                        id="customerName"
+                        name="name"
+                        required>
+
+                </div>
+
+                <div class="checkout-field">
+
+                    <label for="customerSurname">
+                        Soyad
+                    </label>
+
+                    <input
+                        id="customerSurname"
+                        name="surname"
+                        required>
+
+                </div>
+
+                <div class="checkout-field">
+
+                    <label for="customerPhone">
+                        Telefon
+                    </label>
+
+                    <input
+                        id="customerPhone"
+                        name="phone"
+                        type="tel"
+                        placeholder="05xx xxx xx xx"
+                        required>
+
+                </div>
+
+                <div class="checkout-field">
+
+                    <label for="customerEmail">
+                        E-posta
+                    </label>
+
+                    <input
+                        id="customerEmail"
+                        name="email"
+                        type="email"
+                        required>
+
+                </div>
+
+                <div class="checkout-field">
+
+                    <label for="customerCity">
+                        Şehir
+                    </label>
+
+                    <input
+                        id="customerCity"
+                        name="city"
+                        required>
+
+                </div>
+
+                <div class="checkout-field">
+
+                    <label for="customerZip">
+                        Posta Kodu
+                    </label>
+
+                    <input
+                        id="customerZip"
+                        name="zipCode"
+                        required>
+
+                </div>
+
+                <div class="checkout-field full">
+
+                    <label for="customerAddress">
+                        Açık Adres
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        name="address"
+                        rows="3"
+                        required></textarea>
+
+                </div>
+
+            </div>
 
             <div
+                class="checkout-error"
+                id="checkoutError">
+            </div>
+
+            <button
+                class="checkout-submit"
+                type="submit">
+
+                WhatsApp'tan Sipariş Oluştur
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================================
+   ÜRÜNLER
+========================================= */
+
+const urunler = {
+
+    1: {
+        ad: "Gül Bahçesi Şal",
+        fiyat: 1899,
+        stok: 250
+    },
+
+    2: {
+        ad: "Aydınlık ve Gece Tonları Eşarp",
+        fiyat: 1899,
+        stok: 250
+    },
+
+    3: {
+        ad: "Vintage Huzur Şal",
+        fiyat: 1899,
+        stok: 250
+    }
+
+};
+
+
+/* =========================================
+   AYARLAR
+========================================= */
+
+let sepet = {};
+
+const IBAN =
+    "TR580015700000000203169454";
+
+const HESAP_SAHIBI =
+    "EŞREF CAN TURAN";
+
+/*
+    BURAYA GERÇEK WHATSAPP NUMARANIZI YAZIN.
+
+    Örnek:
+    905313089629
+
+    Başında + olmamalıdır.
+*/
+
+const WHATSAPP_TELEFON =
+    "905313089629";
+
+
+/* =========================================
+   SEPETE EKLE
+========================================= */
+
+function sepeteEkle(id) {
+
+    if (!sepet[id]) {
+
+        sepet[id] = 1;
+
+    } else {
+
+        if (sepet[id] < urunler[id].stok) {
+
+            sepet[id]++;
+
+        } else {
+
+            alert("Bu ürün için stok kalmadı.");
+
+            return;
+        }
+    }
+
+    sepetGuncelle();
+
+    sepetAc();
+}
+
+
+/* =========================================
+   SEPET GÜNCELLE
+========================================= */
+
+function sepetGuncelle() {
+
+    const alan =
+        document.getElementById("sepetIcerik");
+
+    alan.innerHTML = "";
+
+    let toplam = 0;
+    let adet = 0;
+
+    for (let id in sepet) {
+
+        const urun = urunler[id];
+        const miktar = sepet[id];
+
+        toplam +=
+            urun.fiyat * miktar;
+
+        adet += miktar;
+
+        alan.innerHTML += `
+
+            <div class="cart-item">
+
+                <h4>
+                    ${urun.ad}
+                </h4>
+
+                <div>
+                    ₺${urun.fiyat.toLocaleString("tr-TR")}
+                    × ${miktar}
+                </div>
+
+                <div class="quantity">
+
+                    <button
+                        onclick="adetAzalt(${id})">
+                        −
+                    </button>
+
+                    <strong>
+                        ${miktar}
+                    </strong>
+
+                    <button
+                        onclick="adetArtir(${id})">
+                        +
+                    </button>
+
+                </div>
+
+                <button
+                    class="remove"
+                    onclick="urunSil(${id})">
+
+                    Ürünü Sil
+
+                </button>
+
+            </div>
+        `;
+    }
+
+    if (adet === 0) {
+
+        alan.innerHTML = `
+
+            <div class="empty">
+                Sepetiniz şu anda boş.
+            </div>
+
+        `;
+    }
+
+    document.getElementById("toplam")
+        .textContent =
+        toplam.toLocaleString("tr-TR");
+
+    document.getElementById("sepetSayisi")
+        .textContent = adet;
+}
+
+
+/* =========================================
+   ADET ARTIR
+========================================= */
+
+function adetArtir(id) {
+
+    if (sepet[id] < urunler[id].stok) {
+
+        sepet[id]++;
+
+        sepetGuncelle();
+
+    } else {
+
+        alert("Bu ürün için stok kalmadı.");
+
+    }
+}
+
+
+/* =========================================
+   ADET AZALT
+========================================= */
+
+function adetAzalt(id) {
+
+    if (sepet[id] > 1) {
+
+        sepet[id]--;
+
+    } else {
+
+        delete sepet[id];
+
+    }
+
+    sepetGuncelle();
+}
+
+
+/* =========================================
+   ÜRÜN SİL
+========================================= */
+
+function urunSil(id) {
+
+    delete sepet[id];
+
+    sepetGuncelle();
+}
+
+
+/* =========================================
+   SEPET AÇ
+========================================= */
+
+function sepetAc() {
+
+    document
+        .getElementById("cart")
+        .classList.add("open");
+}
+
+
+/* =========================================
+   SEPET KAPAT
+========================================= */
+
+function sepetKapat() {
+
+    document
+        .getElementById("cart")
+        .classList.remove("open");
+}
+
+
+/* =========================================
+   CHECKOUT AÇ
+========================================= */
+
+function odemeFormunuAc() {
+
+    if (Object.keys(sepet).length === 0) {
+
+        alert("Önce sepete ürün ekleyin.");
+
+        return;
+    }
+
+    document
+        .getElementById("checkoutBackdrop")
+        .classList.add("open");
+
+    document
+        .getElementById("customerName")
+        .focus();
+}
+
+
+/* =========================================
+   CHECKOUT KAPAT
+========================================= */
+
+function odemeFormunuKapat() {
+
+    document
+        .getElementById("checkoutBackdrop")
+        .classList.remove("open");
+}
+
+
+/* =========================================
+   IBAN KOPYALA
+========================================= */
+
+async function ibanKopyala() {
+
+    const button =
+        document.getElementById("copyIbanButton");
+
+    try {
+
+        await navigator.clipboard.writeText(IBAN);
+
+        button.textContent =
+            "Kopyalandı ✓";
+
+        setTimeout(() => {
+
+            button.textContent =
+                "Kopyala";
+
+        },1800);
+
+    } catch {
+
+        alert(
+            "IBAN: " + IBAN
+        );
+    }
+}
+
+
+/* =========================================
+   WHATSAPP SİPARİŞİ
+========================================= */
+
+function whatsappSiparis(customer) {
+
+    if (Object.keys(sepet).length === 0) {
+
+        alert("Sepetiniz boş.");
+
+        return;
+    }
+
+    let toplam = 0;
+
+    const satirlar = [];
+
+    for (let id in sepet) {
+
+        const urun =
+            urunler[id];
+
+        const miktar =
+            sepet[id];
+
+        const araToplam =
+            urun.fiyat * miktar;
+
+        toplam += araToplam;
+
+        satirlar.push(
+            `• ${urun.ad} - ${miktar} adet - ₺${araToplam.toLocaleString("tr-TR")}`
+        );
+    }
+
+    let mesaj = [
+
+        "Merhaba, Eşarp ve Şal Dünyası web sitesinden sipariş vermek istiyorum.",
+        "",
+        ...satirlar,
+        "",
+        `Toplam: ₺${toplam.toLocaleString("tr-TR")}`,
+        "",
+        "Müşteri Bilgileri:",
+        `Ad Soyad: ${customer.name} ${customer.surname}`,
+        `Telefon: ${customer.phone}`,
+        `E-posta: ${customer.email}`,
+        `Şehir: ${customer.city}`,
+        `Posta Kodu: ${customer.zipCode}`,
+        `Adres: ${customer.address}`,
+        "",
+        "Ödeme: IBAN / Havale",
+        "",
+        `Hesap Sahibi: ${HESAP_SAHIBI}`,
+        `IBAN: ${IBAN}`
+
+    ].join("\n");
+
+    const url =
+        "https://wa.me/" +
+        WHATSAPP_TELEFON +
+        "?text=" +
+        encodeURIComponent(mesaj);
+
+    window.open(
+        url,
+        "_blank",
+        "noopener"
+    );
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+document
+    .getElementById("checkoutForm")
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+            const customer =
+                Object.fromEntries(
+                    new FormData(event.currentTarget).entries()
+                );
+
+            whatsappSiparis(customer);
+
+        }
+    );
+
+
+/* =========================================
+   BAŞLANGIÇ
+========================================= */
+
+sepetGuncelle();
+
+</script>
+
+</body>
+</html>
