@@ -29,90 +29,94 @@ body {
     font-family: "Avenir Next", "Gill Sans", sans-serif;
     background: var(--cream);
     color: var(--ink);
-    overflow-x: hidden;
 }
 
 /* =========================
-   YÜZEN ÇİÇEKLER
+   DEKORATİF ÇİÇEKLER
 ========================= */
 
 .floating-flower {
     position: fixed;
     z-index: 5;
     pointer-events: none;
-    user-select: none;
-    opacity: .48;
-    color: #a97967;
+    font-size: 34px;
+    opacity: .72;
+    filter: drop-shadow(0 5px 10px rgba(70,40,30,.12));
     animation:
         flowerFloat 7s ease-in-out infinite,
-        flowerRotate 13s linear infinite;
+        flowerRotate 12s linear infinite;
 }
 
 .flower-1 {
-    top: 18%;
-    left: 2%;
-    font-size: 46px;
+    left: 18px;
+    top: 22%;
     animation-delay: 0s;
 }
 
 .flower-2 {
-    top: 38%;
-    right: 2%;
-    font-size: 38px;
-    animation-delay: 1.5s;
+    right: 22px;
+    top: 31%;
+    font-size: 42px;
+    animation-delay: -2s;
 }
 
 .flower-3 {
-    top: 65%;
-    left: 3%;
-    font-size: 34px;
-    animation-delay: 3s;
+    left: 35px;
+    top: 57%;
+    font-size: 28px;
+    animation-delay: -4s;
 }
 
 .flower-4 {
-    top: 78%;
-    right: 3%;
-    font-size: 48px;
-    animation-delay: 2s;
+    right: 35px;
+    top: 67%;
+    font-size: 32px;
+    animation-delay: -1s;
 }
 
 .flower-5 {
-    top: 48%;
     left: 8%;
+    bottom: 10%;
     font-size: 25px;
-    opacity: .3;
-    animation-delay: 4s;
+    animation-delay: -5s;
 }
 
 .flower-6 {
-    top: 25%;
     right: 8%;
+    bottom: 18%;
     font-size: 27px;
-    opacity: .3;
-    animation-delay: 2.5s;
+    animation-delay: -3s;
 }
 
 @keyframes flowerFloat {
     0%, 100% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) translateX(0);
     }
 
     50% {
-        transform: translateY(-22px) rotate(10deg);
+        transform: translateY(-24px) translateX(8px);
     }
 }
 
 @keyframes flowerRotate {
     from {
-        margin-left: 0;
-    }
-
-    50% {
-        margin-left: 12px;
+        rotate: 0deg;
     }
 
     to {
-        margin-left: 0;
+        rotate: 360deg;
+    }
+}
+
+@media (max-width: 700px) {
+    .floating-flower {
+        opacity: .38;
+        font-size: 24px;
+    }
+
+    .flower-2,
+    .flower-4 {
+        font-size: 28px;
     }
 }
 
@@ -179,6 +183,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: left;
 }
 
 header h1 {
@@ -199,18 +204,20 @@ header h1 span {
 }
 
 nav {
+    margin: 0;
     display: flex;
     align-items: center;
     gap: clamp(9px, 2vw, 28px);
 }
 
 nav a {
+    margin: 0;
     color: #5a4740;
-    text-decoration: none;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .1em;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 nav a:hover {
@@ -218,6 +225,7 @@ nav a:hover {
 }
 
 .cart-button {
+    margin: 0;
     padding: 10px 17px;
     background: var(--ink);
     color: #fffaf4;
@@ -238,6 +246,7 @@ nav a:hover {
     padding: clamp(60px, 8vw, 105px)
              clamp(20px, 8vw, 120px);
 
+    text-align: left;
     color: var(--ink);
 
     background:
@@ -266,7 +275,7 @@ nav a:hover {
 
 .hero-copy {
     position: relative;
-    z-index: 10;
+    z-index: 2;
     max-width: 680px;
 }
 
@@ -278,7 +287,6 @@ nav a:hover {
     margin-bottom: 25px;
 
     color: #8a654d;
-
     font-size: 11px;
     font-weight: 700;
     letter-spacing: .24em;
@@ -297,7 +305,6 @@ nav a:hover {
 
     font-size: clamp(55px, 7vw, 102px);
     font-weight: 400;
-
     line-height: .89;
     letter-spacing: -.055em;
 }
@@ -311,7 +318,6 @@ nav a:hover {
     max-width: 500px;
 
     color: #66514a;
-
     font-size: 17px;
     line-height: 1.75;
 }
@@ -321,20 +327,18 @@ nav a:hover {
 
     margin-top: 20px;
 
-    padding: 16px 25px;
-
     border-radius: 1px;
+    padding: 16px 25px;
 
     background: var(--ink);
     color: #fff;
 
-    text-decoration: none;
-
     font-size: 11px;
-    font-weight: 700;
-
+    font-weight: bold;
     letter-spacing: .16em;
     text-transform: uppercase;
+
+    text-decoration: none;
 
     transition:
         transform .2s ease,
@@ -350,7 +354,7 @@ nav a:hover {
     position: relative;
     width: min(100%, 440px);
     justify-self: center;
-    z-index: 10;
+    z-index: 2;
 }
 
 .hero-visual:before {
@@ -384,7 +388,7 @@ nav a:hover {
     right: -34px;
     bottom: 42px;
 
-    z-index: 20;
+    z-index: 3;
 
     width: 112px;
     height: 112px;
@@ -392,7 +396,6 @@ nav a:hover {
     border-radius: 50%;
 
     background: #f4e6d7;
-
     border: 1px solid rgba(87,59,58,.2);
 
     display: grid;
@@ -416,7 +419,7 @@ nav a:hover {
 
 .trust-strip {
     position: relative;
-    z-index: 20;
+    z-index: 10;
 
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -445,7 +448,6 @@ nav a:hover {
     margin-bottom: 7px;
 
     font-family: Georgia, serif;
-
     font-size: 17px;
     font-weight: 400;
 }
@@ -456,12 +458,12 @@ nav a:hover {
 }
 
 /* =========================
-   ÜRÜNLER
+   PRODUCTS
 ========================= */
 
 .products {
     position: relative;
-    z-index: 10;
+    z-index: 2;
 
     padding: 110px 20px 125px;
 }
@@ -482,18 +484,15 @@ nav a:hover {
 
 .section-heading small {
     color: #98734d;
-
     font-weight: 700;
-
     letter-spacing: .2em;
-
     text-transform: uppercase;
 }
 
 .products h2 {
     margin: 9px 0 0;
 
-    font-family: Georgia, serif;
+    text-align: left;
 
     font-size: clamp(39px, 5vw, 64px);
     font-weight: 400;
@@ -505,15 +504,12 @@ nav a:hover {
     margin: 0;
 
     color: #806d63;
-
     line-height: 1.65;
 }
 
 .product-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     max-width: 1100px;
 
@@ -526,7 +522,12 @@ nav a:hover {
 
 .product {
     position: relative;
+
+    border-radius: 0;
+
     background: transparent;
+
+    box-shadow: none;
 }
 
 .product:nth-child(2) {
@@ -570,7 +571,6 @@ nav a:hover {
     margin: 0 0 10px;
 
     font-family: Georgia, serif;
-
     font-size: 24px;
     font-weight: 400;
 }
@@ -607,17 +607,14 @@ nav a:hover {
     border-radius: 0;
 
     background: transparent;
-
     color: var(--ink);
-
-    cursor: pointer;
 
     font-size: 11px;
     font-weight: 700;
-
     letter-spacing: .15em;
-
     text-transform: uppercase;
+
+    cursor: pointer;
 
     transition:
         background .2s,
@@ -630,22 +627,16 @@ nav a:hover {
 }
 
 /* =========================
-   EDITORYAL
+   EDITORIAL
 ========================= */
 
 .editorial {
-    position: relative;
-    z-index: 10;
-
     display: grid;
-
-    grid-template-columns:
-        1.1fr .9fr;
+    grid-template-columns: 1.1fr .9fr;
 
     min-height: 550px;
 
     background: #3a2925;
-
     color: #f5eadd;
 }
 
@@ -663,18 +654,14 @@ nav a:hover {
 
 .editorial-copy {
     display: grid;
-
     align-content: center;
 
-    padding:
-        clamp(55px, 8vw, 110px);
+    padding: clamp(55px, 8vw, 110px);
 }
 
 .editorial-copy small {
     color: #c6a879;
-
     letter-spacing: .22em;
-
     text-transform: uppercase;
 }
 
@@ -695,12 +682,12 @@ nav a:hover {
 }
 
 /* =========================
-   HAKKIMIZDA
+   ABOUT
 ========================= */
 
 .about {
     position: relative;
-    z-index: 10;
+    z-index: 2;
 
     padding: 100px 20px;
 
@@ -715,20 +702,19 @@ nav a:hover {
 }
 
 .about h2 {
-    margin-top: 0;
-
     font-family: Georgia, serif;
 
     font-size: clamp(42px, 5vw, 64px);
+
     font-weight: 400;
 }
 
 .about p {
     color: #67534c;
 
-    font-size: 17px;
+    line-height: 1.8;
 
-    line-height: 1.9;
+    font-size: 17px;
 }
 
 /* =========================
@@ -737,12 +723,11 @@ nav a:hover {
 
 footer {
     position: relative;
-    z-index: 10;
+    z-index: 2;
 
     padding: 65px 20px;
 
     background: #291e1b;
-
     color: #eaded4;
 
     text-align: center;
@@ -769,7 +754,6 @@ footer p {
 
     width: 400px;
     max-width: 100%;
-
     height: 100vh;
 
     background: white;
@@ -794,16 +778,11 @@ footer p {
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 
     border-bottom: 1px solid #ddd;
 
     padding-bottom: 15px;
-}
-
-.cart-header h2 {
-    font-family: Georgia, serif;
 }
 
 .close-cart {
@@ -843,7 +822,6 @@ footer p {
     border: none;
 
     background: #5b3a32;
-
     color: white;
 
     width: 28px;
@@ -858,7 +836,6 @@ footer p {
     margin-top: 8px;
 
     background: #b33a3a;
-
     color: white;
 
     border: none;
@@ -922,10 +899,19 @@ footer p {
     cursor: pointer;
 }
 
+.card-payment:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
 .bank-payment {
     background: #f1e4dc;
     color: #5b3a32;
     border: 1px solid #ccb3a7;
+}
+
+.bank-payment:hover {
+    background: #e8d5cb;
 }
 
 .secure-note {
@@ -939,7 +925,7 @@ footer p {
 }
 
 /* =========================
-   ÖDEME
+   CHECKOUT
 ========================= */
 
 .checkout-backdrop {
@@ -955,7 +941,7 @@ footer p {
 
     padding: 20px;
 
-    background: rgba(54, 37, 32, .68);
+    background: rgba(54,37,32,.68);
 
     backdrop-filter: blur(5px);
 }
@@ -965,7 +951,7 @@ footer p {
 }
 
 .checkout-panel {
-    width: min(620px, 100%);
+    width: min(620px,100%);
 
     max-height: 92vh;
 
@@ -978,7 +964,7 @@ footer p {
     background: #fffaf7;
 
     box-shadow:
-        0 24px 70px rgba(31, 19, 15, .28);
+        0 24px 70px rgba(31,19,15,.28);
 }
 
 .checkout-title {
@@ -1023,7 +1009,6 @@ footer p {
 
 .checkout-field label {
     font-size: 13px;
-
     font-weight: bold;
 }
 
@@ -1047,7 +1032,6 @@ footer p {
 .checkout-field input:focus,
 .checkout-field textarea:focus {
     outline: 2px solid #b88972;
-
     border-color: transparent;
 }
 
@@ -1093,7 +1077,7 @@ footer p {
     color: #5b3a32;
 
     box-shadow:
-        0 3px 12px rgba(74, 48, 40, .08);
+        0 3px 12px rgba(74,48,40,.08);
 }
 
 .iban-details {
@@ -1214,7 +1198,6 @@ footer p {
 
 .checkout-submit:disabled {
     opacity: .65;
-
     cursor: wait;
 }
 
@@ -1257,13 +1240,14 @@ footer p {
 }
 
 /* =========================
-   MOBİL
+   RESPONSIVE
 ========================= */
 
-@media(max-width:800px) {
+@media (max-width: 800px) {
 
     header {
         display: block;
+
         text-align: center;
     }
 
@@ -1334,7 +1318,7 @@ footer p {
     }
 }
 
-@media(max-width:700px) {
+@media (max-width: 700px) {
 
     .hero h2 {
         font-size: 55px;
@@ -1348,17 +1332,12 @@ footer p {
         grid-template-columns: 1fr;
     }
 
-    .floating-flower {
-        opacity: .25;
-    }
-
-    .flower-1,
-    .flower-4 {
-        font-size: 32px;
+    .cart {
+        width: 100%;
     }
 }
 
-@media(prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
 
     .announcement-track,
     .floating-flower {
@@ -1374,14 +1353,14 @@ footer p {
 
 <body>
 
-<!-- YÜZEN ÇİÇEKLER -->
+<!-- DEKORATİF ÇİÇEKLER -->
 
 <div class="floating-flower flower-1">🌸</div>
-<div class="floating-flower flower-2">✿</div>
-<div class="floating-flower flower-3">🌺</div>
-<div class="floating-flower flower-4">🌷</div>
-<div class="floating-flower flower-5">❀</div>
-<div class="floating-flower flower-6">✿</div>
+<div class="floating-flower flower-2">🌺</div>
+<div class="floating-flower flower-3">🌷</div>
+<div class="floating-flower flower-4">🌼</div>
+<div class="floating-flower flower-5">🌹</div>
+<div class="floating-flower flower-6">🌸</div>
 
 
 <!-- DUYURU -->
@@ -1405,7 +1384,6 @@ footer p {
         </span>
 
         <span aria-hidden="true">
-
             ₺1.500 üzeri ücretsiz kargo
             <i></i>
 
@@ -1417,7 +1395,6 @@ footer p {
 
             Özenli hediye paketi
             <i></i>
-
         </span>
 
     </div>
@@ -1444,8 +1421,12 @@ footer p {
 
         <a href="#iletisim">İletişim</a>
 
-        <span class="cart-button" onclick="sepetAc()">
-            Sepet · <span id="sepetSayisi">0</span>
+        <span
+            class="cart-button"
+            onclick="sepetAc()"
+        >
+            Sepet ·
+            <span id="sepetSayisi">0</span>
         </span>
 
     </nav>
@@ -1474,7 +1455,10 @@ footer p {
             Günün ritmine eşlik eden zamansız parçaları keşfedin.
         </p>
 
-        <a href="#urunler" class="button">
+        <a
+            href="#urunler"
+            class="button"
+        >
             Koleksiyonu Keşfet
         </a>
 
@@ -1516,6 +1500,7 @@ footer p {
 
     </div>
 
+
     <div class="trust-item">
 
         <strong>
@@ -1527,6 +1512,7 @@ footer p {
         </span>
 
     </div>
+
 
     <div class="trust-item">
 
@@ -1545,7 +1531,10 @@ footer p {
 
 <!-- ÜRÜNLER -->
 
-<section class="products" id="urunler">
+<section
+    class="products"
+    id="urunler"
+>
 
     <div
         id="paymentMessage"
@@ -1567,6 +1556,7 @@ footer p {
             </h2>
 
         </div>
+
 
         <p>
             Yumuşak dokular, incelikli desenler ve
@@ -1649,7 +1639,8 @@ footer p {
                 </h3>
 
                 <p>
-                    Özel tasarım, zarif ve şık eşarp.
+                    Zarif tonları bir araya getiren,
+                    özel tasarım eşarp.
                 </p>
 
                 <p class="price">
@@ -1695,7 +1686,7 @@ footer p {
                 </h3>
 
                 <p>
-                    Yumuşak dokulu, zarif ve zamansız şal.
+                    Yumuşak dokulu, zamansız ve zarif şal.
                 </p>
 
                 <p class="price">
@@ -1745,13 +1736,16 @@ footer p {
         </h2>
 
         <p>
-            Sade bir görünümü tek dokunuşla dönüştüren
-            eşarplar; omuzda, saçta ya da çantada…
+            Sade bir görünümü tek dokunuşla dönüştüren eşarplar;
+            omuzda, saçta ya da çantada…
             Koleksiyonumuz, her gün yeniden yorumlayabileceğiniz
             renk ve desenlerden oluşuyor.
         </p>
 
-        <a href="#urunler" class="button">
+        <a
+            href="#urunler"
+            class="button"
+        >
             Seçkiyi İncele
         </a>
 
@@ -1762,7 +1756,10 @@ footer p {
 
 <!-- HAKKIMIZDA -->
 
-<section class="about" id="hakkimizda">
+<section
+    class="about"
+    id="hakkimizda"
+>
 
     <div>
 
@@ -1771,9 +1768,158 @@ footer p {
         </h2>
 
         <p>
-            Modanın geçici ritmi yerine kalıcı bir stil
-            duygusuna inanıyoruz. Eşarp ve Şal Dünyası
-            olarak renk, desen ve dokuyu özenle bir araya
-            getiriyor; her kombinde kendiniz gibi hissettiren
-            parçaları sizlerle buluşturuyoruz.
-            Her
+            Modanın geçici ritmi yerine kalıcı bir stil duygusuna
+            inanıyoruz. Eşarp ve Şal Dünyası olarak renk, desen
+            ve dokuyu özenle bir araya getiriyor; her kombinde
+            kendiniz gibi hissettiren parçaları sizlerle buluşturuyoruz.
+            Her sipariş, butik deneyimin bir parçası olarak
+            özenle hazırlanıyor.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer id="iletisim">
+
+    <h3>
+        Eşarp ve Şal Dünyası
+    </h3>
+
+    <p>
+        📞 0531 308 96 29
+    </p>
+
+    <p>
+        ✉ canturanpl@gmail.com
+    </p>
+
+    <p>
+        © 2026 Eşarp ve Şal Dünyası
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     SEPET
+========================= -->
+
+<div
+    class="cart"
+    id="cart"
+>
+
+    <div class="cart-header">
+
+        <h2>
+            🛒 Sepetim
+        </h2>
+
+        <button
+            class="close-cart"
+            onclick="sepetKapat()"
+            aria-label="Sepeti kapat"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div id="sepetIcerik"></div>
+
+
+    <div class="cart-total">
+
+        Toplam:
+        ₺<span id="toplam">0</span>
+
+    </div>
+
+
+    <button
+        class="card-payment"
+        id="cardPaymentButton"
+        onclick="odemeFormunuAc()"
+    >
+        Kartla Güvenli Öde
+    </button>
+
+
+    <button
+        class="card-payment bank-payment"
+        type="button"
+        onclick="odemeFormunuAc('iban')"
+    >
+        IBAN ile Havale Yap
+    </button>
+
+
+    <p class="secure-note">
+        Kartla güvenli ödeme veya IBAN ile banka havalesi
+        seçeneklerinden birini kullanabilirsiniz.
+    </p>
+
+
+    <a
+        id="whatsappButton"
+        class="whatsapp"
+        href="#"
+        target="_blank"
+        onclick="whatsappSiparis()"
+    >
+        💬 WhatsApp'tan Sipariş Ver
+    </a>
+
+</div>
+
+
+<!-- =========================
+     CHECKOUT
+========================= -->
+
+<div
+    class="checkout-backdrop"
+    id="checkoutBackdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="checkoutHeading"
+>
+
+    <div class="checkout-panel">
+
+        <div class="checkout-title">
+
+            <div>
+
+                <h2 id="checkoutHeading">
+                    Teslimat Bilgileri
+                </h2>
+
+                <p>
+                    Ödeme öncesi sipariş bilgilerinizi tamamlayın.
+                </p>
+
+            </div>
+
+
+            <button
+                class="close-cart"
+                type="button"
+                onclick="odemeFormunuKapat()"
+                aria-label="Kapat"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <form id="checkoutForm">
+
+
+            <div
