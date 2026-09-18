@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Eşarp ve Şal Dünyası</title>
 
 <style>
@@ -98,6 +97,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 header h1 {
@@ -121,6 +122,7 @@ nav {
     display: flex;
     align-items: center;
     gap: clamp(9px, 2vw, 28px);
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -144,6 +146,7 @@ nav a:hover {
     font-size: 12px;
     letter-spacing: .07em;
     cursor: pointer;
+    border: none;
 }
 
 /* =========================================
@@ -185,8 +188,6 @@ nav a:hover {
         );
 }
 
-/* Hafif ışık */
-
 .hero::after {
     content: "";
     position: absolute;
@@ -200,10 +201,6 @@ nav a:hover {
             transparent 40%
         );
 }
-
-/* =========================================
-   HERO YAZI
-========================================= */
 
 .hero-copy {
     position: relative;
@@ -245,6 +242,7 @@ nav a:hover {
 .hero h2 em {
     color: #77524b;
     font-weight: 400;
+    font-style: normal;
 }
 
 .hero p {
@@ -273,16 +271,14 @@ nav a:hover {
     text-transform: uppercase;
 
     transition: .25s;
+    border: none;
+    cursor: pointer;
 }
 
 .button:hover {
     transform: translateY(-3px);
     background: #6c4a43;
 }
-
-/* =========================================
-   HERO GÖRSEL
-========================================= */
 
 .hero-visual {
     position: relative;
@@ -357,63 +353,36 @@ nav a:hover {
 
 .sakura-tree {
     position: absolute;
-
     z-index: 5;
-
     width: 430px;
     height: 650px;
-
     pointer-events: none;
-
     opacity: .66;
-
-    filter: drop-shadow(
-        0 10px 18px
-        rgba(85,55,48,.08)
-    );
+    filter: drop-shadow(0 10px 18px rgba(85,55,48,.08));
 }
-
-/* Sol ağaç */
 
 .sakura-tree-left {
     left: -145px;
     bottom: -135px;
-
     transform-origin: bottom center;
-
-    animation:
-        treeSwayLeft 16s ease-in-out infinite;
+    animation: treeSwayLeft 16s ease-in-out infinite;
 }
-
-/* Sağ ağaç */
 
 .sakura-tree-right {
     right: -145px;
     bottom: -130px;
-
     transform: scaleX(-1);
-
     transform-origin: bottom center;
-
-    animation:
-        treeSwayRight 18s ease-in-out infinite;
+    animation: treeSwayRight 18s ease-in-out infinite;
 }
-
-/* Ağaç gövdesi */
 
 .tree-trunk {
     position: absolute;
-
     left: 145px;
     bottom: 0;
-
     width: 70px;
     height: 560px;
-
-    border-radius:
-        65% 35%
-        30% 60%;
-
+    border-radius: 65% 35% 30% 60%;
     background:
         linear-gradient(
             78deg,
@@ -424,451 +393,133 @@ nav a:hover {
             #765149 55% 67%,
             transparent 68%
         );
-
     transform: rotate(-10deg);
 }
 
-/* Büyük dallar */
-
 .tree-branch {
     position: absolute;
-
     height: 20px;
-
     border-radius: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #513832,
-            #79544a,
-            #553a34
-        );
-
+    background: linear-gradient(90deg, #513832, #79544a, #553a34);
     transform-origin: left center;
-
-    box-shadow:
-        0 3px 8px
-        rgba(63,41,36,.08);
+    box-shadow: 0 3px 8px rgba(63,41,36,.08);
 }
 
-.branch-1 {
-    width: 285px;
-    left: 120px;
-    top: 125px;
-    transform: rotate(-29deg);
-}
-
-.branch-2 {
-    width: 235px;
-    left: 135px;
-    top: 225px;
-    transform: rotate(18deg);
-}
-
-.branch-3 {
-    width: 270px;
-    left: 110px;
-    top: 315px;
-    transform: rotate(-22deg);
-}
-
-.branch-4 {
-    width: 205px;
-    left: 150px;
-    top: 405px;
-    transform: rotate(25deg);
-}
-
-.branch-5 {
-    width: 175px;
-    left: 135px;
-    top: 85px;
-    transform: rotate(13deg);
-}
-
-/* İnce dallar */
+.branch-1 { width: 285px; left: 120px; top: 125px; transform: rotate(-29deg); }
+.branch-2 { width: 235px; left: 135px; top: 225px; transform: rotate(18deg); }
+.branch-3 { width: 270px; left: 110px; top: 315px; transform: rotate(-22deg); }
+.branch-4 { width: 205px; left: 150px; top: 405px; transform: rotate(25deg); }
+.branch-5 { width: 175px; left: 135px; top: 85px; transform: rotate(13deg); }
 
 .tree-branch::after {
     content: "";
-
     position: absolute;
-
     width: 120px;
     height: 8px;
-
     right: -40px;
     top: -23px;
-
     border-radius: 50%;
-
     background: #79564d;
-
     transform: rotate(-28deg);
 }
 
-/* =========================================
-   SAKURA ÇİÇEK KÜMELERİ
-========================================= */
-
 .sakura-cluster {
     position: absolute;
-
     z-index: 8;
-
     width: 105px;
     height: 105px;
-
-    animation:
-        bloomFloat
-        9s
-        ease-in-out
-        infinite;
+    animation: bloomFloat 9s ease-in-out infinite;
 }
 
 .sakura-cluster span {
     position: absolute;
-
     display: grid;
     place-items: center;
-
     width: 42px;
     height: 42px;
-
     color: var(--sakura);
-
     font-size: 35px;
-
-    text-shadow:
-        0 3px 9px
-        rgba(133,72,86,.16);
+    text-shadow: 0 3px 9px rgba(133,72,86,.16);
 }
 
-.sakura-cluster span:nth-child(1) {
-    left: 4px;
-    top: 8px;
-}
-
-.sakura-cluster span:nth-child(2) {
-    left: 37px;
-    top: 0;
-}
-
-.sakura-cluster span:nth-child(3) {
-    left: 58px;
-    top: 32px;
-}
-
-.sakura-cluster span:nth-child(4) {
-    left: 23px;
-    top: 46px;
-}
-
-.sakura-cluster span:nth-child(5) {
-    left: 0;
-    top: 38px;
-
-    color: var(--sakura-light);
-}
+.sakura-cluster span:nth-child(1) { left: 4px; top: 8px; }
+.sakura-cluster span:nth-child(2) { left: 37px; top: 0; }
+.sakura-cluster span:nth-child(3) { left: 58px; top: 32px; }
+.sakura-cluster span:nth-child(4) { left: 23px; top: 46px; }
+.sakura-cluster span:nth-child(5) { left: 0; top: 38px; color: var(--sakura-light); }
 
 .sakura-cluster span::after {
     content: "";
-
     position: absolute;
-
     width: 6px;
     height: 6px;
-
     border-radius: 50%;
-
     background: #e3b27f;
 }
 
-/* Sol çiçek kümeleri */
+.left-bloom-1 { left: 35px; top: 55px; }
+.left-bloom-2 { left: 105px; top: 145px; transform: scale(.8); animation-delay: -2s; }
+.left-bloom-3 { left: 5px; top: 245px; transform: scale(.7); animation-delay: -4s; }
+.left-bloom-4 { left: 145px; top: 300px; transform: scale(.85); animation-delay: -6s; }
+.left-bloom-5 { left: 65px; top: 405px; transform: scale(.62); animation-delay: -3s; }
 
-.left-bloom-1 {
-    left: 35px;
-    top: 55px;
-}
-
-.left-bloom-2 {
-    left: 105px;
-    top: 145px;
-
-    transform: scale(.8);
-
-    animation-delay: -2s;
-}
-
-.left-bloom-3 {
-    left: 5px;
-    top: 245px;
-
-    transform: scale(.7);
-
-    animation-delay: -4s;
-}
-
-.left-bloom-4 {
-    left: 145px;
-    top: 300px;
-
-    transform: scale(.85);
-
-    animation-delay: -6s;
-}
-
-.left-bloom-5 {
-    left: 65px;
-    top: 405px;
-
-    transform: scale(.62);
-
-    animation-delay: -3s;
-}
-
-/* Sağ çiçek kümeleri */
-
-.right-bloom-1 {
-    left: 35px;
-    top: 50px;
-
-    transform: scale(1.05);
-
-    animation-delay: -5s;
-}
-
-.right-bloom-2 {
-    left: 110px;
-    top: 135px;
-
-    transform: scale(.78);
-
-    animation-delay: -1s;
-}
-
-.right-bloom-3 {
-    left: 10px;
-    top: 230px;
-
-    transform: scale(.72);
-
-    animation-delay: -7s;
-}
-
-.right-bloom-4 {
-    left: 145px;
-    top: 300px;
-
-    transform: scale(.88);
-
-    animation-delay: -4s;
-}
-
-.right-bloom-5 {
-    left: 65px;
-    top: 410px;
-
-    transform: scale(.65);
-
-    animation-delay: -8s;
-}
+.right-bloom-1 { left: 35px; top: 50px; transform: scale(1.05); animation-delay: -5s; }
+.right-bloom-2 { left: 110px; top: 135px; transform: scale(.78); animation-delay: -1s; }
+.right-bloom-3 { left: 10px; top: 230px; transform: scale(.72); animation-delay: -7s; }
+.right-bloom-4 { left: 145px; top: 300px; transform: scale(.88); animation-delay: -4s; }
+.right-bloom-5 { left: 65px; top: 410px; transform: scale(.65); animation-delay: -8s; }
 
 @keyframes bloomFloat {
-
-    0%,100% {
-        margin-top: 0;
-    }
-
-    50% {
-        margin-top: -9px;
-    }
+    0%,100% { margin-top: 0; }
+    50% { margin-top: -9px; }
 }
-
-/* =========================================
-   HAVADA UÇAN SAKURA ÇİÇEKLERİ
-========================================= */
 
 .floating-sakura {
     position: absolute;
-
     z-index: 12;
-
     width: 28px;
     height: 28px;
-
     pointer-events: none;
-
     color: #dfa1ae;
-
     font-size: 25px;
-
     opacity: .68;
-
-    animation:
-        sakuraDrift
-        24s
-        ease-in-out
-        infinite;
+    animation: sakuraDrift 24s ease-in-out infinite;
 }
 
 .floating-sakura::before {
     content: "✿";
 }
 
-.fs-1 {
-    top: 12%;
-    left: 24%;
-    animation-duration: 27s;
-}
-
-.fs-2 {
-    top: 18%;
-    left: 43%;
-    font-size: 18px;
-    animation-delay: -8s;
-    animation-duration: 23s;
-}
-
-.fs-3 {
-    top: 29%;
-    left: 67%;
-    font-size: 22px;
-    animation-delay: -14s;
-    animation-duration: 29s;
-}
-
-.fs-4 {
-    top: 43%;
-    left: 17%;
-    font-size: 19px;
-    animation-delay: -4s;
-    animation-duration: 25s;
-}
-
-.fs-5 {
-    top: 52%;
-    left: 54%;
-    font-size: 28px;
-    animation-delay: -17s;
-    animation-duration: 31s;
-}
-
-.fs-6 {
-    top: 66%;
-    left: 31%;
-    font-size: 17px;
-    animation-delay: -10s;
-    animation-duration: 22s;
-}
-
-.fs-7 {
-    top: 72%;
-    left: 72%;
-    font-size: 21px;
-    animation-delay: -6s;
-    animation-duration: 28s;
-}
-
-.fs-8 {
-    top: 82%;
-    left: 45%;
-    font-size: 18px;
-    animation-delay: -21s;
-    animation-duration: 26s;
-}
-
-.fs-9 {
-    top: 25%;
-    left: 82%;
-    font-size: 16px;
-    animation-delay: -12s;
-    animation-duration: 30s;
-}
-
-.fs-10 {
-    top: 58%;
-    left: 40%;
-    font-size: 20px;
-    animation-delay: -16s;
-    animation-duration: 24s;
-}
-
-.fs-11 {
-    top: 35%;
-    left: 34%;
-    font-size: 15px;
-    animation-delay: -19s;
-    animation-duration: 32s;
-}
-
-.fs-12 {
-    top: 75%;
-    left: 20%;
-    font-size: 23px;
-    animation-delay: -3s;
-    animation-duration: 27s;
-}
+.fs-1 { top: 12%; left: 24%; animation-duration: 27s; }
+.fs-2 { top: 18%; left: 43%; font-size: 18px; animation-delay: -8s; animation-duration: 23s; }
+.fs-3 { top: 29%; left: 67%; font-size: 22px; animation-delay: -14s; animation-duration: 29s; }
+.fs-4 { top: 43%; left: 17%; font-size: 19px; animation-delay: -4s; animation-duration: 25s; }
+.fs-5 { top: 52%; left: 54%; font-size: 28px; animation-delay: -17s; animation-duration: 31s; }
+.fs-6 { top: 66%; left: 31%; font-size: 17px; animation-delay: -10s; animation-duration: 22s; }
+.fs-7 { top: 72%; left: 72%; font-size: 21px; animation-delay: -6s; animation-duration: 28s; }
+.fs-8 { top: 82%; left: 45%; font-size: 18px; animation-delay: -21s; animation-duration: 26s; }
+.fs-9 { top: 25%; left: 82%; font-size: 16px; animation-delay: -12s; animation-duration: 30s; }
+.fs-10 { top: 58%; left: 40%; font-size: 20px; animation-delay: -16s; animation-duration: 24s; }
+.fs-11 { top: 35%; left: 34%; font-size: 15px; animation-delay: -19s; animation-duration: 32s; }
+.fs-12 { top: 75%; left: 20%; font-size: 23px; animation-delay: -3s; animation-duration: 27s; }
 
 @keyframes sakuraDrift {
-
-    0% {
-        transform:
-            translate3d(0,0,0)
-            rotate(0deg);
-    }
-
-    20% {
-        transform:
-            translate3d(35px,-24px,0)
-            rotate(65deg);
-    }
-
-    40% {
-        transform:
-            translate3d(65px,15px,0)
-            rotate(145deg);
-    }
-
-    60% {
-        transform:
-            translate3d(35px,55px,0)
-            rotate(220deg);
-    }
-
-    80% {
-        transform:
-            translate3d(-30px,25px,0)
-            rotate(300deg);
-    }
-
-    100% {
-        transform:
-            translate3d(0,0,0)
-            rotate(360deg);
-    }
+    0% { transform: translate3d(0,0,0) rotate(0deg); }
+    20% { transform: translate3d(35px,-24px,0) rotate(65deg); }
+    40% { transform: translate3d(65px,15px,0) rotate(145deg); }
+    60% { transform: translate3d(35px,55px,0) rotate(220deg); }
+    80% { transform: translate3d(-30px,25px,0) rotate(300deg); }
+    100% { transform: translate3d(0,0,0) rotate(360deg); }
 }
 
 @keyframes treeSwayLeft {
-
-    0%,100% {
-        transform: rotate(0deg);
-    }
-
-    50% {
-        transform: rotate(1.5deg);
-    }
+    0%,100% { transform: rotate(0deg); }
+    50% { transform: rotate(1.5deg); }
 }
 
 @keyframes treeSwayRight {
-
-    0%,100% {
-        transform: scaleX(-1) rotate(0deg);
-    }
-
-    50% {
-        transform: scaleX(-1) rotate(1.5deg);
-    }
+    0%,100% { transform: scaleX(-1) rotate(0deg); }
+    50% { transform: scaleX(-1) rotate(1.5deg); }
 }
 
 /* =========================================
@@ -878,22 +529,16 @@ nav a:hover {
 .trust-strip {
     position: relative;
     z-index: 20;
-
     display: grid;
     grid-template-columns: repeat(3,1fr);
-
     max-width: 1100px;
-
     margin: -1px auto 0;
-
     border: 1px solid var(--line);
-
     background: var(--paper);
 }
 
 .trust-item {
     padding: 25px 30px;
-
     border-right: 1px solid var(--line);
 }
 
@@ -903,9 +548,7 @@ nav a:hover {
 
 .trust-item strong {
     display: block;
-
     margin-bottom: 7px;
-
     font-family: Georgia,serif;
     font-size: 17px;
     font-weight: 400;
@@ -928,57 +571,40 @@ nav a:hover {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: end;
-
     max-width: 1100px;
-
     margin: 0 auto 48px;
-
     border-bottom: 1px solid var(--line);
-
     padding-bottom: 25px;
+    gap: 20px;
 }
 
 .section-heading small {
     color: #98734d;
-
     font-weight: 700;
     letter-spacing: .2em;
-
     text-transform: uppercase;
 }
 
 .products h2 {
     margin: 9px 0 0;
-
     font-family: Georgia,serif;
-
     font-size: clamp(39px,5vw,64px);
-
     font-weight: 400;
 }
 
 .section-heading p {
     max-width: 330px;
-
     margin: 0;
-
     color: #806d63;
-
     line-height: 1.65;
 }
 
 .product-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns: repeat(3,1fr);
     max-width: 1100px;
-
     margin: auto;
-
     gap: 22px;
-
     align-items: start;
 }
 
@@ -992,31 +618,22 @@ nav a:hover {
 
 .product-image {
     height: 410px;
-
     overflow: hidden;
-
     background: #e3d4ca;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
-
     display: block;
-
     object-fit: cover;
     object-position: center 24%;
-
     filter: saturate(.82);
-
-    transition:
-        transform .7s cubic-bezier(.2,.7,.2,1),
-        filter .3s;
+    transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .3s;
 }
 
 .product:hover .product-image img {
     transform: scale(1.045);
-
     filter: saturate(1);
 }
 
@@ -1026,11 +643,8 @@ nav a:hover {
 
 .product-info h3 {
     margin: 0 0 10px;
-
     font-family: Georgia,serif;
-
     font-size: 24px;
-
     font-weight: 400;
 }
 
@@ -1041,46 +655,32 @@ nav a:hover {
 
 .price {
     color: var(--ink);
-
     font-family: Georgia,serif;
-
     font-size: 21px;
-
     font-weight: 400;
 }
 
 .stock {
     font-size: 11px;
-
     letter-spacing: .08em;
-
     text-transform: uppercase;
+    color: #7a8f6c;
 }
 
 .product button {
     width: 100%;
-
     padding: 13px;
-
     border: 1px solid var(--ink);
-
     border-radius: 0;
-
     background: transparent;
-
     color: var(--ink);
-
     font-size: 11px;
-
     font-weight: 700;
-
     letter-spacing: .15em;
-
     text-transform: uppercase;
-
     cursor: pointer;
-
     transition: .2s;
+    margin-top: 14px;
 }
 
 .product button:hover {
@@ -1094,60 +694,41 @@ nav a:hover {
 
 .editorial {
     display: grid;
-
-    grid-template-columns:
-        1.1fr .9fr;
-
+    grid-template-columns: 1.1fr .9fr;
     min-height: 550px;
-
     background: #3a2925;
-
     color: #f5eadd;
 }
 
 .editorial-image {
     min-height: 550px;
-
     background:
-        url("assets/products/kahve-tonlari-esarp.jpg")
+        linear-gradient(rgba(58,41,37,.25), rgba(58,41,37,.45)),
+        url("https://picsum.photos/id/1060/900/1100")
         center 34% / cover;
-
-    filter:
-        saturate(.65)
-        sepia(.12);
+    filter: saturate(.65) sepia(.12);
 }
 
 .editorial-copy {
     display: grid;
-
     align-content: center;
-
-    padding:
-        clamp(55px,8vw,110px);
+    padding: clamp(55px,8vw,110px);
 }
 
 .editorial-copy small {
     color: #c6a879;
-
     letter-spacing: .22em;
-
     text-transform: uppercase;
 }
 
 .editorial-copy h2 {
     margin: 20px 0 22px;
-
-    font:
-        400
-        clamp(42px,5vw,70px)/.98
-        Georgia,serif;
+    font: 400 clamp(42px,5vw,70px)/.98 Georgia,serif;
 }
 
 .editorial-copy p {
     max-width: 520px;
-
     color: #d8c9bf;
-
     line-height: 1.9;
 }
 
@@ -1157,39 +738,28 @@ nav a:hover {
 
 .about {
     position: relative;
-
     overflow: hidden;
-
     padding: 100px 20px;
-
     background: #efe1d5;
-
     text-align: center;
 }
 
 .about div {
     position: relative;
-
     z-index: 5;
-
     max-width: 860px;
-
     margin: auto;
 }
 
 .about h2 {
     font-family: Georgia,serif;
-
     font-size: clamp(42px,5vw,64px);
-
     font-weight: 400;
 }
 
 .about p {
     color: #67534c;
-
     line-height: 1.8;
-
     font-size: 17px;
 }
 
@@ -1197,26 +767,36 @@ nav a:hover {
    FOOTER
 ========================================= */
 
-footer  {
+footer {
     padding: 65px 20px;
-
     background: #291e1b;
-
     color: #eaded4;
-
     text-align: center;
 }
 
 footer h3 {
-    font:
-        400 28px
-        Georgia,serif;
+    font: 400 28px Georgia,serif;
+    margin: 0 0 14px;
 }
 
 footer p {
     color: #bdaea5;
-
     font-size: 13px;
+    margin: 4px 0;
+}
+
+footer a {
+    color: #eaded4;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--gold);
+}
+
+footer .footer-legal {
+    margin-top: 26px;
+    opacity: .7;
 }
 
 /* =========================================
@@ -1225,29 +805,16 @@ footer p {
 
 .cart {
     position: fixed;
-
     right: -420px;
-
     top: 0;
-
     width: 400px;
-
     max-width: 100%;
-
     height: 100vh;
-
     padding: 25px;
-
     background: white;
-
     z-index: 3000;
-
-    box-shadow:
-        -5px 0 20px
-        rgba(0,0,0,.2);
-
+    box-shadow: -5px 0 20px rgba(0,0,0,.2);
     transition: .3s;
-
     overflow-y: auto;
 }
 
@@ -1257,34 +824,24 @@ footer p {
 
 .cart-header {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
-    border-bottom:
-        1px solid #ddd;
-
+    border-bottom: 1px solid #ddd;
     padding-bottom: 15px;
 }
 
 .close-cart {
     border: none;
-
     background: #eee;
-
     border-radius: 50%;
-
     width: 35px;
     height: 35px;
-
     cursor: pointer;
+    font-size: 15px;
 }
 
 .cart-item {
-    border-bottom:
-        1px solid #eee;
-
+    border-bottom: 1px solid #eee;
     padding: 15px 0;
 }
 
@@ -1294,84 +851,375 @@ footer p {
 
 .quantity {
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     margin-top: 10px;
 }
 
 .quantity button {
     border: none;
-
     background: #5b3a32;
-
     color: white;
-
     width: 28px;
     height: 28px;
-
     border-radius: 4px;
-
     cursor: pointer;
 }
 
 .remove {
     margin-top: 8px;
-
     background: #b33a3a;
-
     color: white;
-
     border: none;
-
     padding: 7px 10px;
-
     border-radius: 4px;
-
     cursor: pointer;
+}
+
+.empty {
+    padding: 30px 0;
+    color: #999;
+    text-align: center;
 }
 
 .cart-total {
     margin: 25px 0;
-
     color: #5b3a32;
-
     font-size: 22px;
-
     font-weight: bold;
 }
 
 .bank-payment {
     width: 100%;
-
     padding: 15px;
-
     border: 0;
-
     border-radius: 5px;
-
     background: #5b3a32;
-
     color: white;
-
     font-size: 16px;
-
     font-weight: bold;
-
     cursor: pointer;
+}
+
+.bank-payment:hover {
+    background: #47302a;
 }
 
 .secure-note {
     margin: 12px 0;
-
     color: #76645d;
-
     font-size: 12px;
-
     text-align: center;
 }
+
+/* =========================================
+   ÖDEME (CHECKOUT) MODAL
+========================================= */
+
+.checkout-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    background: rgba(41,30,27,.55);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.checkout-backdrop.open {
+    display: flex;
+}
+
+.checkout-modal {
+    width: 100%;
+    max-width: 460px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 18px;
+}
+
+.checkout-header h3 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-weight: 400;
+}
+
+#checkoutForm {
+    display: grid;
+    gap: 12px;
+}
+
+#checkoutForm input,
+#checkoutForm textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+#checkoutForm textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+.iban-box {
+    background: #f7f0e8;
+    border: 1px dashed var(--gold);
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 13px;
+    color: #5a4740;
+}
+
+.iban-box p {
+    margin: 3px 0;
+}
+
+.iban-box button {
+    margin-top: 8px;
+    padding: 8px 14px;
+    background: var(--ink);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.error {
+    color: #b33a3a;
+    font-size: 13px;
+    min-height: 16px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="announcement">
+    <div class="announcement-track">
+        <span><i></i>150₺ ÜZERİ ÜCRETSİZ KARGO<i></i>EL İŞİ İPEK EŞARP VE ŞALLAR<i></i>GÜVENLİ ÖDEME IBAN / HAVALE İLE</span>
+        <span><i></i>150₺ ÜZERİ ÜCRETSİZ KARGO<i></i>EL İŞİ İPEK EŞARP VE ŞALLAR<i></i>GÜVENLİ ÖDEME IBAN / HAVALE İLE</span>
+    </div>
+</div>
+
+<header>
+    <h1>Eşarp ve Şal Dünyası<span>El İşi Zarafet</span></h1>
+    <nav>
+        <a href="#urunler">Ürünler</a>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#iletisim">İletişim</a>
+        <button class="cart-button" id="cartButton" onclick="sepetAc()">Sepet (<span id="sepetSayisi">0</span>)</button>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <div class="sakura-tree sakura-tree-left">
+        <div class="tree-trunk"></div>
+        <div class="tree-branch branch-1"></div>
+        <div class="tree-branch branch-2"></div>
+        <div class="tree-branch branch-3"></div>
+        <div class="tree-branch branch-4"></div>
+        <div class="tree-branch branch-5"></div>
+        <div class="sakura-cluster left-bloom-1"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+        <div class="sakura-cluster left-bloom-2"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+        <div class="sakura-cluster left-bloom-3"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+        <div class="sakura-cluster left-bloom-4"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+        <div class="sakura-cluster left-bloom-5"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+    </div>
+
+    <div class="sakura-tree sakura-tree-right">
+        <div class="tree-trunk"></div>
+        <div class="tree-branch branch-1"></div>
+        <div class="tree-branch branch-2"></div>
+        <div class="tree-branch branch-3"></div>
+        <div class="tree-branch branch-4"></div>
+        <div class="tree-branch branch-5"></div>
+        <div class="sakura-cluster right-bloom-1"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+        <div class="sakura-cluster right-bloom-2"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+        <div class="sakura-cluster right-bloom-3"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+        <div class="sakura-cluster right-bloom-4"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+        <div class="sakura-cluster right-bloom-5"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div>
+    </div>
+
+    <div class="floating-sakura fs-1"></div>
+    <div class="floating-sakura fs-2"></div>
+    <div class="floating-sakura fs-3"></div>
+    <div class="floating-sakura fs-4"></div>
+    <div class="floating-sakura fs-5"></div>
+    <div class="floating-sakura fs-6"></div>
+    <div class="floating-sakura fs-7"></div>
+    <div class="floating-sakura fs-8"></div>
+    <div class="floating-sakura fs-9"></div>
+    <div class="floating-sakura fs-10"></div>
+    <div class="floating-sakura fs-11"></div>
+    <div class="floating-sakura fs-12"></div>
+
+    <div class="hero-copy">
+        <div class="eyebrow">Yeni Sezon Koleksiyonu</div>
+        <h2>Zarafetin<br><em>İpek</em> Dokunuşu</h2>
+        <p>El işi desenler ve zamansız kumaşlarla hazırlanan eşarp ve şallarımızla her ana özel bir zarafet katın.</p>
+        <a href="#urunler" class="button">Koleksiyonu Keşfet</a>
+    </div>
+
+    <div class="hero-visual">
+        <img src="https://picsum.photos/id/1027/700/900" alt="El işi ipek eşarp">
+        <div class="hero-seal">El İşi<br>Kalite</div>
+    </div>
+
+</section>
+
+<div class="trust-strip">
+    <div class="trust-item">
+        <strong>Ücretsiz Kargo</strong>
+        <span>150₺ üzeri siparişlerde</span>
+    </div>
+    <div class="trust-item">
+        <strong>El İşi Üretim</strong>
+        <span>Özenle, tek tek hazırlanır</span>
+    </div>
+    <div class="trust-item">
+        <strong>Güvenli Ödeme</strong>
+        <span>IBAN / Havale ile ödeme</span>
+    </div>
+</div>
+
+<section class="products" id="urunler">
+    <div class="section-heading">
+        <div>
+            <small>Koleksiyon</small>
+            <h2>Öne Çıkanlar</h2>
+        </div>
+        <p>En çok tercih edilen eşarp ve şallarımızı keşfedin.</p>
+    </div>
+
+    <div class="product-grid">
+
+        <div class="product">
+            <div class="product-image">
+                <img src="https://picsum.photos/id/1011/500/650" alt="Gül Bahçesi Şal">
+            </div>
+            <div class="product-info">
+                <h3>Gül Bahçesi Şal</h3>
+                <p>Yumuşak dokusu ve zarif gül desenleriyle her kombine şıklık katar.</p>
+                <p class="price">₺1.899</p>
+                <p class="stock">Stokta</p>
+                <button onclick="sepeteEkle(1)">Sepete Ekle</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-image">
+                <img src="https://picsum.photos/id/1012/500/650" alt="Aydınlık ve Gece Tonları Eşarp">
+            </div>
+            <div class="product-info">
+                <h3>Aydınlık ve Gece Tonları Eşarp</h3>
+                <p>Kontrast tonların zarif dengesiyle gündüz ve akşam kombinlerine uyum sağlar.</p>
+                <p class="price">₺1.899</p>
+                <p class="stock">Stokta</p>
+                <button onclick="sepeteEkle(2)">Sepete Ekle</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-image">
+                <img src="https://picsum.photos/id/1025/500/650" alt="Vintage Huzur Şal">
+            </div>
+            <div class="product-info">
+                <h3>Vintage Huzur Şal</h3>
+                <p>Zamansız desenleri ve hafif dokusuyla dört mevsim şıklık sunar.</p>
+                <p class="price">₺1.899</p>
+                <p class="stock">Stokta</p>
+                <button onclick="sepeteEkle(3)">Sepete Ekle</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="editorial">
+    <div class="editorial-image"></div>
+    <div class="editorial-copy">
+        <small>Hikayemiz</small>
+        <h2>Zamansız<br>Zarafet</h2>
+        <p>Her parça, geleneksel el işçiliği ile modern tasarımı bir araya getirerek özenle hazırlanır. Amacımız, kaliteli kumaşlarla günlük hayata zarafet katmak.</p>
+    </div>
+</section>
+
+<section class="about" id="hakkimizda">
+    <div>
+        <h2>Hakkımızda</h2>
+        <p>Eşarp ve Şal Dünyası olarak, el işi desenler ve kaliteli kumaşlarla üretilen eşarp ve şalları sevenlerle buluşturuyoruz. Her ürünümüz özenle seçilir ve güvenle sizlere ulaştırılır.</p>
+    </div>
+</section>
+
+<footer id="iletisim">
+    <h3>Eşarp ve Şal Dünyası</h3>
+    <p>Telefon: <a href="tel:+905313089629">+90 531 308 96 29</a></p>
+    <p>E-posta: <a href="mailto:canturanpl@gmail.com">canturanpl@gmail.com</a></p>
+    <p>WhatsApp üzerinden sipariş: <a href="https://wa.me/905313089629" target="_blank" rel="noopener">531 308 96 29</a></p>
+    <p class="footer-legal">© 2026 Eşarp ve Şal Dünyası. Tüm hakları saklıdır.</p>
+</footer>
+
+<div class="cart" id="cart">
+    <div class="cart-header">
+        <h3>Sepetim</h3>
+        <button class="close-cart" onclick="sepetKapat()">✕</button>
+    </div>
+
+    <div id="sepetIcerik">
+        <div class="empty">Sepetiniz şu anda boş.</div>
+    </div>
+
+    <div class="cart-total">Toplam: ₺<span id="toplam">0</span></div>
+
+    <button class="bank-payment" id="whatsappButton">Siparişi Tamamla</button>
+    <p class="secure-note">Siparişiniz WhatsApp üzerinden onaylanır.</p>
+</div>
+
+<div class="checkout-backdrop" id="checkoutBackdrop">
+    <div class="checkout-modal">
+        <div class="checkout-header">
+            <h3>Sipariş Bilgileri</h3>
+            <button class="close-cart" onclick="odemeFormunuKapat()">✕</button>
+        </div>
+
+        <form id="checkoutForm">
+            <input type="text" name="name" id="customerName" placeholder="Ad" required>
+            <input type="text" name="surname" placeholder="Soyad" required>
+            <input type="tel" name="phone" placeholder="Telefon" required>
+            <input type="email" name="email" placeholder="E-posta" required>
+            <input type="text" name="city" placeholder="Şehir" required>
+            <input type="text" name="zipCode" placeholder="Posta Kodu" required>
+            <textarea name="address" placeholder="Adres" required></textarea>
+
+            <div class="iban-box">
+                <p><strong>IBAN:</strong> TR58 0015 7000 0000 0203 1694 54</p>
+                <p><strong>Hesap Sahibi:</strong> EŞREF CAN TURAN</p>
+                <button type="button" id="copyIbanButton" onclick="ibanKopyala()">Kopyala</button>
+            </div>
+
+            <div id="checkoutError" class="error"></div>
+
+            <button type="submit" class="bank-payment">WhatsApp ile Gönder</button>
+        </form>
+    </div>
+</div>
 
 <script>
 
@@ -1380,27 +1228,10 @@ footer p {
 ========================================= */
 
 const urunler = {
-
-    1: {
-        ad: "Gül Bahçesi Şal",
-        fiyat: 1899,
-        stok: 250
-    },
-
-    2: {
-        ad: "Aydınlık ve Gece Tonları Eşarp",
-        fiyat: 1899,
-        stok: 250
-    },
-
-    3: {
-        ad: "Vintage Huzur Şal",
-        fiyat: 1899,
-        stok: 250
-    }
-
+    1: { ad: "Gül Bahçesi Şal", fiyat: 1899, stok: 250 },
+    2: { ad: "Aydınlık ve Gece Tonları Eşarp", fiyat: 1899, stok: 250 },
+    3: { ad: "Vintage Huzur Şal", fiyat: 1899, stok: 250 }
 };
-
 
 /* =========================================
    AYARLAR
@@ -1408,57 +1239,39 @@ const urunler = {
 
 let sepet = {};
 
-const IBAN =
-    "TR580015700000000203169454";
-
-const HESAP_SAHIBI =
-    "EŞREF CAN TURAN";
-
-const WHATSAPP_TELEFON =
-    "905313089629";
-
+const IBAN = "TR580015700000000203169454";
+const HESAP_SAHIBI = "EŞREF CAN TURAN";
+const WHATSAPP_TELEFON = "905313089629";
+const IletisimEmail = "canturanpl@gmail.com";
 
 /* =========================================
    SEPETE EKLE
 ========================================= */
 
 function sepeteEkle(id) {
-
     if (!urunler[id]) return;
 
     if (!sepet[id]) {
-
         sepet[id] = 1;
-
     } else {
-
         if (sepet[id] < urunler[id].stok) {
-
             sepet[id]++;
-
         } else {
-
             alert("Bu ürün için stok kalmadı.");
-
             return;
         }
     }
 
     sepetGuncelle();
-
     sepetAc();
 }
-
 
 /* =========================================
    SEPET GÜNCELLE
 ========================================= */
 
 function sepetGuncelle() {
-
-    const alan =
-        document.getElementById("sepetIcerik");
-
+    const alan = document.getElementById("sepetIcerik");
     if (!alan) return;
 
     alan.innerHTML = "";
@@ -1467,539 +1280,261 @@ function sepetGuncelle() {
     let adet = 0;
 
     for (const id in sepet) {
-
         const urun = urunler[id];
         const miktar = sepet[id];
 
         if (!urun) continue;
 
-        const araToplam =
-            urun.fiyat * miktar;
-
+        const araToplam = urun.fiyat * miktar;
         toplam += araToplam;
         adet += miktar;
 
         alan.innerHTML += `
-
             <div class="cart-item">
-
-                <h4>
-                    ${urun.ad}
-                </h4>
-
-                <div>
-                    ₺${urun.fiyat.toLocaleString("tr-TR")}
-                    × ${miktar}
-                </div>
-
+                <h4>${urun.ad}</h4>
+                <div>₺${urun.fiyat.toLocaleString("tr-TR")} × ${miktar}</div>
                 <div class="quantity">
-
-                    <button
-                        type="button"
-                        onclick="adetAzalt(${id})">
-
-                        −
-
-                    </button>
-
-                    <strong>
-                        ${miktar}
-                    </strong>
-
-                    <button
-                        type="button"
-                        onclick="adetArtir(${id})">
-
-                        +
-
-                    </button>
-
+                    <button type="button" onclick="adetAzalt(${id})">−</button>
+                    <strong>${miktar}</strong>
+                    <button type="button" onclick="adetArtir(${id})">+</button>
                 </div>
-
-                <button
-                    type="button"
-                    class="remove"
-                    onclick="urunSil(${id})">
-
-                    Ürünü Sil
-
-                </button>
-
+                <button type="button" class="remove" onclick="urunSil(${id})">Ürünü Sil</button>
             </div>
-
         `;
     }
 
     if (adet === 0) {
-
-        alan.innerHTML = `
-
-            <div class="empty">
-                Sepetiniz şu anda boş.
-            </div>
-
-        `;
+        alan.innerHTML = `<div class="empty">Sepetiniz şu anda boş.</div>`;
     }
 
-    const toplamAlan =
-        document.getElementById("toplam");
-
+    const toplamAlan = document.getElementById("toplam");
     if (toplamAlan) {
-
-        toplamAlan.textContent =
-            toplam.toLocaleString("tr-TR");
+        toplamAlan.textContent = toplam.toLocaleString("tr-TR");
     }
 
-    const sepetSayisi =
-        document.getElementById("sepetSayisi");
-
+    const sepetSayisi = document.getElementById("sepetSayisi");
     if (sepetSayisi) {
-
         sepetSayisi.textContent = adet;
     }
 }
 
-
 /* =========================================
-   ADET ARTIR
+   ADET ARTIR / AZALT / SİL
 ========================================= */
 
 function adetArtir(id) {
-
     if (!urunler[id]) return;
 
     if (sepet[id] < urunler[id].stok) {
-
         sepet[id]++;
-
         sepetGuncelle();
-
     } else {
-
         alert("Bu ürün için stok kalmadı.");
     }
 }
 
-
-/* =========================================
-   ADET AZALT
-========================================= */
-
 function adetAzalt(id) {
-
     if (!sepet[id]) return;
 
     if (sepet[id] > 1) {
-
         sepet[id]--;
-
     } else {
-
         delete sepet[id];
     }
 
     sepetGuncelle();
 }
 
-
-/* =========================================
-   ÜRÜN SİL
-========================================= */
-
 function urunSil(id) {
-
     delete sepet[id];
-
     sepetGuncelle();
 }
 
-
 /* =========================================
-   SEPET AÇ
+   SEPET AÇ / KAPAT
 ========================================= */
 
 function sepetAc() {
-
-    const cart =
-        document.getElementById("cart");
-
-    if (cart) {
-
-        cart.classList.add("open");
-    }
+    const cart = document.getElementById("cart");
+    if (cart) cart.classList.add("open");
 }
-
-
-/* =========================================
-   SEPET KAPAT
-========================================= */
 
 function sepetKapat() {
-
-    const cart =
-        document.getElementById("cart");
-
-    if (cart) {
-
-        cart.classList.remove("open");
-    }
+    const cart = document.getElementById("cart");
+    if (cart) cart.classList.remove("open");
 }
 
-
 /* =========================================
-   ÖDEME FORMUNU AÇ
+   ÖDEME FORMUNU AÇ / KAPAT
 ========================================= */
 
 function odemeFormunuAc() {
-
-    if (
-        Object.keys(sepet).length === 0
-    ) {
-
-        alert(
-            "Önce sepete ürün ekleyin."
-        );
-
+    if (Object.keys(sepet).length === 0) {
+        alert("Önce sepete ürün ekleyin.");
         return;
     }
 
-    const backdrop =
-        document.getElementById(
-            "checkoutBackdrop"
-        );
+    const backdrop = document.getElementById("checkoutBackdrop");
+    if (backdrop) backdrop.classList.add("open");
 
-    if (backdrop) {
-
-        backdrop.classList.add("open");
-    }
-
-    const name =
-        document.getElementById(
-            "customerName"
-        );
-
+    const name = document.getElementById("customerName");
     if (name) {
-
-        setTimeout(() => {
-            name.focus();
-        }, 100);
+        setTimeout(() => { name.focus(); }, 100);
     }
 }
-
-
-/* =========================================
-   ÖDEME FORMUNU KAPAT
-========================================= */
 
 function odemeFormunuKapat() {
-
-    const backdrop =
-        document.getElementById(
-            "checkoutBackdrop"
-        );
-
-    if (backdrop) {
-
-        backdrop.classList.remove("open");
-    }
+    const backdrop = document.getElementById("checkoutBackdrop");
+    if (backdrop) backdrop.classList.remove("open");
 }
-
 
 /* =========================================
    IBAN KOPYALA
 ========================================= */
 
 async function ibanKopyala() {
-
-    const button =
-        document.getElementById(
-            "copyIbanButton"
-        );
+    const button = document.getElementById("copyIbanButton");
 
     try {
-
-        await navigator.clipboard.writeText(
-            IBAN
-        );
+        await navigator.clipboard.writeText(IBAN);
 
         if (button) {
-
-            button.textContent =
-                "Kopyalandı ✓";
-
-            setTimeout(() => {
-
-                button.textContent =
-                    "Kopyala";
-
-            }, 1800);
+            button.textContent = "Kopyalandı ✓";
+            setTimeout(() => { button.textContent = "Kopyala"; }, 1800);
         }
-
     } catch {
-
-        alert(
-            "IBAN: " + IBAN
-        );
+        alert("IBAN: " + IBAN);
     }
 }
-
 
 /* =========================================
    WHATSAPP SİPARİŞ
 ========================================= */
 
 function whatsappSiparis(customer) {
-
-    if (
-        Object.keys(sepet).length === 0
-    ) {
-
-        alert(
-            "Sepetiniz boş."
-        );
-
+    if (Object.keys(sepet).length === 0) {
+        alert("Sepetiniz boş.");
         return;
     }
 
     let toplam = 0;
-
     const satirlar = [];
 
     for (const id in sepet) {
-
-        const urun =
-            urunler[id];
-
-        const miktar =
-            sepet[id];
+        const urun = urunler[id];
+        const miktar = sepet[id];
 
         if (!urun) continue;
 
-        const araToplam =
-            urun.fiyat * miktar;
-
+        const araToplam = urun.fiyat * miktar;
         toplam += araToplam;
 
-        satirlar.push(
-            `• ${urun.ad} × ${miktar} = ₺${araToplam.toLocaleString("tr-TR")}`
-        );
+        satirlar.push(`• ${urun.ad} × ${miktar} = ₺${araToplam.toLocaleString("tr-TR")}`);
     }
 
-
     const mesaj = [
-
         "🌸 MERHABA, EŞARP VE ŞAL DÜNYASI 🌸",
-
         "",
-
         "Web sitenizden sipariş vermek istiyorum.",
-
         "",
-
         "🛍️ SİPARİŞ DETAYLARI",
-
         "",
-
         ...satirlar,
-
         "",
-
         `💰 TOPLAM: ₺${toplam.toLocaleString("tr-TR")}`,
-
         "",
-
         "👤 MÜŞTERİ BİLGİLERİ",
-
         "",
-
         `Ad Soyad: ${customer.name} ${customer.surname}`,
-
         `Telefon: ${customer.phone}`,
-
         `E-posta: ${customer.email}`,
-
         `Şehir: ${customer.city}`,
-
         `Posta Kodu: ${customer.zipCode}`,
-
         `Adres: ${customer.address}`,
-
         "",
-
         "💳 ÖDEME BİLGİLERİ",
-
         "",
-
         "Ödeme: IBAN / Havale",
-
         `Hesap Sahibi: ${HESAP_SAHIBI}`,
-
         `IBAN: ${IBAN}`,
-
         "",
-
         "Siparişimi onaylamak istiyorum."
-
     ].join("\n");
 
+    const whatsappUrl = "https://wa.me/" + WHATSAPP_TELEFON + "?text=" + encodeURIComponent(mesaj);
 
-    const whatsappUrl =
-        "https://wa.me/" +
-        WHATSAPP_TELEFON +
-        "?text=" +
-        encodeURIComponent(mesaj);
+    window.open(whatsappUrl, "_blank");
 
-
-    window.open(
-        whatsappUrl,
-        "_blank"
-    );
+    odemeFormunuKapat();
 }
-
 
 /* =========================================
    FORM GÖNDER
 ========================================= */
 
-const checkoutForm =
-    document.getElementById(
-        "checkoutForm"
-    );
+const checkoutForm = document.getElementById("checkoutForm");
 
 if (checkoutForm) {
+    checkoutForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    checkoutForm.addEventListener(
-        "submit",
-        function(event) {
+        const customer = Object.fromEntries(new FormData(checkoutForm).entries());
+        const error = document.getElementById("checkoutError");
 
-            event.preventDefault();
-
-            const customer =
-                Object.fromEntries(
-                    new FormData(
-                        checkoutForm
-                    ).entries()
-                );
-
-
-            const error =
-                document.getElementById(
-                    "checkoutError"
-                );
-
-            if (
-                !customer.name ||
-                !customer.surname ||
-                !customer.phone ||
-                !customer.email ||
-                !customer.city ||
-                !customer.zipCode ||
-                !customer.address
-            ) {
-
-                if (error) {
-
-                    error.textContent =
-                        "Lütfen tüm alanları doldurun.";
-
-                }
-
-                return;
-            }
-
-
-            if (error) {
-
-                error.textContent = "";
-
-            }
-
-
-            whatsappSiparis(customer);
-
+        if (!customer.name || !customer.surname || !customer.phone || !customer.email || !customer.city || !customer.zipCode || !customer.address) {
+            if (error) error.textContent = "Lütfen tüm alanları doldurun.";
+            return;
         }
-    );
-}
 
+        if (error) error.textContent = "";
+
+        whatsappSiparis(customer);
+    });
+}
 
 /* =========================================
-   WHATSAPP BUTONU
+   WHATSAPP BUTONU (sepetten)
 ========================================= */
 
-const whatsappButton =
-    document.getElementById(
-        "whatsappButton"
-    );
+const whatsappButton = document.getElementById("whatsappButton");
 
 if (whatsappButton) {
-
-    whatsappButton.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            odemeFormunuAc();
-
-        }
-    );
+    whatsappButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        odemeFormunuAc();
+    });
 }
-
 
 /* =========================================
    CHECKOUT DIŞINA TIKLAYINCA KAPAT
 ========================================= */
 
-const checkoutBackdrop =
-    document.getElementById(
-        "checkoutBackdrop"
-    );
+const checkoutBackdrop = document.getElementById("checkoutBackdrop");
 
 if (checkoutBackdrop) {
-
-    checkoutBackdrop.addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target ===
-                checkoutBackdrop
-            ) {
-
-                odemeFormunuKapat();
-
-            }
+    checkoutBackdrop.addEventListener("click", function (event) {
+        if (event.target === checkoutBackdrop) {
+            odemeFormunuKapat();
         }
-    );
+    });
 }
-
 
 /* =========================================
    ESC İLE KAPAT
 ========================================= */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Escape") {
-
-            odemeFormunuKapat();
-
-            sepetKapat();
-
-        }
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        odemeFormunuKapat();
+        sepetKapat();
     }
-);
-
+});
 
 /* =========================================
    BAŞLANGIÇ
 ========================================= */
 
 sepetGuncelle();
-
-</script>
 
 </script>
 
