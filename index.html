@@ -1,963 +1,3101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Eşarp ve Şal Dünyası — Zarif, zamansız ve özenle seçilmiş eşarp ve şallar.">
+
 <title>Eşarp ve Şal Dünyası</title>
 
 <style>
-* {
-    box-sizing: border-box;
+:root{
+  --ink:#241815;
+  --brown:#4d3028;
+  --brown2:#765046;
+  --gold:#b99762;
+  --gold2:#d9bf91;
+  --cream:#f6eee7;
+  --paper:#fffaf6;
+  --rose:#ead6d0;
+  --line:rgba(45,33,30,.13);
+  --green:#25d366;
+  --danger:#a93232;
 }
 
-:root { --ink: #30231f; --wine: #573b3a; --cream: #f7f0e8; --paper: #fffaf4; --gold: #b28a54; --line: rgba(87,59,58,.18); }
-* {
-    box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-:root { --ink: #30231f; --wine: #573b3a; --cream: #f7f0e8; --paper: #fffaf4; --gold: #b28a54; --line: rgba(87,59,58,.18); }
-
-body {
-margin: 0;
-    font-family: "Avenir Next", "Gill Sans", sans-serif;
-    font-family: "Avenir Next", "Gill Sans", sans-serif;
-background: #faf5f1;
-color: #493832;
-}
-@@ -115,24 +115,24 @@
-transform: translateY(-5px);
+html{
+  scroll-behavior:smooth;
 }
 
-.product-image {
-    height: 250px;
-    overflow: hidden;
-    background: #eadfd8;
+body{
+  margin:0;
+  font-family:"Avenir Next","Segoe UI",Arial,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  overflow-x:hidden;
 }
 
-.product-image img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center 24%;
-    transition: transform .55s ease;
+button,
+input,
+textarea{
+  font:inherit;
 }
 
-.product:hover .product-image img {
-    transform: scale(1.035);
-}
-.product-image {
-    height: 250px;
-    overflow: hidden;
-    background: #eadfd8;
+button,
+a{
+  -webkit-tap-highlight-color:transparent;
 }
 
-.product-image img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center 24%;
-    transition: transform .55s ease;
+a{
+  color:inherit;
 }
 
-.product:hover .product-image img {
-    transform: scale(1.035);
+
+/* =========================================================
+   UÇUŞAN ÇİÇEKLER
+========================================================= */
+
+.petals{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  pointer-events:none;
+  overflow:hidden;
 }
 
-.pink {
-background: #ead1d0;
-@@ -290,7 +290,7 @@
-color: #5b3a32;
+.petal{
+  position:absolute;
+  top:-70px;
+
+  width:18px;
+  height:12px;
+
+  border-radius:100% 0 100% 0;
+
+  background:
+    radial-gradient(
+      ellipse at 35% 35%,
+      #fffdfb 0%,
+      #e7bfc5 48%,
+      #c98d98 100%
+    );
+
+  opacity:.65;
+
+  filter:
+    drop-shadow(0 3px 5px rgba(91,58,50,.13));
+
+  animation:
+    petalFall var(--duration) linear infinite,
+    petalSway var(--sway) ease-in-out infinite alternate;
+
+  animation-delay:var(--delay);
 }
 
-.whatsapp {
-.whatsapp {
-display: block;
-width: 100%;
-padding: 15px;
-@@ -300,74 +300,74 @@
-text-decoration: none;
-border-radius: 5px;
-font-weight: bold;
+.petal:nth-child(3n){
+  width:13px;
+  height:10px;
+  opacity:.5;
 }
 
-.card-payment {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 15px;
-    border: 0;
-    border-radius: 5px;
-    background: #5b3a32;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+.petal:nth-child(4n){
+  width:22px;
+  height:14px;
+  opacity:.42;
 }
 
-.card-payment:disabled { opacity: .6; cursor: wait; }
-.bank-payment { background: #f1e4dc; color: #5b3a32; border: 1px solid #ccb3a7; }
-.bank-payment:hover { background: #e8d5cb; }
-.secure-note { margin: 12px 0; color: #76645d; font-size: 12px; text-align: center; }
+@keyframes petalFall{
+  0%{
+    transform:
+      translate3d(0,-80px,0)
+      rotate(0deg);
+  }
 
-.checkout-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 3000;
-    display: none;
-    place-items: center;
-    padding: 20px;
-    background: rgba(54, 37, 32, .68);
-    backdrop-filter: blur(5px);
+  100%{
+    transform:
+      translate3d(var(--drift),110vh,0)
+      rotate(650deg);
+  }
 }
 
-.checkout-backdrop.open { display: grid; }
-.checkout-panel { width: min(620px, 100%); max-height: 92vh; overflow: auto; padding: 30px; border-radius: 14px; background: #fffaf7; box-shadow: 0 24px 70px rgba(31, 19, 15, .28); }
-.checkout-title { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
-.checkout-title h2 { margin: 0 0 6px; font-family: Georgia, serif; }
-.checkout-title p { margin: 0 0 24px; color: #76645d; }
-.checkout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.checkout-field { display: grid; gap: 6px; }
-.checkout-field.full { grid-column: 1 / -1; }
-.checkout-field label { font-size: 13px; font-weight: bold; }
-.checkout-field input, .checkout-field textarea { width: 100%; padding: 12px; border: 1px solid #d9c9c1; border-radius: 6px; background: #fff; font: inherit; color: #493832; }
-.checkout-field input:focus, .checkout-field textarea:focus { outline: 2px solid #b88972; border-color: transparent; }
-.payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 22px; padding: 5px; border-radius: 10px; background: #efe3dc; }
-.payment-method { padding: 12px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #76645d; font: inherit; font-weight: bold; cursor: pointer; transition: transform .18s ease, background .18s ease, color .18s ease; }
-.payment-method:hover { transform: translateY(-1px); }
-.payment-method.active { border-color: #dac2b7; background: #fffaf7; color: #5b3a32; box-shadow: 0 3px 12px rgba(74, 48, 40, .08); }
-.iban-details { display: none; margin: 0 0 20px; padding: 18px; border: 1px solid #dbc8be; border-radius: 10px; background: #f7ede7; }
-.iban-details.open { display: block; }
-.iban-details small { display: block; margin-bottom: 5px; color: #806b61; }
-.iban-owner { margin-bottom: 14px; font-family: Georgia, serif; font-size: 18px; color: #4d342d; }
-.iban-row { display: flex; align-items: center; gap: 10px; }
-.iban-number { flex: 1; overflow-wrap: anywhere; font-family: ui-monospace, monospace; font-size: 15px; font-weight: bold; letter-spacing: .035em; }
-.copy-iban { flex: none; padding: 8px 11px; border: 1px solid #b99482; border-radius: 6px; background: #fffaf7; color: #5b3a32; font-weight: bold; cursor: pointer; }
-.iban-note { margin: 14px 0 0; color: #6f5a51; font-size: 13px; line-height: 1.5; }
-.checkout-error { min-height: 20px; margin: 12px 0; color: #a42f2f; font-size: 14px; }
-.checkout-submit { width: 100%; padding: 15px; border: 0; border-radius: 6px; background: #5b3a32; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
-.checkout-submit:disabled { opacity: .65; cursor: wait; }
-.payment-message { display: none; max-width: 760px; margin: 24px auto 0; padding: 15px 20px; border-radius: 8px; text-align: center; }
-.payment-message.success { display: block; color: #245f3b; background: #e3f2e7; }
-.payment-message.failed { display: block; color: #8a2929; background: #f8e3e0; }
+@keyframes petalSway{
+  from{
+    margin-left:-28px;
+  }
+
+  to{
+    margin-left:28px;
+  }
 }
 
-.card-payment {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 15px;
-    border: 0;
-    border-radius: 5px;
-    background: #5b3a32;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+@media(prefers-reduced-motion:reduce){
+
+  .petal{
+    display:none;
+    animation:none;
+  }
+
 }
 
-.card-payment:disabled { opacity: .6; cursor: wait; }
-.bank-payment { background: #f1e4dc; color: #5b3a32; border: 1px solid #ccb3a7; }
-.bank-payment:hover { background: #e8d5cb; }
-.secure-note { margin: 12px 0; color: #76645d; font-size: 12px; text-align: center; }
 
-.checkout-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 3000;
-    display: none;
-    place-items: center;
-    padding: 20px;
-    background: rgba(54, 37, 32, .68);
-    backdrop-filter: blur(5px);
+/* =========================================================
+   DUYURU
+========================================================= */
+
+.announcement{
+  overflow:hidden;
+  background:#211714;
+  color:#f6e8d8;
+
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  white-space:nowrap;
 }
 
-.checkout-backdrop.open { display: grid; }
-.checkout-panel { width: min(620px, 100%); max-height: 92vh; overflow: auto; padding: 30px; border-radius: 14px; background: #fffaf7; box-shadow: 0 24px 70px rgba(31, 19, 15, .28); }
-.checkout-title { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
-.checkout-title h2 { margin: 0 0 6px; font-family: Georgia, serif; }
-.checkout-title p { margin: 0 0 24px; color: #76645d; }
-.checkout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.checkout-field { display: grid; gap: 6px; }
-.checkout-field.full { grid-column: 1 / -1; }
-.checkout-field label { font-size: 13px; font-weight: bold; }
-.checkout-field input, .checkout-field textarea { width: 100%; padding: 12px; border: 1px solid #d9c9c1; border-radius: 6px; background: #fff; font: inherit; color: #493832; }
-.checkout-field input:focus, .checkout-field textarea:focus { outline: 2px solid #b88972; border-color: transparent; }
-.payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 22px; padding: 5px; border-radius: 10px; background: #efe3dc; }
-.payment-method { padding: 12px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #76645d; font: inherit; font-weight: bold; cursor: pointer; transition: transform .18s ease, background .18s ease, color .18s ease; }
-.payment-method:hover { transform: translateY(-1px); }
-.payment-method.active { border-color: #dac2b7; background: #fffaf7; color: #5b3a32; box-shadow: 0 3px 12px rgba(74, 48, 40, .08); }
-.iban-details { display: none; margin: 0 0 20px; padding: 18px; border: 1px solid #dbc8be; border-radius: 10px; background: #f7ede7; }
-.iban-details.open { display: block; }
-.iban-details small { display: block; margin-bottom: 5px; color: #806b61; }
-.iban-owner { margin-bottom: 14px; font-family: Georgia, serif; font-size: 18px; color: #4d342d; }
-.iban-row { display: flex; align-items: center; gap: 10px; }
-.iban-number { flex: 1; overflow-wrap: anywhere; font-family: ui-monospace, monospace; font-size: 15px; font-weight: bold; letter-spacing: .035em; }
-.copy-iban { flex: none; padding: 8px 11px; border: 1px solid #b99482; border-radius: 6px; background: #fffaf7; color: #5b3a32; font-weight: bold; cursor: pointer; }
-.iban-note { margin: 14px 0 0; color: #6f5a51; font-size: 13px; line-height: 1.5; }
-.checkout-error { min-height: 20px; margin: 12px 0; color: #a42f2f; font-size: 14px; }
-.checkout-submit { width: 100%; padding: 15px; border: 0; border-radius: 6px; background: #5b3a32; color: white; font-weight: bold; font-size: 16px; cursor: pointer; }
-.checkout-submit:disabled { opacity: .65; cursor: wait; }
-.payment-message { display: none; max-width: 760px; margin: 24px auto 0; padding: 15px 20px; border-radius: 8px; text-align: center; }
-.payment-message.success { display: block; color: #245f3b; background: #e3f2e7; }
-.payment-message.failed { display: block; color: #8a2929; background: #f8e3e0; }
+.announcement-track{
+  display:flex;
+  width:max-content;
 
-.empty {
-text-align: center;
-color: #777;
-margin-top: 40px;
+  animation:marquee 30s linear infinite;
 }
 
-@media(max-width:700px) {
-@media(max-width:700px) {
-
-.product-grid {
-grid-template-columns: 1fr;
-@@ -382,96 +382,96 @@
-margin: 6px;
+.announcement-track span{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  padding:10px 30px;
 }
 
-    .cart {
-        width: 100%;
-    }
-
-    .checkout-grid { grid-template-columns: 1fr; }
-    .checkout-field.full { grid-column: auto; }
+.announcement-track i{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--gold2);
 }
 
-/* PREMIUM EDITORIAL THEME */
-body { background: var(--cream); color: var(--ink); }
-.announcement { overflow: hidden; padding: 10px 0; background: #2e211e; color: #f3e5d3; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; }
-.announcement-track { display: inline-flex; min-width: max-content; animation: campaignFlow 26s linear infinite; }
-.announcement-track span { display: inline-flex; align-items: center; gap: 34px; padding-right: 34px; }
-.announcement-track i { width: 4px; height: 4px; border-radius: 50%; background: #c8a373; }
-@keyframes campaignFlow { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .announcement-track { animation: none; } }
-header { position: sticky; padding: 17px clamp(20px, 5vw, 72px); background: rgba(247,240,232,.94); color: var(--ink); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); display: flex; align-items: center; justify-content: space-between; text-align: left; }
-header h1 { font-size: clamp(21px, 2.3vw, 31px); font-weight: 400; letter-spacing: -.02em; }
-header h1 span { display: block; margin-top: 2px; color: #8b6d5d; font: 600 8px/1.2 "Avenir Next", sans-serif; letter-spacing: .34em; text-transform: uppercase; }
-nav { margin: 0; display: flex; align-items: center; gap: clamp(9px, 2vw, 28px); }
-nav a { margin: 0; color: #5a4740; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-nav a:hover { color: var(--gold); }
-.cart-button { margin: 0; padding: 10px 17px; background: var(--ink); color: #fffaf4; border-radius: 2px; font-size: 12px; letter-spacing: .07em; }
-.hero { min-height: 670px; padding: clamp(60px, 8vw, 105px) clamp(20px, 8vw, 120px); text-align: left; color: var(--ink); background: radial-gradient(circle at 12% 18%, #fffaf4 0, transparent 34%), linear-gradient(115deg, #f4e7dc, #e5d0c0); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); align-items: center; gap: clamp(40px, 7vw, 110px); overflow: hidden; }
-.hero-copy { position: relative; z-index: 1; max-width: 680px; }
-.eyebrow { display: flex; align-items: center; gap: 13px; margin-bottom: 25px; color: #8a654d; font-size: 11px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; }
-.eyebrow:before { content: ""; width: 42px; height: 1px; background: var(--gold); }
-.hero h2 { margin: 0 0 25px; font-size: clamp(55px, 7vw, 102px); font-weight: 400; line-height: .89; letter-spacing: -.055em; }
-.hero h2 em { color: #77524b; font-weight: 400; }
-.hero p { max-width: 500px; color: #66514a; font-size: 17px; line-height: 1.75; }
-.button { border-radius: 1px; padding: 16px 25px; background: var(--ink); color: #fff; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; transition: transform .2s ease, background .2s ease; }
-.button:hover { transform: translateY(-3px); background: #6c4a43; }
-.hero-visual { position: relative; width: min(100%, 440px); justify-self: center; }
-.hero-visual:before { content: ""; position: absolute; inset: -24px 35px 28px -26px; border: 1px solid rgba(112,76,64,.3); }
-.hero-visual img { position: relative; width: 100%; height: 510px; object-fit: cover; object-position: center 20%; filter: saturate(.82) contrast(.96); box-shadow: 25px 28px 60px rgba(71,48,40,.18); }
-.hero-seal { position: absolute; right: -34px; bottom: 42px; z-index: 2; width: 112px; height: 112px; border-radius: 50%; background: #f4e6d7; border: 1px solid rgba(87,59,58,.2); display: grid; place-items: center; color: #6d4e43; font: italic 16px Georgia, serif; text-align: center; transform: rotate(-8deg); box-shadow: 0 12px 35px rgba(62,41,34,.16); }
-.trust-strip { display: grid; grid-template-columns: repeat(3,1fr); max-width: 1100px; margin: -1px auto 0; border: 1px solid var(--line); background: var(--paper); }
-.trust-item { padding: 25px 30px; border-right: 1px solid var(--line); }
-.trust-item:last-child { border: 0; }
-.trust-item strong { display: block; margin-bottom: 7px; font-family: Georgia, serif; font-size: 17px; font-weight: 400; }
-.trust-item span { color: #806c62; font-size: 12px; }
-.products { padding: 110px 20px 125px; }
-.section-heading { display: grid; grid-template-columns: 1fr auto; align-items: end; max-width: 1100px; margin: 0 auto 48px; border-bottom: 1px solid var(--line); padding-bottom: 25px; }
-.section-heading small { color: #98734d; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-.products h2 { margin: 9px 0 0; text-align: left; font-size: clamp(39px, 5vw, 64px); font-weight: 400; }
-.section-heading p { max-width: 330px; margin: 0; color: #806d63; line-height: 1.65; }
-.product-grid { max-width: 1100px; margin: auto; align-items: start; gap: 22px; }
-.product { position: relative; border-radius: 0; background: transparent; box-shadow: none; }
-.product:nth-child(2) { margin-top: 62px; }
-.product-image { height: 410px; background: #e3d4ca; }
-.product-image img { filter: saturate(.82); transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .3s; }
-.product:hover { transform: none; }
-.product:hover .product-image img { transform: scale(1.045); filter: saturate(1); }
-.product-info { padding: 22px 5px 0; }
-.product-info h3 { margin: 0 0 10px; font-size: 24px; font-weight: 400; }
-.product-info > p:not(.price):not(.stock) { color: #806d63; line-height: 1.6; }
-.price { color: var(--ink); font-family: Georgia, serif; font-size: 21px; font-weight: 400; }
-.stock { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-.product button { border: 1px solid var(--ink); border-radius: 0; background: transparent; color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; transition: background .2s, color .2s; }
-.product button:hover { background: var(--ink); color: #fff; }
-.editorial { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 550px; background: #3a2925; color: #f5eadd; }
-.editorial-image { min-height: 550px; background: url('assets/products/kahve-tonlari-esarp.jpg') center 34%/cover; filter: saturate(.65) sepia(.12); }
-.editorial-copy { display: grid; align-content: center; padding: clamp(55px, 8vw, 110px); }
-.editorial-copy small { color: #c6a879; letter-spacing: .22em; text-transform: uppercase; }
-.editorial-copy h2 { margin: 20px 0 22px; font: 400 clamp(42px, 5vw, 70px)/.98 Georgia, serif; }
-.editorial-copy p { max-width: 520px; color: #d8c9bf; line-height: 1.9; }
-.about { padding: 100px 20px; background: #efe1d5; }
-.about div { max-width: 860px; }
-.about h2 { font-size: clamp(42px, 5vw, 64px); font-weight: 400; }
-.about p { color: #67534c; }
-footer { padding: 65px 20px; background: #291e1b; color: #eaded4; }
-footer h3 { font: 400 28px Georgia, serif; }
-footer p { color: #bdaea5; font-size: 13px; }
-@media(max-width:800px) { header { display:block; text-align:center; } nav { justify-content:center; flex-wrap:wrap; margin-top:14px; } .hero { min-height: auto; grid-template-columns:1fr; padding-top:65px; } .hero-visual { width:min(83%,400px); } .hero-visual img { height:440px; } .trust-strip { grid-template-columns:1fr; margin:0 20px; } .trust-item { border-right:0; border-bottom:1px solid var(--line); } .section-heading { grid-template-columns:1fr; gap:18px; } .product:nth-child(2) { margin-top:0; } .editorial { grid-template-columns:1fr; } .editorial-image { min-height:400px; } }
-@media(max-width:700px) { .hero h2 { font-size:55px; } .product-image { height:440px; } .payment-methods { grid-template-columns:1fr; } }
-</style>
-    .cart {
-        width: 100%;
-    }
-
-    .checkout-grid { grid-template-columns: 1fr; }
-    .checkout-field.full { grid-column: auto; }
+@keyframes marquee{
+  to{
+    transform:translateX(-50%);
+  }
 }
 
-/* PREMIUM EDITORIAL THEME */
-body { background: var(--cream); color: var(--ink); }
-.announcement { overflow: hidden; padding: 10px 0; background: #2e211e; color: #f3e5d3; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; }
-.announcement-track { display: inline-flex; min-width: max-content; animation: campaignFlow 26s linear infinite; }
-.announcement-track span { display: inline-flex; align-items: center; gap: 34px; padding-right: 34px; }
-.announcement-track i { width: 4px; height: 4px; border-radius: 50%; background: #c8a373; }
-@keyframes campaignFlow { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .announcement-track { animation: none; } }
-header { position: sticky; padding: 17px clamp(20px, 5vw, 72px); background: rgba(247,240,232,.94); color: var(--ink); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); display: flex; align-items: center; justify-content: space-between; text-align: left; }
-header h1 { font-size: clamp(21px, 2.3vw, 31px); font-weight: 400; letter-spacing: -.02em; }
-header h1 span { display: block; margin-top: 2px; color: #8b6d5d; font: 600 8px/1.2 "Avenir Next", sans-serif; letter-spacing: .34em; text-transform: uppercase; }
-nav { margin: 0; display: flex; align-items: center; gap: clamp(9px, 2vw, 28px); }
-nav a { margin: 0; color: #5a4740; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-nav a:hover { color: var(--gold); }
-.cart-button { margin: 0; padding: 10px 17px; background: var(--ink); color: #fffaf4; border-radius: 2px; font-size: 12px; letter-spacing: .07em; }
-.hero { min-height: 670px; padding: clamp(60px, 8vw, 105px) clamp(20px, 8vw, 120px); text-align: left; color: var(--ink); background: radial-gradient(circle at 12% 18%, #fffaf4 0, transparent 34%), linear-gradient(115deg, #f4e7dc, #e5d0c0); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); align-items: center; gap: clamp(40px, 7vw, 110px); overflow: hidden; }
-.hero-copy { position: relative; z-index: 1; max-width: 680px; }
-.eyebrow { display: flex; align-items: center; gap: 13px; margin-bottom: 25px; color: #8a654d; font-size: 11px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; }
-.eyebrow:before { content: ""; width: 42px; height: 1px; background: var(--gold); }
-.hero h2 { margin: 0 0 25px; font-size: clamp(55px, 7vw, 102px); font-weight: 400; line-height: .89; letter-spacing: -.055em; }
-.hero h2 em { color: #77524b; font-weight: 400; }
-.hero p { max-width: 500px; color: #66514a; font-size: 17px; line-height: 1.75; }
-.button { border-radius: 1px; padding: 16px 25px; background: var(--ink); color: #fff; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; transition: transform .2s ease, background .2s ease; }
-.button:hover { transform: translateY(-3px); background: #6c4a43; }
-.hero-visual { position: relative; width: min(100%, 440px); justify-self: center; }
-.hero-visual:before { content: ""; position: absolute; inset: -24px 35px 28px -26px; border: 1px solid rgba(112,76,64,.3); }
-.hero-visual img { position: relative; width: 100%; height: 510px; object-fit: cover; object-position: center 20%; filter: saturate(.82) contrast(.96); box-shadow: 25px 28px 60px rgba(71,48,40,.18); }
-.hero-seal { position: absolute; right: -34px; bottom: 42px; z-index: 2; width: 112px; height: 112px; border-radius: 50%; background: #f4e6d7; border: 1px solid rgba(87,59,58,.2); display: grid; place-items: center; color: #6d4e43; font: italic 16px Georgia, serif; text-align: center; transform: rotate(-8deg); box-shadow: 0 12px 35px rgba(62,41,34,.16); }
-.trust-strip { display: grid; grid-template-columns: repeat(3,1fr); max-width: 1100px; margin: -1px auto 0; border: 1px solid var(--line); background: var(--paper); }
-.trust-item { padding: 25px 30px; border-right: 1px solid var(--line); }
-.trust-item:last-child { border: 0; }
-.trust-item strong { display: block; margin-bottom: 7px; font-family: Georgia, serif; font-size: 17px; font-weight: 400; }
-.trust-item span { color: #806c62; font-size: 12px; }
-.products { padding: 110px 20px 125px; }
-.section-heading { display: grid; grid-template-columns: 1fr auto; align-items: end; max-width: 1100px; margin: 0 auto 48px; border-bottom: 1px solid var(--line); padding-bottom: 25px; }
-.section-heading small { color: #98734d; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-.products h2 { margin: 9px 0 0; text-align: left; font-size: clamp(39px, 5vw, 64px); font-weight: 400; }
-.section-heading p { max-width: 330px; margin: 0; color: #806d63; line-height: 1.65; }
-.product-grid { max-width: 1100px; margin: auto; align-items: start; gap: 22px; }
-.product { position: relative; border-radius: 0; background: transparent; box-shadow: none; }
-.product:nth-child(2) { margin-top: 62px; }
-.product-image { height: 410px; background: #e3d4ca; }
-.product-image img { filter: saturate(.82); transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .3s; }
-.product:hover { transform: none; }
-.product:hover .product-image img { transform: scale(1.045); filter: saturate(1); }
-.product-info { padding: 22px 5px 0; }
-.product-info h3 { margin: 0 0 10px; font-size: 24px; font-weight: 400; }
-.product-info > p:not(.price):not(.stock) { color: #806d63; line-height: 1.6; }
-.price { color: var(--ink); font-family: Georgia, serif; font-size: 21px; font-weight: 400; }
-.stock { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-.product button { border: 1px solid var(--ink); border-radius: 0; background: transparent; color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; transition: background .2s, color .2s; }
-.product button:hover { background: var(--ink); color: #fff; }
-.editorial { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 550px; background: #3a2925; color: #f5eadd; }
-.editorial-image { min-height: 550px; background: url('assets/products/kahve-tonlari-esarp.jpg') center 34%/cover; filter: saturate(.65) sepia(.12); }
-.editorial-copy { display: grid; align-content: center; padding: clamp(55px, 8vw, 110px); }
-.editorial-copy small { color: #c6a879; letter-spacing: .22em; text-transform: uppercase; }
-.editorial-copy h2 { margin: 20px 0 22px; font: 400 clamp(42px, 5vw, 70px)/.98 Georgia, serif; }
-.editorial-copy p { max-width: 520px; color: #d8c9bf; line-height: 1.9; }
-.about { padding: 100px 20px; background: #efe1d5; }
-.about div { max-width: 860px; }
-.about h2 { font-size: clamp(42px, 5vw, 64px); font-weight: 400; }
-.about p { color: #67534c; }
-footer { padding: 65px 20px; background: #291e1b; color: #eaded4; }
-footer h3 { font: 400 28px Georgia, serif; }
-footer p { color: #bdaea5; font-size: 13px; }
-@media(max-width:800px) { header { display:block; text-align:center; } nav { justify-content:center; flex-wrap:wrap; margin-top:14px; } .hero { min-height: auto; grid-template-columns:1fr; padding-top:65px; } .hero-visual { width:min(83%,400px); } .hero-visual img { height:440px; } .trust-strip { grid-template-columns:1fr; margin:0 20px; } .trust-item { border-right:0; border-bottom:1px solid var(--line); } .section-heading { grid-template-columns:1fr; gap:18px; } .product:nth-child(2) { margin-top:0; } .editorial { grid-template-columns:1fr; } .editorial-image { min-height:400px; } }
-@media(max-width:700px) { .hero h2 { font-size:55px; } .product-image { height:440px; } .payment-methods { grid-template-columns:1fr; } }
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+
+  padding:18px clamp(18px,5vw,72px);
+
+  background:rgba(247,240,232,.84);
+
+  border-bottom:1px solid rgba(80,54,45,.12);
+
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+
+.logo{
+  text-decoration:none;
+
+  font:
+    400
+    clamp(21px,2.2vw,31px)
+    /1
+    Georgia,
+    serif;
+
+  letter-spacing:-.03em;
+}
+
+.logo small{
+  display:block;
+  margin-top:7px;
+
+  color:#98745d;
+
+  font:
+    700
+    8px
+    /1
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  letter-spacing:.34em;
+  text-transform:uppercase;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:clamp(10px,2vw,28px);
+}
+
+nav a{
+  text-decoration:none;
+
+  color:#59463f;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:.13em;
+  text-transform:uppercase;
+
+  transition:.25s;
+}
+
+nav a:hover{
+  color:var(--gold);
+}
+
+.cart-button{
+  border:1px solid var(--ink);
+
+  padding:12px 18px;
+
+  background:var(--ink);
+  color:white;
+
+  cursor:pointer;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:.1em;
+  text-transform:uppercase;
+
+  transition:.25s;
+}
+
+.cart-button:hover{
+  background:#765046;
+  border-color:#765046;
+  transform:translateY(-1px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  position:relative;
+
+  min-height:690px;
+
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+
+  gap:clamp(40px,7vw,100px);
+
+  padding:
+    clamp(60px,8vw,115px)
+    clamp(20px,8vw,120px);
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(255,252,247,.95),
+      transparent 32%
+    ),
+
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(205,167,151,.24),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      115deg,
+      #f5e8de,
+      #e7d1c3
+    );
+}
+
+.hero:after{
+  content:"";
+
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  border:
+    1px
+    solid
+    rgba(178,138,84,.12);
+
+  border-radius:50%;
+
+  right:-180px;
+  top:-190px;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:2;
+
+  max-width:680px;
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:13px;
+
+  margin-bottom:24px;
+
+  color:#8a654d;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:.26em;
+  text-transform:uppercase;
+}
+
+.eyebrow:before{
+  content:"";
+
+  width:45px;
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--gold),
+      transparent
+    );
+}
+
+.hero h1{
+  margin:0 0 25px;
+
+  font:
+    400
+    clamp(54px,7vw,100px)
+    /.88
+    Georgia,
+    serif;
+
+  letter-spacing:-.06em;
+}
+
+.hero h1 em{
+  color:#765149;
+  font-style:normal;
+}
+
+.hero-copy p{
+  max-width:510px;
+
+  color:#66514a;
+
+  font-size:17px;
+  line-height:1.8;
+}
+
+.primary-btn{
+  display:inline-block;
+
+  margin-top:18px;
+
+  padding:16px 27px;
+
+  border:1px solid var(--ink);
+
+  background:var(--ink);
+  color:white;
+
+  text-decoration:none;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:.17em;
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.primary-btn:hover{
+  transform:translateY(-3px);
+
+  background:#705047;
+  border-color:#705047;
+
+  box-shadow:
+    0 12px 25px
+    rgba(60,39,32,.16);
+}
+
+.hero-visual{
+  position:relative;
+
+  width:min(100%,440px);
+
+  justify-self:center;
+
+  z-index:2;
+}
+
+.hero-visual:before{
+  content:"";
+
+  position:absolute;
+
+  inset:
+    -25px
+    34px
+    28px
+    -28px;
+
+  border:
+    1px
+    solid
+    rgba(112,76,64,.28);
+}
+
+.hero-visual:after{
+  content:"";
+
+  position:absolute;
+
+  inset:-8px;
+
+  border:
+    1px
+    solid
+    rgba(255,255,255,.38);
+
+  pointer-events:none;
+}
+
+.hero-visual img{
+  position:relative;
+
+  display:block;
+
+  width:100%;
+  height:520px;
+
+  object-fit:cover;
+  object-position:center 20%;
+
+  box-shadow:
+    25px 28px 60px
+    rgba(71,48,40,.18);
+}
+
+.seal{
+  position:absolute;
+
+  right:-32px;
+  bottom:38px;
+
+  z-index:2;
+
+  width:112px;
+  height:112px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff7ed,
+      #ead8c7
+    );
+
+  border:
+    1px
+    solid
+    rgba(178,138,84,.55);
+
+  color:#6d4e43;
+
+  font:
+    italic
+    16px
+    Georgia,
+    serif;
+
+  transform:rotate(-8deg);
+
+  box-shadow:
+    0 12px 25px
+    rgba(70,43,34,.12);
+}
+
+
+/* =========================================================
+   TRUST
+========================================================= */
+
+.trust{
+  position:relative;
+  z-index:5;
+
+  max-width:1100px;
+
+  margin:0 auto;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  background:
+    rgba(255,250,245,.92);
+
+  border:
+    1px
+    solid
+    var(--line);
+
+  box-shadow:
+    0 15px 45px
+    rgba(70,45,36,.06);
+}
+
+.trust-item{
+  padding:27px 28px;
+
+  border-right:
+    1px
+    solid
+    var(--line);
+}
+
+.trust-item:last-child{
+  border-right:0;
+}
+
+.trust-item strong{
+  display:block;
+
+  margin-bottom:7px;
+
+  font:
+    400
+    17px
+    Georgia,
+    serif;
+}
+
+.trust-item span{
+  color:#806c62;
+  font-size:12px;
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+section.products{
+  padding:
+    115px
+    20px
+    125px;
+}
+
+.section-heading{
+  max-width:1100px;
+
+  margin:
+    0
+    auto
+    50px;
+
+  padding-bottom:27px;
+
+  border-bottom:
+    1px
+    solid
+    var(--line);
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  gap:25px;
+
+  align-items:end;
+}
+
+.section-heading small{
+  color:#98734d;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:.23em;
+  text-transform:uppercase;
+}
+
+.section-heading h2{
+  margin:10px 0 0;
+
+  font:
+    400
+    clamp(40px,5vw,64px)
+    /1
+    Georgia,
+    serif;
+
+  letter-spacing:-.035em;
+}
+
+.section-heading p{
+  max-width:330px;
+
+  margin:0;
+
+  color:#806d63;
+
+  line-height:1.7;
+  font-size:14px;
+}
+
+.product-grid{
+  max-width:1100px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:25px;
+}
+
+.product{
+  min-width:0;
+  position:relative;
+}
+
+.product:nth-child(2){
+  margin-top:58px;
+}
+
+.product-image{
+  height:420px;
+
+  overflow:hidden;
+
+  background:#e3d4ca;
+
+  position:relative;
+}
+
+.product-image:after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  border:
+    1px
+    solid
+    rgba(255,255,255,.2);
+
+  pointer-events:none;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  filter:saturate(.84);
+
+  transition:
+    transform .8s
+      cubic-bezier(.2,.7,.2,1),
+    filter .3s;
+}
+
+.product:hover .product-image img{
+  transform:scale(1.055);
+  filter:saturate(1);
+}
+
+.product-info{
+  padding:22px 4px 0;
+}
+
+.product-info h3{
+  margin:0 0 9px;
+
+  font:
+    400
+    24px
+    Georgia,
+    serif;
+}
+
+.product-info p:not(.price):not(.stock){
+  color:#806d63;
+
+  line-height:1.6;
+
+  margin:
+    0
+    0
+    12px;
+}
+
+.price{
+  margin:0 0 6px;
+
+  font:
+    400
+    22px
+    Georgia,
+    serif;
+
+  color:#6e4d43;
+}
+
+.stock{
+  margin:0 0 15px;
+
+  color:#806d63;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:.1em;
+
+  text-transform:uppercase;
+}
+
+.product-action{
+  width:100%;
+
+  padding:14px;
+
+  border:
+    1px
+    solid
+    var(--ink);
+
+  background:transparent;
+  color:var(--ink);
+
+  cursor:pointer;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:.15em;
+  text-transform:uppercase;
+
+  transition:.3s;
+}
+
+.product-action:hover{
+  background:var(--ink);
+  color:white;
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 10px 20px
+    rgba(45,33,30,.12);
+}
+
+
+/* =========================================================
+   EDITORIAL
+========================================================= */
+
+.editorial{
+  display:grid;
+
+  grid-template-columns:
+    1.1fr
+    .9fr;
+
+  min-height:570px;
+
+  background:#382824;
+
+  color:#f5eadd;
+}
+
+.editorial-image{
+  min-height:570px;
+
+  background:
+    linear-gradient(
+      rgba(40,25,20,.08),
+      rgba(40,25,20,.08)
+    ),
+
+    url("assets/products/kahve-tonlari-esarp.jpg")
+    center 34%/cover;
+
+  filter:
+    saturate(.7)
+    sepia(.1);
+}
+
+.editorial-copy{
+  display:grid;
+  align-content:center;
+
+  padding:
+    clamp(50px,8vw,110px);
+}
+
+.editorial-copy small{
+  color:#c6a879;
+
+  letter-spacing:.23em;
+
+  text-transform:uppercase;
+
+  font-size:10px;
+}
+
+.editorial-copy h2{
+  margin:20px 0 22px;
+
+  font:
+    400
+    clamp(42px,5vw,70px)
+    /.98
+    Georgia,
+    serif;
+}
+
+.editorial-copy p{
+  max-width:520px;
+
+  color:#d8c9bf;
+
+  line-height:1.9;
+}
+
+.editorial-copy .primary-btn{
+  width:max-content;
+
+  background:#f5eadd;
+  color:#3a2925;
+
+  border-color:#f5eadd;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+  padding:105px 20px;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #fffaf5,
+      transparent 60%
+    ),
+    #efe1d5;
+}
+
+.about-inner{
+  max-width:850px;
+  margin:auto;
+}
+
+.about h2{
+  margin:0 0 20px;
+
+  font:
+    400
+    clamp(42px,5vw,64px)
+    Georgia,
+    serif;
+}
+
+.about p{
+  margin:0;
+
+  color:#67534c;
+
+  line-height:1.95;
+
+  font-size:16px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:65px 20px;
+
+  text-align:center;
+
+  background:#241916;
+
+  color:#eaded4;
+}
+
+footer h3{
+  margin:0 0 12px;
+
+  font:
+    400
+    29px
+    Georgia,
+    serif;
+}
+
+footer p{
+  margin:8px 0;
+
+  color:#bdaea5;
+
+  font-size:13px;
+}
+
+footer a{
+  color:#eaded4;
+  text-decoration:none;
+}
+
+footer a:hover{
+  color:#d8bc8a;
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart{
+  position:fixed;
+
+  z-index:2000;
+
+  top:0;
+  right:-440px;
+
+  width:420px;
+  max-width:100%;
+
+  height:100vh;
+
+  padding:27px;
+
+  overflow-y:auto;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdf9,
+      #f8eee7
+    );
+
+  box-shadow:
+    -12px 0 40px
+    rgba(0,0,0,.2);
+
+  transition:
+    right .35s
+    cubic-bezier(.2,.8,.2,1);
+}
+
+.cart.open{
+  right:0;
+}
+
+.cart-header{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  padding-bottom:17px;
+
+  border-bottom:
+    1px
+    solid
+    #ddd0c8;
+}
+
+.cart-header h2{
+  margin:0;
+
+  font:
+    400
+    28px
+    Georgia,
+    serif;
+}
+
+.close{
+  width:35px;
+  height:35px;
+
+  border:
+    1px
+    solid
+    #ded1c9;
+
+  border-radius:50%;
+
+  background:#fffaf5;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.close:hover{
+  background:#ead8d0;
+  transform:rotate(5deg);
+}
+
+.cart-item{
+  padding:17px 0;
+
+  border-bottom:
+    1px
+    solid
+    #e8ddd7;
+}
+
+.cart-item h4{
+  margin:0 0 7px;
+
+  font-size:15px;
+}
+
+.cart-item-price{
+  color:#66514a;
+  font-size:14px;
+}
+
+.quantity{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-top:11px;
+}
+
+.quantity button{
+  width:29px;
+  height:29px;
+
+  border:0;
+
+  border-radius:4px;
+
+  background:var(--brown);
+  color:white;
+
+  cursor:pointer;
+}
+
+.remove{
+  margin-top:9px;
+
+  padding:7px 10px;
+
+  border:0;
+
+  border-radius:4px;
+
+  background:var(--danger);
+  color:white;
+
+  cursor:pointer;
+
+  font-size:12px;
+}
+
+.empty{
+  text-align:center;
+
+  color:#777;
+
+  margin:45px 0;
+}
+
+.cart-total{
+  margin:24px 0;
+
+  font:
+    700
+    22px
+    Georgia,
+    serif;
+
+  color:var(--brown);
+}
+
+.cart-actions{
+  display:grid;
+  gap:10px;
+}
+
+.action{
+  width:100%;
+
+  padding:15px;
+
+  border:0;
+
+  border-radius:4px;
+
+  cursor:pointer;
+
+  font-weight:800;
+}
+
+.action-iban{
+  background:#f1e4dc;
+
+  color:var(--brown);
+
+  border:
+    1px
+    solid
+    #ccb3a7;
+}
+
+.action-iban:hover{
+  background:#e7d5ca;
+}
+
+.action-whatsapp{
+  background:var(--green);
+  color:white;
+
+  text-decoration:none;
+
+  text-align:center;
+}
+
+.secure-note{
+  text-align:center;
+
+  color:#76645d;
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+.backdrop{
+  position:fixed;
+
+  inset:0;
+
+  z-index:3000;
+
+  display:none;
+
+  place-items:center;
+
+  padding:20px;
+
+  background:
+    rgba(54,37,32,.68);
+
+  backdrop-filter:blur(8px);
+}
+
+.backdrop.open{
+  display:grid;
+}
+
+.checkout{
+  width:min(640px,100%);
+
+  max-height:92vh;
+
+  overflow:auto;
+
+  padding:32px;
+
+  border:
+    1px
+    solid
+    rgba(177,142,108,.2);
+
+  border-radius:16px;
+
+  background:#fffaf7;
+
+  box-shadow:
+    0 24px 70px
+    rgba(31,19,15,.3);
+}
+
+.checkout-head{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+.checkout h2{
+  margin:0 0 6px;
+
+  font:
+    400
+    30px
+    Georgia,
+    serif;
+}
+
+.checkout-head p{
+  margin:0 0 24px;
+
+  color:#76645d;
+
+  font-size:13px;
+}
+
+.iban-details{
+  margin-bottom:20px;
+
+  padding:20px;
+
+  border:
+    1px
+    solid
+    #dbc8be;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f7ede7,
+      #f4e5dd
+    );
+}
+
+.iban-details small{
+  display:block;
+
+  margin-bottom:5px;
+
+  color:#806b61;
+}
+
+.iban-owner{
+  margin-bottom:15px;
+
+  font:
+    18px
+    Georgia,
+    serif;
+}
+
+.iban-row{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+}
+
+.iban-number{
+  flex:1;
+
+  overflow-wrap:anywhere;
+
+  font:
+    700
+    14px
+    ui-monospace,
+    monospace;
+}
+
+.copy-iban{
+  padding:8px 11px;
+
+  border:
+    1px
+    solid
+    #b99482;
+
+  border-radius:6px;
+
+  background:#fffaf7;
+
+  color:var(--brown);
+
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.iban-note{
+  margin:13px 0 0;
+
+  color:#6f5a51;
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+.form-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:14px;
+}
+
+.field{
+  display:grid;
+  gap:6px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  font-size:12px;
+  font-weight:800;
+}
+
+.field input,
+.field textarea{
+  width:100%;
+
+  padding:12px;
+
+  border:
+    1px
+    solid
+    #d9c9c1;
+
+  border-radius:6px;
+
+  background:white;
+
+  color:var(--ink);
+
+  outline:none;
+}
+
+.field input:focus,
+.field textarea:focus{
+  border-color:#b88972;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(184,137,114,.16);
+}
+
+.error{
+  min-height:20px;
+
+  margin:12px 0;
+
+  color:#a42f2f;
+
+  font-size:13px;
+}
+
+.submit{
+  width:100%;
+
+  padding:15px;
+
+  border:0;
+
+  border-radius:6px;
+
+  background:var(--ink);
+
+  color:white;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.submit:hover{
+  background:#6c4a43;
+}
+
+.payment-message{
+  display:none;
+
+  max-width:1100px;
+
+  margin:
+    0
+    auto
+    30px;
+
+  padding:15px 20px;
+
+  border-radius:7px;
+
+  text-align:center;
+}
+
+.payment-message.show{
+  display:block;
+}
+
+.payment-message.success{
+  color:#245f3b;
+  background:#e3f2e7;
+}
+
+.payment-message.failed{
+  color:#8a2929;
+  background:#f8e3e0;
+}
+
+
+/* =========================================================
+   MOBİL
+========================================================= */
+
+@media(max-width:800px){
+
+  header{
+    display:block;
+    text-align:center;
+  }
+
+  nav{
+    justify-content:center;
+    flex-wrap:wrap;
+
+    margin-top:14px;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+
+    min-height:auto;
+
+    padding-top:65px;
+    padding-bottom:100px;
+  }
+
+  .hero-visual{
+    width:min(83%,400px);
+  }
+
+  .hero-visual img{
+    height:440px;
+  }
+
+  .trust{
+    grid-template-columns:1fr;
+
+    margin:
+      0
+      20px;
+  }
+
+  .trust-item{
+    border-right:0;
+
+    border-bottom:
+      1px
+      solid
+      var(--line);
+  }
+
+  .trust-item:last-child{
+    border-bottom:0;
+  }
+
+  .section-heading{
+    grid-template-columns:1fr;
+  }
+
+  .product-grid{
+    grid-template-columns:1fr;
+  }
+
+  .product:nth-child(2){
+    margin-top:0;
+  }
+
+  .editorial{
+    grid-template-columns:1fr;
+  }
+
+  .editorial-image{
+    min-height:400px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:54px;
+  }
+
+  .product-image{
+    height:440px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .checkout{
+    padding:22px;
+  }
+
+  .cart{
+    width:100%;
+  }
+
+  .petal{
+    opacity:.35;
+  }
+
+}
 </style>
 </head>
 
+
 <body>
 
-<div class="announcement" aria-label="Kampanyalar">
-    <div class="announcement-track">
-        <span>₺1.500 üzeri ücretsiz kargo <i></i> Seçili ürünlerde ikinci ürüne %15 indirim <i></i> IBAN ile güvenli ödeme <i></i> Özenli hediye paketi <i></i></span>
-        <span aria-hidden="true">₺1.500 üzeri ücretsiz kargo <i></i> Seçili ürünlerde ikinci ürüne %15 indirim <i></i> IBAN ile güvenli ödeme <i></i> Özenli hediye paketi <i></i></span>
-    </div>
+
+<!-- =====================================================
+     UÇUŞAN ÇİÇEKLER
+===================================================== -->
+
+<div class="petals" aria-hidden="true">
+
+  <span class="petal"
+    style="left:4%;--duration:13s;--delay:-2s;--drift:80px;--sway:3s"></span>
+
+  <span class="petal"
+    style="left:11%;--duration:17s;--delay:-8s;--drift:-100px;--sway:4s"></span>
+
+  <span class="petal"
+    style="left:19%;--duration:15s;--delay:-4s;--drift:120px;--sway:3.5s"></span>
+
+  <span class="petal"
+    style="left:27%;--duration:20s;--delay:-13s;--drift:-90px;--sway:5s"></span>
+
+  <span class="petal"
+    style="left:36%;--duration:14s;--delay:-6s;--drift:110px;--sway:3s"></span>
+
+  <span class="petal"
+    style="left:44%;--duration:18s;--delay:-11s;--drift:-130px;--sway:4s"></span>
+
+  <span class="petal"
+    style="left:52%;--duration:16s;--delay:-1s;--drift:90px;--sway:3.5s"></span>
+
+  <span class="petal"
+    style="left:60%;--duration:21s;--delay:-15s;--drift:-110px;--sway:5s"></span>
+
+  <span class="petal"
+    style="left:68%;--duration:15s;--delay:-7s;--drift:140px;--sway:4s"></span>
+
+  <span class="petal"
+    style="left:76%;--duration:19s;--delay:-12s;--drift:-80px;--sway:3s"></span>
+
+  <span class="petal"
+    style="left:84%;--duration:14s;--delay:-5s;--drift:100px;--sway:4.5s"></span>
+
+  <span class="petal"
+    style="left:93%;--duration:18s;--delay:-10s;--drift:-120px;--sway:3.5s"></span>
+
 </div>
 
-<header>
-<body>
 
-<div class="announcement" aria-label="Kampanyalar">
-    <div class="announcement-track">
-        <span>₺1.500 üzeri ücretsiz kargo <i></i> Seçili ürünlerde ikinci ürüne %15 indirim <i></i> IBAN ile güvenli ödeme <i></i> Özenli hediye paketi <i></i></span>
-        <span aria-hidden="true">₺1.500 üzeri ücretsiz kargo <i></i> Seçili ürünlerde ikinci ürüne %15 indirim <i></i> IBAN ile güvenli ödeme <i></i> Özenli hediye paketi <i></i></span>
-    </div>
+<!-- =====================================================
+     DUYURU
+===================================================== -->
+
+<div class="announcement">
+
+  <div class="announcement-track">
+
+    <span>
+
+      ₺1.500 üzeri ücretsiz kargo
+
+      <i></i>
+
+      İkinci üründe %15 indirim
+
+      <i></i>
+
+      IBAN ile güvenli ödeme
+
+      <i></i>
+
+      Özenli hediye paketi
+
+      <i></i>
+
+    </span>
+
+    <span aria-hidden="true">
+
+      ₺1.500 üzeri ücretsiz kargo
+
+      <i></i>
+
+      İkinci üründe %15 indirim
+
+      <i></i>
+
+      IBAN ile güvenli ödeme
+
+      <i></i>
+
+      Özenli hediye paketi
+
+      <i></i>
+
+    </span>
+
+  </div>
+
 </div>
 
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header>
 
-    <h1>Eşarp ve Şal Dünyası <span>İstanbul · 2026</span></h1>
-    <h1>Eşarp ve Şal Dünyası <span>İstanbul · 2026</span></h1>
+  <a class="logo" href="#">
 
-<nav>
-<a href="#">Ana Sayfa</a>
-@@ -480,46 +480,46 @@ <h1>Eşarp ve Şal Dünyası <span>İstanbul · 2026</span></h1>
-<a href="#iletisim">İletişim</a>
+    Eşarp ve Şal Dünyası
 
-<span class="cart-button" onclick="sepetAc()">
-            Sepet · <span id="sepetSayisi">0</span>
-            Sepet · <span id="sepetSayisi">0</span>
-</span>
-</nav>
+    <small>
+      İstanbul · 2026
+    </small>
+
+  </a>
+
+
+  <nav>
+
+    <a href="#">
+      Ana Sayfa
+    </a>
+
+    <a href="#urunler">
+      Ürünler
+    </a>
+
+    <a href="#hakkimizda">
+      Hakkımızda
+    </a>
+
+    <a href="#iletisim">
+      İletişim
+    </a>
+
+    <button
+      class="cart-button"
+      type="button"
+      onclick="sepetAc()"
+    >
+
+      Sepet ·
+      <span id="sepetSayisi">0</span>
+
+    </button>
+
+  </nav>
 
 </header>
 
 
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
-    <div class="hero-copy">
-        <div class="eyebrow">Yeni sezon seçkisi</div>
-        <h2>İmzanız<br><em>zarafet</em> olsun.</h2>
-        <p>Her bağlayışta başka bir hikâye anlatan, dokusu ve deseni özenle seçilmiş eşarp ve şallar. Günün ritmine eşlik eden zamansız parçaları keşfedin.</p>
-        <a href="#urunler" class="button">Koleksiyonu Keşfet</a>
+
+  <div class="hero-copy">
+
+    <div class="eyebrow">
+      Yeni sezon seçkisi
     </div>
-    <div class="hero-visual">
-        <img src="assets/products/gul-bahcesi-sal.webp" alt="Yeni sezon Gül Bahçesi şal koleksiyonu" width="1200" height="1800">
-        <div class="hero-seal">Yeni<br>Koleksiyon</div>
+
+    <h1>
+      İmzanız<br>
+      <em>zarafet</em> olsun.
+    </h1>
+
+    <p>
+      Her bağlayışta başka bir hikâye anlatan,
+      dokusu ve deseni özenle seçilmiş eşarp ve şallar.
+      Günün ritmine eşlik eden zamansız parçaları keşfedin.
+    </p>
+
+    <a
+      class="primary-btn"
+      href="#urunler"
+    >
+      Koleksiyonu Keşfet
+    </a>
+
+  </div>
+
+
+  <div class="hero-visual">
+
+    <img
+      src="assets/products/gul-bahcesi-sal.webp"
+      alt="Gül Bahçesi şal"
+    >
+
+    <div class="seal">
+      Yeni<br>
+      Koleksiyon
     </div>
+
+  </div>
 
 </section>
 
-<div class="trust-strip">
-    <div class="trust-item"><strong>Özenle Seçildi</strong><span>Her desen, gardırobunuzla uyum için seçilir.</span></div>
-    <div class="trust-item"><strong>Güvenli Alışveriş</strong><span>Kart veya IBAN ile kolay ödeme seçenekleri.</span></div>
-    <div class="trust-item"><strong>Butik Paketleme</strong><span>Siparişiniz hediyeye hazır özenle paketlenir.</span></div>
+
+<!-- =====================================================
+     TRUST
+===================================================== -->
+
+<div class="trust">
+
+  <div class="trust-item">
+
+    <strong>
+      Özenle Seçildi
+    </strong>
+
+    <span>
+      Her desen, gardırobunuzla uyum için seçilir.
+    </span>
+
+  </div>
+
+
+  <div class="trust-item">
+
+    <strong>
+      IBAN ile Güvenli Ödeme
+    </strong>
+
+    <span>
+      Siparişiniz havale yöntemiyle kolayca oluşturulur.
+    </span>
+
+  </div>
+
+
+  <div class="trust-item">
+
+    <strong>
+      Butik Paketleme
+    </strong>
+
+    <span>
+      Siparişiniz hediyeye hazır özenle paketlenir.
+    </span>
+
+  </div>
+
 </div>
 
 
-<section class="products" id="urunler">
+<!-- =====================================================
+     ÜRÜNLER
+===================================================== -->
 
-    <div id="paymentMessage" class="payment-message" role="status"></div>
+<section
+  class="products"
+  id="urunler"
+>
 
-    <div class="section-heading"><div><small>Sezonun seçkisi</small><h2>Yeni Koleksiyon</h2></div><p>Yumuşak dokular, incelikli desenler ve gün boyu konfor için bir araya getirilen favoriler.</p></div>
-<section class="hero">
-    <div class="hero-copy">
-        <div class="eyebrow">Yeni sezon seçkisi</div>
-        <h2>İmzanız<br><em>zarafet</em> olsun.</h2>
-        <p>Her bağlayışta başka bir hikâye anlatan, dokusu ve deseni özenle seçilmiş eşarp ve şallar. Günün ritmine eşlik eden zamansız parçaları keşfedin.</p>
-        <a href="#urunler" class="button">Koleksiyonu Keşfet</a>
+  <div
+    id="paymentMessage"
+    class="payment-message"
+  ></div>
+
+
+  <div class="section-heading">
+
+    <div>
+
+      <small>
+        Sezonun seçkisi
+          <section class="products" id="urunler">
+
+  <div id="paymentMessage" class="payment-message"></div>
+
+  <div class="section-heading">
+    <div>
+      <small>Sezonun seçkisi</small>
+      <h2>Yeni Koleksiyon</h2>
     </div>
-    <div class="hero-visual">
-        <img src="assets/products/gul-bahcesi-sal.webp" alt="Yeni sezon Gül Bahçesi şal koleksiyonu" width="1200" height="1800">
-        <div class="hero-seal">Yeni<br>Koleksiyon</div>
-    </div>
 
+    <p>
+      Yumuşak dokular, incelikli desenler ve
+      gün boyu konfor için seçilen favoriler.
+    </p>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- ÜRÜN 1 -->
+    <article class="product">
+
+      <div class="product-image">
+        <img
+          src="assets/products/gul-bahcesi-sal.webp"
+          alt="Gül Bahçesi Şal"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="product-info">
+        <h3>Gül Bahçesi Şal</h3>
+
+        <p>
+          Zarif desenli, özel tasarım şal.
+        </p>
+
+        <p class="price">₺1.899</p>
+
+        <p class="stock">
+          Stok: <span id="stok1">250</span> adet
+        </p>
+
+        <button
+          class="product-action"
+          type="button"
+          onclick="sepeteEkle(1)"
+        >
+          Sepete Ekle
+        </button>
+      </div>
+
+    </article>
+
+
+    <!-- ÜRÜN 2 -->
+    <article class="product">
+
+      <div class="product-image">
+        <img
+          src="assets/products/kahve-tonlari-esarp.jpg"
+          alt="Kahve Tonları Eşarp"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="product-info">
+        <h3>Kahve Tonları Eşarp</h3>
+
+        <p>
+          Özel tasarım, zarif eşarp.
+        </p>
+
+        <p class="price">₺1.899</p>
+
+        <p class="stock">
+          Stok: <span id="stok2">250</span> adet
+        </p>
+
+        <button
+          class="product-action"
+          type="button"
+          onclick="sepeteEkle(2)"
+        >
+          Sepete Ekle
+        </button>
+      </div>
+
+    </article>
+
+
+    <!-- ÜRÜN 3 -->
+    <article class="product">
+
+      <div class="product-image">
+        <img
+          src="assets/products/vintage-pudra-sal.jpg"
+          alt="Vintage Pudra Şal"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="product-info">
+        <h3>Vintage Pudra Şal</h3>
+
+        <p>
+          Yumuşak dokulu zarif şal.
+        </p>
+
+        <p class="price">₺1.899</p>
+
+        <p class="stock">
+          Stok: <span id="stok3">250</span> adet
+        </p>
+
+        <button
+          class="product-action"
+          type="button"
+          onclick="sepeteEkle(3)"
+        >
+          Sepete Ekle
+        </button>
+      </div>
+
+    </article>
+
+  </div>
 </section>
 
-<div class="trust-strip">
-    <div class="trust-item"><strong>Özenle Seçildi</strong><span>Her desen, gardırobunuzla uyum için seçilir.</span></div>
-    <div class="trust-item"><strong>Güvenli Alışveriş</strong><span>Kart veya IBAN ile kolay ödeme seçenekleri.</span></div>
-    <div class="trust-item"><strong>Butik Paketleme</strong><span>Siparişiniz hediyeye hazır özenle paketlenir.</span></div>
-</div>
 
-
-<section class="products" id="urunler">
-
-    <div id="paymentMessage" class="payment-message" role="status"></div>
-
-    <div class="section-heading"><div><small>Sezonun seçkisi</small><h2>Yeni Koleksiyon</h2></div><p>Yumuşak dokular, incelikli desenler ve gün boyu konfor için bir araya getirilen favoriler.</p></div>
-
-<div class="product-grid">
-
-<div class="product">
-
-            <div class="product-image pink">
-                <img src="assets/products/gul-bahcesi-sal.webp" alt="Gül Bahçesi Şal üzerinde renkli çiçek desenleri" width="1200" height="1800" loading="lazy">
-            <div class="product-image pink">
-                <img src="assets/products/gul-bahcesi-sal.webp" alt="Gül Bahçesi Şal üzerinde renkli çiçek desenleri" width="1200" height="1800" loading="lazy">
-</div>
-
-<div class="product-info">
-@@ -531,7 +531,7 @@ <h3>Gül Bahçesi Şal</h3>
-</p>
-
-<p class="price">
-                    ₺899
-                    ₺899
-</p>
-
-<p class="stock">
-@@ -549,8 +549,8 @@ <h3>Gül Bahçesi Şal</h3>
-
-<div class="product">
-
-            <div class="product-image beige">
-                <img src="assets/products/kahve-tonlari-esarp.jpg" alt="Siyah ve gri desenli Kahve Tonları Eşarp" width="1200" height="1800" loading="lazy">
-            <div class="product-image beige">
-                <img src="assets/products/kahve-tonlari-esarp.jpg" alt="Siyah ve gri desenli Kahve Tonları Eşarp" width="1200" height="1800" loading="lazy">
-</div>
-
-<div class="product-info">
-@@ -562,7 +562,7 @@ <h3>Kahve Tonları Eşarp</h3>
-</p>
-
-<p class="price">
-                    ₺899
-                    ₺899
-</p>
-
-<p class="stock">
-@@ -580,8 +580,8 @@ <h3>Kahve Tonları Eşarp</h3>
-
-<div class="product">
-
-            <div class="product-image brown">
-                <img src="assets/products/vintage-pudra-sal.jpg" alt="Mavi desenli Vintage Pudra Şal" width="683" height="1024" loading="lazy">
-            <div class="product-image brown">
-                <img src="assets/products/vintage-pudra-sal.jpg" alt="Mavi desenli Vintage Pudra Şal" width="683" height="1024" loading="lazy">
-</div>
-
-<div class="product-info">
-@@ -593,7 +593,7 @@ <h3>Vintage Pudra Şal</h3>
-</p>
-
-<p class="price">
-                    ₺899
-                    ₺899
-</p>
-
-<p class="stock">
-@@ -610,17 +610,17 @@ <h3>Vintage Pudra Şal</h3>
-
-</div>
-
-</section>
+<!-- =====================================================
+     EDİTORYAL
+===================================================== -->
 
 <section class="editorial">
-    <div class="editorial-image" role="img" aria-label="Eşarp dokusu ve desen detayı"></div>
-    <div class="editorial-copy">
-        <small>Editoryal · 01</small>
-        <h2>Bir aksesuar değil,<br>kişisel bir imza.</h2>
-        <p>Sade bir görünümü tek dokunuşla dönüştüren eşarplar; omuzda, saçta ya da çantada… Koleksiyonumuz, her gün yeniden yorumlayabileceğiniz renk ve desenlerden oluşuyor.</p>
-        <a href="#urunler" class="button">Seçkiyi İncele</a>
-    </div>
-</section>
+
+  <div
+    class="editorial-image"
+    role="img"
+    aria-label="Eşarp dokusu ve desen detayı"
+  ></div>
+
+  <div class="editorial-copy">
+
+    <small>Editoryal · 01</small>
+
+    <h2>
+      Bir aksesuar değil,<br>
+      kişisel bir imza.
+    </h2>
+
+    <p>
+      Sade bir görünümü tek dokunuşla dönüştüren eşarplar;
+      omuzda, saçta ya da çantada…
+      Koleksiyonumuz, her gün yeniden yorumlayabileceğiniz
+      renk ve desenlerden oluşuyor.
+    </p>
+
+    <a class="primary-btn" href="#urunler">
+      Seçkiyi İncele
+    </a>
+
+  </div>
+
 </section>
 
-<section class="editorial">
-    <div class="editorial-image" role="img" aria-label="Eşarp dokusu ve desen detayı"></div>
-    <div class="editorial-copy">
-        <small>Editoryal · 01</small>
-        <h2>Bir aksesuar değil,<br>kişisel bir imza.</h2>
-        <p>Sade bir görünümü tek dokunuşla dönüştüren eşarplar; omuzda, saçta ya da çantada… Koleksiyonumuz, her gün yeniden yorumlayabileceğiniz renk ve desenlerden oluşuyor.</p>
-        <a href="#urunler" class="button">Seçkiyi İncele</a>
-    </div>
-</section>
 
+<!-- =====================================================
+     HİKÂYEMİZ
+===================================================== -->
 
 <section class="about" id="hakkimizda">
-@@ -630,7 +630,7 @@ <h2>Bir aksesuar değil,<br>kişisel bir imza.</h2>
-<h2>Hikâyemiz</h2>
 
-<p>
-            Modanın geçici ritmi yerine kalıcı bir stil duygusuna inanıyoruz. Eşarp ve Şal Dünyası olarak renk, desen ve dokuyu özenle bir araya getiriyor; her kombinde kendiniz gibi hissettiren parçaları sizlerle buluşturuyoruz. Her sipariş, butik deneyimin bir parçası olarak özenle hazırlanıyor.
-            Modanın geçici ritmi yerine kalıcı bir stil duygusuna inanıyoruz. Eşarp ve Şal Dünyası olarak renk, desen ve dokuyu özenle bir araya getiriyor; her kombinde kendiniz gibi hissettiren parçaları sizlerle buluşturuyoruz. Her sipariş, butik deneyimin bir parçası olarak özenle hazırlanıyor.
-</p>
+  <div class="about-inner">
 
-</div>
-@@ -642,11 +642,11 @@ <h2>Hikâyemiz</h2>
+    <h2>Hikâyemiz</h2>
 
-<h3>Eşarp ve Şal Dünyası</h3>
+    <p>
+      Modanın geçici ritmi yerine kalıcı bir stil duygusuna
+      inanıyoruz. Eşarp ve Şal Dünyası olarak renk, desen
+      ve dokuyu özenle bir araya getiriyor; her kombinde
+      kendiniz gibi hissettiren parçaları sizlerle
+      buluşturuyoruz. Her sipariş, butik deneyimin bir parçası
+      olarak özenle hazırlanıyor.
+    </p>
 
-    <p>📞 0555 555 55 55</p>
-    <p>📞 0531 308 96 29</p>
+  </div>
 
-    <p>✉ info@esarpvesaldunyasi.com</p>
-    <p>✉ canturanpl@gmail.com</p>
+</section>
 
-    <p>© 2026 Eşarp ve Şal Dünyası</p>
-    <p>© 2026 Eşarp ve Şal Dünya</p>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="iletisim">
+
+  <h3>Eşarp ve Şal Dünyası</h3>
+
+  <p>
+    📞
+    <a href="tel:+905313089629">
+      0531 308 96 29
+    </a>
+  </p>
+
+  <p>
+    ✉
+    <a href="mailto:canturanpl@gmail.com">
+      canturanpl@gmail.com
+    </a>
+  </p>
+
+  <p>
+    © 2026 Eşarp ve Şal Dünyası
+  </p>
 
 </footer>
 
-@@ -667,19 +667,19 @@ <h2>🛒 Sepetim</h2>
 
-<div id="sepetIcerik"></div>
+<!-- =====================================================
+     SEPET
+===================================================== -->
 
-    <div class="cart-total">
-    <div class="cart-total">
-Toplam: ₺<span id="toplam">0</span>
+<aside
+  class="cart"
+  id="cart"
+  aria-label="Alışveriş sepeti"
+>
+
+  <div class="cart-header">
+
+    <h2>Sepetim</h2>
+
+    <button
+      class="close"
+      type="button"
+      onclick="sepetKapat()"
+      aria-label="Sepeti kapat"
+    >
+      ✕
+    </button>
+
+  </div>
+
+
+  <div id="sepetIcerik"></div>
+
+
+  <div class="cart-total">
+    Toplam:
+    ₺<span id="toplam">0</span>
+  </div>
+
+
+  <div class="cart-actions">
+
+    <button
+      class="action action-iban"
+      type="button"
+      onclick="odemeFormunuAc()"
+    >
+      IBAN ile Havale Yap
+    </button>
+
+
+    <a
+      class="action action-whatsapp"
+      id="whatsappButton"
+      href="#"
+      target="_blank"
+      rel="noopener"
+      onclick="whatsappSiparis(event)"
+    >
+      WhatsApp'tan Sipariş Ver
+    </a>
+
+  </div>
+
+
+  <p class="secure-note">
+    Siparişiniz IBAN / havale yöntemiyle oluşturulur.
+    Ödeme sonrası siparişiniz WhatsApp üzerinden teyit edilir.
+  </p>
+
+</aside>
+
+
+<!-- =====================================================
+     SİPARİŞ FORMU
+===================================================== -->
+
+<div
+  class="backdrop"
+  id="checkoutBackdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="checkoutHeading"
+>
+
+  <div class="checkout">
+
+    <div class="checkout-head">
+
+      <div>
+
+        <h2 id="checkoutHeading">
+          Sipariş Bilgileri
+        </h2>
+
+        <p>
+          Bilgilerinizi tamamlayın ve havale
+          siparişinizi oluşturun.
+        </p>
+
+      </div>
+
+
+      <button
+        class="close"
+        type="button"
+        onclick="odemeFormunuKapat()"
+        aria-label="Pencereyi kapat"
+      >
+        ✕
+      </button>
+
     </div>
 
-    <button class="card-payment" id="cardPaymentButton" onclick="odemeFormunuAc()">
-        Kartla Güvenli Öde
-    </button>
 
-    <button class="card-payment bank-payment" type="button" onclick="odemeFormunuAc('iban')">
-        IBAN ile Havale Yap
-    </button>
+    <!-- IBAN BİLGİSİ -->
 
-    <p class="secure-note">Kartla güvenli ödeme veya IBAN ile banka havalesi seçeneklerinden birini kullanabilirsiniz.</p>
+    <div class="iban-details">
+
+      <small>Hesap sahibi</small>
+
+      <div class="iban-owner">
+        EŞREF CAN TURAN
+      </div>
+
+
+      <small>IBAN</small>
+
+      <div class="iban-row">
+
+        <span class="iban-number">
+          TR58 0015 7000 0000 0203 1694 54
+        </span>
+
+        <button
+          class="copy-iban"
+          id="copyIbanButton"
+          type="button"
+          onclick="ibanKopyala()"
+        >
+          Kopyala
+        </button>
+
+      </div>
+
+
+      <p class="iban-note">
+        Havale açıklamasına adınızı ve soyadınızı yazmanız
+        rica olunur. Sipariş bilgilerinizi gönderdikten
+        sonra WhatsApp üzerinden siparişiniz teyit edilir.
+      </p>
+
     </div>
 
-    <button class="card-payment" id="cardPaymentButton" onclick="odemeFormunuAc()">
-        Kartla Güvenli Öde
-    </button>
 
-    <button class="card-payment bank-payment" type="button" onclick="odemeFormunuAc('iban')">
-        IBAN ile Havale Yap
-    </button>
+    <!-- MÜŞTERİ FORMU -->
 
-    <p class="secure-note">Kartla güvenli ödeme veya IBAN ile banka havalesi seçeneklerinden birini kullanabilirsiniz.</p>
+    <form id="checkoutForm">
 
-<a
-id="whatsappButton"
-@@ -691,44 +691,44 @@ <h2>🛒 Sepetim</h2>
-💬 WhatsApp'tan Sipariş Ver
-</a>
+      <div class="form-grid">
 
-</div>
+        <div class="field">
 
-<div class="checkout-backdrop" id="checkoutBackdrop" role="dialog" aria-modal="true" aria-labelledby="checkoutHeading">
-    <div class="checkout-panel">
-        <div class="checkout-title">
-            <div><h2 id="checkoutHeading">Teslimat Bilgileri</h2><p>Ödeme öncesi sipariş bilgilerinizi tamamlayın.</p></div>
-            <button class="close-cart" type="button" onclick="odemeFormunuKapat()" aria-label="Kapat">✕</button>
+          <label for="customerName">
+            Ad
+          </label>
+
+          <input
+            id="customerName"
+            name="name"
+            autocomplete="given-name"
+            required
+          >
+
         </div>
-        <form id="checkoutForm">
-            <div class="payment-methods" aria-label="Ödeme yöntemi">
-                <button class="payment-method active" id="cardMethod" type="button" onclick="odemeYontemiSec('card')" aria-pressed="true">Kredi / Banka Kartı</button>
-                <button class="payment-method" id="ibanMethod" type="button" onclick="odemeYontemiSec('iban')" aria-pressed="false">IBAN ile Havale</button>
-            </div>
-            <div class="iban-details" id="ibanDetails">
-                <small>Hesap sahibi</small>
-                <div class="iban-owner">EŞREF CAN TURAN</div>
-                <small>IBAN</small>
-                <div class="iban-row">
-                    <span class="iban-number">TR58 0015 7000 0000 0203 1694 54</span>
-                    <button class="copy-iban" id="copyIbanButton" type="button" onclick="ibanKopyala()">Kopyala</button>
-                </div>
-                <p class="iban-note">Siparişi oluşturduktan sonra açılan WhatsApp mesajını gönderin. Havale açıklamasına adınızı ve soyadınızı yazın.</p>
-            </div>
-            <div class="checkout-grid">
-                <div class="checkout-field"><label for="customerName">Ad</label><input id="customerName" name="name" autocomplete="given-name" required></div>
-                <div class="checkout-field"><label for="customerSurname">Soyad</label><input id="customerSurname" name="surname" autocomplete="family-name" required></div>
-                <div class="checkout-field"><label for="customerEmail">E-posta</label><input id="customerEmail" name="email" type="email" autocomplete="email" required></div>
-                <div class="checkout-field"><label for="customerPhone">Telefon</label><input id="customerPhone" name="phone" type="tel" autocomplete="tel" placeholder="+90 5xx xxx xx xx" required></div>
-                <div class="checkout-field" id="identityField"><label for="identityNumber">T.C. Kimlik / Vergi No</label><input id="identityNumber" name="identityNumber" inputmode="numeric" required></div>
-                <div class="checkout-field"><label for="customerCity">Şehir</label><input id="customerCity" name="city" autocomplete="address-level1" required></div>
-                <div class="checkout-field"><label for="customerZip">Posta kodu</label><input id="customerZip" name="zipCode" inputmode="numeric" autocomplete="postal-code" required></div>
-                <div class="checkout-field full"><label for="customerAddress">Açık adres</label><textarea id="customerAddress" name="address" rows="3" autocomplete="street-address" required></textarea></div>
-            </div>
-            <div class="checkout-error" id="checkoutError" role="alert"></div>
-            <button class="checkout-submit" id="checkoutSubmit" type="submit">iyzico ile Ödemeye Geç</button>
-        </form>
-    </div>
-</div>
-</div>
 
-<div class="checkout-backdrop" id="checkoutBackdrop" role="dialog" aria-modal="true" aria-labelledby="checkoutHeading">
-    <div class="checkout-panel">
-        <div class="checkout-title">
-            <div><h2 id="checkoutHeading">Teslimat Bilgileri</h2><p>Ödeme öncesi sipariş bilgilerinizi tamamlayın.</p></div>
-            <button class="close-cart" type="button" onclick="odemeFormunuKapat()" aria-label="Kapat">✕</button>
+
+        <div class="field">
+
+          <label for="customerSurname">
+            Soyad
+          </label>
+
+          <input
+            id="customerSurname"
+            name="surname"
+            autocomplete="family-name"
+            required
+          >
+
         </div>
-        <form id="checkoutForm">
-            <div class="payment-methods" aria-label="Ödeme yöntemi">
-                <button class="payment-method active" id="cardMethod" type="button" onclick="odemeYontemiSec('card')" aria-pressed="true">Kredi / Banka Kartı</button>
-                <button class="payment-method" id="ibanMethod" type="button" onclick="odemeYontemiSec('iban')" aria-pressed="false">IBAN ile Havale</button>
-            </div>
-            <div class="iban-details" id="ibanDetails">
-                <small>Hesap sahibi</small>
-                <div class="iban-owner">EŞREF CAN TURAN</div>
-                <small>IBAN</small>
-                <div class="iban-row">
-                    <span class="iban-number">TR58 0015 7000 0000 0203 1694 54</span>
-                    <button class="copy-iban" id="copyIbanButton" type="button" onclick="ibanKopyala()">Kopyala</button>
-                </div>
-                <p class="iban-note">Siparişi oluşturduktan sonra açılan WhatsApp mesajını gönderin. Havale açıklamasına adınızı ve soyadınızı yazın.</p>
-            </div>
-            <div class="checkout-grid">
-                <div class="checkout-field"><label for="customerName">Ad</label><input id="customerName" name="name" autocomplete="given-name" required></div>
-                <div class="checkout-field"><label for="customerSurname">Soyad</label><input id="customerSurname" name="surname" autocomplete="family-name" required></div>
-                <div class="checkout-field"><label for="customerEmail">E-posta</label><input id="customerEmail" name="email" type="email" autocomplete="email" required></div>
-                <div class="checkout-field"><label for="customerPhone">Telefon</label><input id="customerPhone" name="phone" type="tel" autocomplete="tel" placeholder="+90 5xx xxx xx xx" required></div>
-                <div class="checkout-field" id="identityField"><label for="identityNumber">T.C. Kimlik / Vergi No</label><input id="identityNumber" name="identityNumber" inputmode="numeric" required></div>
-                <div class="checkout-field"><label for="customerCity">Şehir</label><input id="customerCity" name="city" autocomplete="address-level1" required></div>
-                <div class="checkout-field"><label for="customerZip">Posta kodu</label><input id="customerZip" name="zipCode" inputmode="numeric" autocomplete="postal-code" required></div>
-                <div class="checkout-field full"><label for="customerAddress">Açık adres</label><textarea id="customerAddress" name="address" rows="3" autocomplete="street-address" required></textarea></div>
-            </div>
-            <div class="checkout-error" id="checkoutError" role="alert"></div>
-            <button class="checkout-submit" id="checkoutSubmit" type="submit">iyzico ile Ödemeye Geç</button>
-        </form>
-    </div>
+
+
+        <div class="field">
+
+          <label for="customerEmail">
+            E-posta
+          </label>
+
+          <input
+            id="customerEmail"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="customerPhone">
+            Telefon
+          </label>
+
+          <input
+            id="customerPhone"
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            placeholder="+90 5xx xxx xx xx"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="customerCity">
+            Şehir
+          </label>
+
+          <input
+            id="customerCity"
+            name="city"
+            autocomplete="address-level1"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="customerZip">
+            Posta kodu
+          </label>
+
+          <input
+            id="customerZip"
+            name="zipCode"
+            inputmode="numeric"
+            autocomplete="postal-code"
+            required
+          >
+
+        </div>
+
+
+        <div class="field full">
+
+          <label for="customerAddress">
+            Açık adres
+          </label>
+
+          <textarea
+            id="customerAddress"
+            name="address"
+            rows="3"
+            autocomplete="street-address"
+            required
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="error"
+        id="checkoutError"
+        role="alert"
+      ></div>
+
+
+      <button
+        class="submit"
+        id="checkoutSubmit"
+        type="submit"
+      >
+        Havale Siparişi Oluştur
+      </button>
+
+    </form>
+
+  </div>
+
 </div>
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
-@@ -737,29 +737,29 @@ <h2>🛒 Sepetim</h2>
+"use strict";
 
-1: {
-ad: "Gül Bahçesi Şal",
-        fiyat: 899,
-        fiyat: 899,
-stok: 250
-},
 
-2: {
-ad: "Kahve Tonları Eşarp",
-        fiyat: 899,
-        fiyat: 899,
-stok: 250
-},
+/* ÜRÜNLER */
 
-3: {
-ad: "Vintage Pudra Şal",
-        fiyat: 899,
-        fiyat: 899,
-stok: 250
-}
+const urunler = {
+
+  1: {
+    ad: "Gül Bahçesi Şal",
+    fiyat: 1899,
+    stok: 250
+  },
+
+  2: {
+    ad: "Kahve Tonları Eşarp",
+    fiyat: 1899,
+    stok: 250
+  },
+
+  3: {
+    ad: "Vintage Pudra Şal",
+    fiyat: 1899,
+    stok: 250
+  }
 
 };
 
+
 let sepet = {};
-let odemeYontemi = "card";
-const IBAN = "TR580015700000000203169454";
-const HESAP_SAHIBI = "EŞREF CAN TURAN";
-const WHATSAPP_TELEFON = "905555555555";
-let sepet = {};
-let odemeYontemi = "card";
-const IBAN = "TR580015700000000203169454";
-const HESAP_SAHIBI = "EŞREF CAN TURAN";
-const WHATSAPP_TELEFON = "905555555555";
 
 
-/* SEPETE ÜRÜN EKLE */
-@@ -925,7 +925,7 @@ <h4>${urun.ad}</h4>
+const IBAN =
+  "TR580015700000000203169454";
 
-/* WHATSAPP SİPARİŞ */
+const HESAP_SAHIBI =
+  "EŞREF CAN TURAN";
 
-function whatsappSiparis() {
-function whatsappSiparis() {
+const WHATSAPP_TELEFON =
+  "905313089629";
 
-if (Object.keys(sepet).length === 0) {
 
-@@ -970,117 +970,117 @@ <h4>${urun.ad}</h4>
-      905551234567
-   */
+/* =====================================================
+   SEPETE EKLE
+===================================================== */
 
-    const url =
-        "https://wa.me/" +
-        WHATSAPP_TELEFON +
-    const url =
-        "https://wa.me/" +
-        WHATSAPP_TELEFON +
-"?text=" +
-mesaj;
+function sepeteEkle(id){
 
-document.getElementById("whatsappButton")
-.href = url;
+  const urun = urunler[id];
+
+  if(!urun){
+    return;
+  }
+
+
+  const mevcut =
+    sepet[id] || 0;
+
+
+  if(mevcut >= urun.stok){
+
+    alert("Bu ürün için stok kalmadı.");
+
+    return;
+
+  }
+
+
+  sepet[id] =
+    mevcut + 1;
+
+
+  sepetGuncelle();
+
+  sepetAc();
+
 }
 
-function odemeFormunuAc(yontem = "card") {
-    if (Object.keys(sepet).length === 0) {
-        alert("Önce sepete ürün ekleyin.");
-        return;
+
+/* =====================================================
+   SEPETİ GÜNCELLE
+===================================================== */
+
+function sepetGuncelle(){
+
+  const alan =
+    document.getElementById("sepetIcerik");
+
+
+  let toplam = 0;
+
+  let adet = 0;
+
+
+  alan.innerHTML = "";
+
+
+  Object.keys(sepet).forEach(id=>{
+
+    const urun =
+      urunler[id];
+
+
+    const miktar =
+      sepet[id];
+
+
+    toplam +=
+      urun.fiyat * miktar;
+
+
+    adet +=
+      miktar;
+
+
+    alan.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="cart-item">
+
+        <h4>
+          ${escapeHtml(urun.ad)}
+        </h4>
+
+        <div class="cart-item-price">
+          ₺${urun.fiyat.toLocaleString("tr-TR")}
+          × ${miktar}
+        </div>
+
+
+        <div class="quantity">
+
+          <button
+            type="button"
+            onclick="adetAzalt(${id})"
+          >
+            −
+          </button>
+
+          <strong>
+            ${miktar}
+          </strong>
+
+          <button
+            type="button"
+            onclick="adetArtir(${id})"
+          >
+            +
+          </button>
+
+        </div>
+
+
+        <button
+          class="remove"
+          type="button"
+          onclick="urunSil(${id})"
+        >
+          Ürünü Sil
+        </button>
+
+      </div>
+      `
+    );
+
+  });
+
+
+  if(adet === 0){
+
+    alan.innerHTML =
+      '<div class="empty">Sepetiniz şu anda boş.</div>';
+
+  }
+
+
+  document.getElementById("toplam")
+    .textContent =
+    toplam.toLocaleString("tr-TR");
+
+
+  document.getElementById("sepetSayisi")
+    .textContent =
+    adet;
+
+
+  whatsappLinkHazirla();
+
+}
+
+
+/* =====================================================
+   ADET ARTIR
+===================================================== */
+
+function adetArtir(id){
+
+  if(!urunler[id]){
+    return;
+  }
+
+
+  if(
+    (sepet[id] || 0)
+    < urunler[id].stok
+  ){
+
+    sepet[id]++;
+
+    sepetGuncelle();
+
+  }else{
+
+    alert("Bu ürün için stok kalmadı.");
+
+  }
+
+}
+
+
+/* =====================================================
+   ADET AZALT
+===================================================== */
+
+function adetAzalt(id){
+
+  if(!sepet[id]){
+    return;
+  }
+
+
+  if(sepet[id] > 1){
+
+    sepet[id]--;
+
+  }else{
+
+    delete sepet[id];
+
+  }
+
+
+  sepetGuncelle();
+
+}
+
+
+/* =====================================================
+   ÜRÜN SİL
+===================================================== */
+
+function urunSil(id){
+
+  delete sepet[id];
+
+  sepetGuncelle();
+
+}
+
+
+/* =====================================================
+   SEPET AÇ / KAPAT
+===================================================== */
+
+function sepetAc(){
+
+  document
+    .getElementById("cart")
+    .classList.add("open");
+
+}
+
+
+function sepetKapat(){
+
+  document
+    .getElementById("cart")
+    .classList.remove("open");
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+function whatsappLinkHazirla(){
+
+  const button =
+    document.getElementById("whatsappButton");
+
+
+  if(
+    Object.keys(sepet).length === 0
+  ){
+
+    button.href = "#";
+
+    return;
+
+  }
+
+
+  let toplam = 0;
+
+  const satirlar = [];
+
+
+  Object.entries(sepet).forEach(
+    ([id,miktar])=>{
+
+      const urun =
+        urunler[id];
+
+
+      const araToplam =
+        urun.fiyat * miktar;
+
+
+      toplam +=
+        araToplam;
+
+
+      satirlar.push(
+        `• ${urun.ad} - ${miktar} adet - ₺${araToplam.toLocaleString("tr-TR")}`
+      );
+
     }
-    odemeYontemiSec(yontem);
-    document.getElementById("checkoutBackdrop").classList.add("open");
-    document.getElementById("customerName").focus();
+  );
+
+
+  const mesaj = [
+
+    "Merhaba, web sitenizden sipariş vermek istiyorum:",
+
+    "",
+
+    ...satirlar,
+
+    "",
+
+    `Toplam: ₺${toplam.toLocaleString("tr-TR")}`,
+
+    "Ödeme: IBAN / Havale"
+
+  ].join("\n");
+
+
+  button.href =
+    `https://wa.me/${WHATSAPP_TELEFON}?text=${encodeURIComponent(mesaj)}`;
+
 }
 
-function odemeYontemiSec(yontem) {
-    odemeYontemi = yontem;
-    const ibanMi = yontem === "iban";
-    document.getElementById("cardMethod").classList.toggle("active", !ibanMi);
-    document.getElementById("ibanMethod").classList.toggle("active", ibanMi);
-    document.getElementById("cardMethod").setAttribute("aria-pressed", String(!ibanMi));
-    document.getElementById("ibanMethod").setAttribute("aria-pressed", String(ibanMi));
-    document.getElementById("ibanDetails").classList.toggle("open", ibanMi);
-    document.getElementById("identityField").style.display = ibanMi ? "none" : "grid";
-    document.getElementById("identityNumber").required = !ibanMi;
-    document.getElementById("checkoutSubmit").textContent = ibanMi ? "Havale Siparişi Oluştur" : "iyzico ile Ödemeye Geç";
-    document.querySelector(".checkout-title p").textContent = ibanMi
-        ? "Teslimat bilgilerinizi tamamlayın, siparişinizi WhatsApp ile iletin."
-        : "Ödeme öncesi sipariş bilgilerinizi tamamlayın.";
-}
 
-async function ibanKopyala() {
-    const button = document.getElementById("copyIbanButton");
-    try {
-        await navigator.clipboard.writeText(IBAN);
-        button.textContent = "Kopyalandı";
-        setTimeout(() => { button.textContent = "Kopyala"; }, 1800);
-    } catch {
-        button.textContent = "Seçip kopyalayın";
-    }
-}
+/* =====================================================
+   WHATSAPP KONTROL
+===================================================== */
 
-function havaleSiparisiOlustur(customer) {
-    let toplam = 0;
-    const urunSatirlari = Object.entries(sepet).map(([id, miktar]) => {
-        const urun = urunler[id];
-        const araToplam = urun.fiyat * miktar;
-        toplam += araToplam;
-        return `• ${urun.ad} - ${miktar} adet - ₺${araToplam.toLocaleString("tr-TR")}`;
-    });
-    const mesaj = [
-        "Merhaba, IBAN ile ödeme siparişi vermek istiyorum:", "", ...urunSatirlari,
-        "", `Toplam: ₺${toplam.toLocaleString("tr-TR")}`, `Ödeme: IBAN / Havale`,
-        "", `Ad Soyad: ${customer.name} ${customer.surname}`, `Telefon: ${customer.phone}`,
-        `E-posta: ${customer.email}`, `Adres: ${customer.address}, ${customer.zipCode} ${customer.city}`,
-        "", `Hesap Sahibi: ${HESAP_SAHIBI}`, `IBAN: ${IBAN}`
-    ].join("\n");
-    window.open(`https://wa.me/${WHATSAPP_TELEFON}?text=${encodeURIComponent(mesaj)}`, "_blank", "noopener");
-}
+function whatsappSiparis(event){
 
-function odemeFormunuKapat() {
-    document.getElementById("checkoutBackdrop").classList.remove("open");
-}
+  if(
+    Object.keys(sepet).length === 0
+  ){
 
-document.getElementById("checkoutForm").addEventListener("submit", async function(event) {
     event.preventDefault();
-    const button = document.getElementById("checkoutSubmit");
-    const errorArea = document.getElementById("checkoutError");
-    button.disabled = true;
-    button.textContent = "Güvenli ödeme hazırlanıyor…";
-    errorArea.textContent = "";
 
-    const customer = Object.fromEntries(new FormData(event.currentTarget).entries());
-    const cart = Object.entries(sepet).map(([id, quantity]) => ({ id: Number(id), quantity }));
-    if (odemeYontemi === "iban") {
-        havaleSiparisiOlustur(customer);
-        button.disabled = false;
-        button.textContent = "Havale Siparişi Oluştur";
-        return;
+    alert(
+      "Önce sepete ürün ekleyin."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   SİPARİŞ FORMUNU AÇ
+===================================================== */
+
+function odemeFormunuAc(){
+
+  if(
+    Object.keys(sepet).length === 0
+  ){
+
+    alert(
+      "Önce sepete ürün ekleyin."
+    );
+
+    return;
+
+  }
+
+
+  document
+    .getElementById("checkoutBackdrop")
+    .classList.add("open");
+
+
+  setTimeout(
+    ()=>{
+      document
+        .getElementById("customerName")
+        .focus();
+    },
+    50
+  );
+
+}
+
+
+/* =====================================================
+   SİPARİŞ FORMUNU KAPAT
+===================================================== */
+
+function odemeFormunuKapat(){
+
+  document
+    .getElementById("checkoutBackdrop")
+    .classList.remove("open");
+
+
+  document
+    .getElementById("checkoutError")
+    .textContent = "";
+
+}
+
+
+/* =====================================================
+   IBAN KOPYALA
+===================================================== */
+
+async function ibanKopyala(){
+
+  const button =
+    document.getElementById(
+      "copyIbanButton"
+    );
+
+
+  try{
+
+    await navigator.clipboard
+      .writeText(IBAN);
+
+
+    button.textContent =
+      "Kopyalandı";
+
+
+    setTimeout(
+      ()=>{
+        button.textContent =
+          "Kopyala";
+      },
+      1800
+    );
+
+
+  }catch{
+
+    button.textContent =
+      "Kopyalanamadı";
+
+  }
+
+}
+
+
+/* =====================================================
+   HAVALE SİPARİŞİ
+===================================================== */
+
+function havaleSiparisiOlustur(
+  customer
+){
+
+  let toplam = 0;
+
+  const urunSatirlari = [];
+
+
+  Object.entries(sepet).forEach(
+    ([id,miktar])=>{
+
+      const urun =
+        urunler[id];
+
+
+      const araToplam =
+        urun.fiyat * miktar;
+
+
+      toplam +=
+        araToplam;
+
+
+      urunSatirlari.push(
+        `• ${urun.ad} - ${miktar} adet - ₺${araToplam.toLocaleString("tr-TR")}`
+      );
+
     }
-    try {
-        const response = await fetch("/api/iyzico-checkout", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ customer, cart })
-        });
-        const result = await response.json();
-        if (!response.ok || !result.paymentPageUrl) throw new Error(result.error || "Ödeme başlatılamadı.");
-        window.location.assign(result.paymentPageUrl);
-    } catch (error) {
-        errorArea.textContent = error.message || "Bir bağlantı hatası oluştu. Lütfen tekrar deneyin.";
-        button.disabled = false;
-        button.textContent = "iyzico ile Ödemeye Geç";
+  );
+
+
+  const mesaj = [
+
+    "Merhaba, IBAN ile ödeme siparişi vermek istiyorum:",
+
+    "",
+
+    ...urunSatirlari,
+
+    "",
+
+    `Toplam: ₺${toplam.toLocaleString("tr-TR")}`,
+
+    "Ödeme: IBAN / Havale",
+
+    "",
+
+    `Ad Soyad: ${customer.name} ${customer.surname}`,
+
+    `Telefon: ${customer.phone}`,
+
+    `E-posta: ${customer.email}`,
+
+    `Adres: ${customer.address}, ${customer.zipCode} ${customer.city}`,
+
+    "",
+
+    `Hesap Sahibi: ${HESAP_SAHIBI}`,
+
+    `IBAN: ${IBAN}`
+
+  ].join("\n");
+
+
+  window.open(
+    `https://wa.me/${WHATSAPP_TELEFON}?text=${encodeURIComponent(mesaj)}`,
+    "_blank",
+    "noopener"
+  );
+
+}
+
+
+/* =====================================================
+   FORM GÖNDER
+===================================================== */
+
+document
+  .getElementById("checkoutForm")
+  .addEventListener(
+    "submit",
+    function(event){
+
+      event.preventDefault();
+
+
+      const button =
+        document.getElementById(
+          "checkoutSubmit"
+        );
+
+
+      const errorArea =
+        document.getElementById(
+          "checkoutError"
+        );
+
+
+      button.disabled = true;
+
+      errorArea.textContent = "";
+
+
+      const customer =
+        Object.fromEntries(
+          new FormData(
+            event.currentTarget
+          ).entries()
+        );
+
+
+      try{
+
+        havaleSiparisiOlustur(
+          customer
+        );
+
+
+        button.textContent =
+          "WhatsApp açılıyor…";
+
+
+      }catch(error){
+
+        errorArea.textContent =
+          "Sipariş oluşturulamadı. Lütfen tekrar deneyin.";
+
+      }
+
+
+      setTimeout(
+        ()=>{
+          button.disabled = false;
+
+          button.textContent =
+            "Havale Siparişi Oluştur";
+        },
+        1200
+      );
+
     }
-});
+  );
 
-const paymentState = new URLSearchParams(window.location.search).get("payment");
-if (paymentState) {
-    const message = document.getElementById("paymentMessage");
-    message.classList.add(paymentState === "success" ? "success" : "failed");
-    message.textContent = paymentState === "success"
-        ? "Ödemeniz başarıyla alındı. Siparişiniz hazırlanıyor."
-        : "Ödeme tamamlanamadı. Kart bilgilerinizi kontrol edip tekrar deneyin.";
-    if (paymentState === "success") sepet = {};
-    history.replaceState({}, "", window.location.pathname + window.location.hash);
-}
+
+/* =====================================================
+   GÜVENLİK
+===================================================== */
+
+function escapeHtml(value){
+
+  return String(value).replace(
+    /[&<>"']/g,
+    char=>({
+
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+
+    }[char])
+  );
+
 }
 
-function odemeFormunuAc(yontem = "card") {
-    if (Object.keys(sepet).length === 0) {
-        alert("Önce sepete ürün ekleyin.");
-        return;
+
+/* MODAL DIŞINA TIKLAMA */
+
+document
+  .getElementById("checkoutBackdrop")
+  .addEventListener(
+    "click",
+    function(event){
+
+      if(event.target === this){
+
+        odemeFormunuKapat();
+
+      }
+
     }
-    odemeYontemiSec(yontem);
-    document.getElementById("checkoutBackdrop").classList.add("open");
-    document.getElementById("customerName").focus();
-}
+  );
 
-function odemeYontemiSec(yontem) {
-    odemeYontemi = yontem;
-    const ibanMi = yontem === "iban";
-    document.getElementById("cardMethod").classList.toggle("active", !ibanMi);
-    document.getElementById("ibanMethod").classList.toggle("active", ibanMi);
-    document.getElementById("cardMethod").setAttribute("aria-pressed", String(!ibanMi));
-    document.getElementById("ibanMethod").setAttribute("aria-pressed", String(ibanMi));
-    document.getElementById("ibanDetails").classList.toggle("open", ibanMi);
-    document.getElementById("identityField").style.display = ibanMi ? "none" : "grid";
-    document.getElementById("identityNumber").required = !ibanMi;
-    document.getElementById("checkoutSubmit").textContent = ibanMi ? "Havale Siparişi Oluştur" : "iyzico ile Ödemeye Geç";
-    document.querySelector(".checkout-title p").textContent = ibanMi
-        ? "Teslimat bilgilerinizi tamamlayın, siparişinizi WhatsApp ile iletin."
-        : "Ödeme öncesi sipariş bilgilerinizi tamamlayın.";
-}
 
-async function ibanKopyala() {
-    const button = document.getElementById("copyIbanButton");
-    try {
-        await navigator.clipboard.writeText(IBAN);
-        button.textContent = "Kopyalandı";
-        setTimeout(() => { button.textContent = "Kopyala"; }, 1800);
-    } catch {
-        button.textContent = "Seçip kopyalayın";
+/* ESC */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      odemeFormunuKapat();
+
+      sepetKapat();
+
     }
-}
 
-function havaleSiparisiOlustur(customer) {
-    let toplam = 0;
-    const urunSatirlari = Object.entries(sepet).map(([id, miktar]) => {
-        const urun = urunler[id];
-        const araToplam = urun.fiyat * miktar;
-        toplam += araToplam;
-        return `• ${urun.ad} - ${miktar} adet - ₺${araToplam.toLocaleString("tr-TR")}`;
-    });
-    const mesaj = [
-        "Merhaba, IBAN ile ödeme siparişi vermek istiyorum:", "", ...urunSatirlari,
-        "", `Toplam: ₺${toplam.toLocaleString("tr-TR")}`, `Ödeme: IBAN / Havale`,
-        "", `Ad Soyad: ${customer.name} ${customer.surname}`, `Telefon: ${customer.phone}`,
-        `E-posta: ${customer.email}`, `Adres: ${customer.address}, ${customer.zipCode} ${customer.city}`,
-        "", `Hesap Sahibi: ${HESAP_SAHIBI}`, `IBAN: ${IBAN}`
-    ].join("\n");
-    window.open(`https://wa.me/${WHATSAPP_TELEFON}?text=${encodeURIComponent(mesaj)}`, "_blank", "noopener");
-}
-
-function odemeFormunuKapat() {
-    document.getElementById("checkoutBackdrop").classList.remove("open");
-}
-
-document.getElementById("checkoutForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
-    const button = document.getElementById("checkoutSubmit");
-    const errorArea = document.getElementById("checkoutError");
-    button.disabled = true;
-    button.textContent = "Güvenli ödeme hazırlanıyor…";
-    errorArea.textContent = "";
-
-    const customer = Object.fromEntries(new FormData(event.currentTarget).entries());
-    const cart = Object.entries(sepet).map(([id, quantity]) => ({ id: Number(id), quantity }));
-    if (odemeYontemi === "iban") {
-        havaleSiparisiOlustur(customer);
-        button.disabled = false;
-        button.textContent = "Havale Siparişi Oluştur";
-        return;
-    }
-    try {
-        const response = await fetch("/api/iyzico-checkout", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ customer, cart })
-        });
-        const result = await response.json();
-        if (!response.ok || !result.paymentPageUrl) throw new Error(result.error || "Ödeme başlatılamadı.");
-        window.location.assign(result.paymentPageUrl);
-    } catch (error) {
-        errorArea.textContent = error.message || "Bir bağlantı hatası oluştu. Lütfen tekrar deneyin.";
-        button.disabled = false;
-        button.textContent = "iyzico ile Ödemeye Geç";
-    }
-});
-
-const paymentState = new URLSearchParams(window.location.search).get("payment");
-if (paymentState) {
-    const message = document.getElementById("paymentMessage");
-    message.classList.add(paymentState === "success" ? "success" : "failed");
-    message.textContent = paymentState === "success"
-        ? "Ödemeniz başarıyla alındı. Siparişiniz hazırlanıyor."
-        : "Ödeme tamamlanamadı. Kart bilgilerinizi kontrol edip tekrar deneyin.";
-    if (paymentState === "success") sepet = {};
-    history.replaceState({}, "", window.location.pathname + window.location.hash);
-}
+  }
+);
 
 
 /* BAŞLANGIÇ */
-@@ -1090,4 +1090,4 @@ <h4>${urun.ad}</h4>
-</script>
 
-</body>
-</html>
-</html>
+sepetGuncelle();
+
+</script>
