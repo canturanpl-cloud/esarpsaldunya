@@ -1,1626 +1,1430 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="Eşarp ve Şal Dünyası — Zarif, zamansız ve özenle seçilmiş eşarp ve şallar.">
+  <meta name="description"
+        content="Eşarp ve Şal Dünyası — Zarif, zamansız ve özenle seçilmiş eşarp ve şallar.">
 
-<title>Eşarp ve Şal Dünyası | Premium Koleksiyon</title>
+  <title>Eşarp ve Şal Dünyası | Premium Koleksiyon</title>
 
-<style>
-:root{
-  --ink:#281d1a;
-  --brown:#51352d;
-  --brown2:#765147;
-  --gold:#b58a52;
-  --gold-light:#d7b98b;
-  --cream:#f6eee6;
-  --paper:#fffaf6;
-  --soft:#eadbd0;
-  --line:rgba(45,33,30,.13);
-  --white:#fff;
-  --green:#25d366;
-  --shadow:0 25px 70px rgba(48,30,24,.14);
-}
+  <style>
+    :root {
+      --ink: #281d1a;
+      --brown: #51352d;
+      --brown-light: #765147;
+      --gold: #b58a52;
+      --gold-light: #d7b98b;
+      --cream: #f6eee6;
+      --paper: #fffaf6;
+      --soft: #eadbd0;
+      --white: #fff;
+      --green: #25d366;
+      --dark: #2b1e1b;
+      --line: rgba(45, 33, 30, .13);
+      --shadow: 0 25px 70px rgba(48, 30, 24, .14);
+    }
 
-*{
-  box-sizing:border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-html{
-  scroll-behavior:smooth;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body{
-  margin:0;
-  font-family:"Avenir Next","Segoe UI",Arial,sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  overflow-x:hidden;
-}
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+      overflow-x: hidden;
+    }
 
-body.loading{
-  overflow:hidden;
-}
+    body.loading {
+      overflow: hidden;
+    }
 
-button,
-input,
-textarea{
-  font:inherit;
-}
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
 
-button,
-a{
-  -webkit-tap-highlight-color:transparent;
-}
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
 
-a{
-  color:inherit;
-}
+    a {
+      color: inherit;
+    }
 
+    /* =========================
+       LOADER
+    ========================= */
 
-/* =========================================================
-   LOADING SCREEN
-========================================================= */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: grid;
+      place-items: center;
+      background: #2a1e1a;
+      color: #f6e8da;
+      transition: opacity .7s ease, visibility .7s ease;
+    }
 
-.loader{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  display:grid;
-  place-items:center;
-  background:#2a1e1a;
-  color:#f6e8da;
-  transition:opacity .8s ease,visibility .8s ease;
-}
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
 
-.loader.hide{
-  opacity:0;
-  visibility:hidden;
-}
+    .loader-inner {
+      text-align: center;
+      animation: loaderReveal 1s ease both;
+    }
 
-.loader-inner{
-  text-align:center;
-  animation:loaderReveal 1.3s ease both;
-}
+    .loader-logo {
+      font: 400 clamp(34px, 7vw, 64px) Georgia, serif;
+      letter-spacing: -.04em;
+    }
 
-.loader-logo{
-  font:400 clamp(35px,7vw,65px) Georgia,serif;
-  letter-spacing:-.04em;
-}
+    .loader-sub {
+      margin-top: 12px;
+      color: #c9a77d;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+    }
 
-.loader-sub{
-  margin-top:12px;
-  color:#c9a77d;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:.35em;
-  text-transform:uppercase;
-}
+    .loader-line {
+      width: 80px;
+      height: 1px;
+      margin: 28px auto 0;
+      background: var(--gold);
+      animation: loaderLine 1.5s ease infinite;
+    }
 
-.loader-line{
-  width:80px;
-  height:1px;
-  margin:28px auto 0;
-  background:#b58a52;
-  animation:loaderLine 1.5s ease infinite;
-}
+    @keyframes loaderReveal {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
 
-@keyframes loaderReveal{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
 
-@keyframes loaderLine{
-  0%,100%{transform:scaleX(.3);opacity:.4}
-  50%{transform:scaleX(1);opacity:1}
-}
+    @keyframes loaderLine {
+      0%, 100% {
+        transform: scaleX(.3);
+        opacity: .4;
+      }
 
+      50% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+    }
 
-/* =========================================================
-   FLOWER PETALS
-========================================================= */
+    /* =========================
+       PETALS
+    ========================= */
 
-.petals{
-  position:fixed;
-  inset:0;
-  z-index:5;
-  pointer-events:none;
-  overflow:hidden;
-}
+    .petals {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      overflow: hidden;
+    }
 
-.petal{
-  position:absolute;
-  top:-60px;
-  width:12px;
-  height:18px;
-  border-radius:80% 15% 80% 15%;
-  background:linear-gradient(135deg,#fff8f3,#d8a9a5);
-  opacity:.7;
-  filter:blur(.1px);
-  animation:fall linear infinite;
-}
+    .petal {
+      position: absolute;
+      top: -60px;
+      width: 12px;
+      height: 18px;
+      border-radius: 80% 15% 80% 15%;
+      background: linear-gradient(135deg, #fff8f3, #d8a9a5);
+      opacity: .55;
+      animation: fall linear infinite;
+    }
 
-.petal:nth-child(1){left:4%;animation-duration:12s;animation-delay:-3s}
-.petal:nth-child(2){left:12%;animation-duration:16s;animation-delay:-8s;transform:scale(.7)}
-.petal:nth-child(3){left:23%;animation-duration:13s;animation-delay:-5s;transform:scale(.55)}
-.petal:nth-child(4){left:34%;animation-duration:18s;animation-delay:-11s}
-.petal:nth-child(5){left:47%;animation-duration:14s;animation-delay:-2s;transform:scale(.8)}
-.petal:nth-child(6){left:58%;animation-duration:19s;animation-delay:-7s}
-.petal:nth-child(7){left:70%;animation-duration:15s;animation-delay:-9s;transform:scale(.65)}
-.petal:nth-child(8){left:81%;animation-duration:17s;animation-delay:-4s}
-.petal:nth-child(9){left:91%;animation-duration:13s;animation-delay:-6s;transform:scale(.75)}
+    .petal:nth-child(1) {
+      left: 4%;
+      animation-duration: 12s;
+      animation-delay: -3s;
+    }
 
-@keyframes fall{
-  0%{
-    transform:translate3d(0,-80px,0) rotate(0deg);
-  }
-  25%{
-    transform:translate3d(45px,25vh,0) rotate(100deg);
-  }
-  50%{
-    transform:translate3d(-40px,50vh,0) rotate(220deg);
-  }
-  75%{
-    transform:translate3d(60px,75vh,0) rotate(300deg);
-  }
-  100%{
-    transform:translate3d(-30px,110vh,0) rotate(430deg);
-  }
-}
+    .petal:nth-child(2) {
+      left: 12%;
+      animation-duration: 16s;
+      animation-delay: -8s;
+      transform: scale(.7);
+    }
 
+    .petal:nth-child(3) {
+      left: 23%;
+      animation-duration: 13s;
+      animation-delay: -5s;
+      transform: scale(.55);
+    }
 
-/* =========================================================
-   ANNOUNCEMENT
-========================================================= */
+    .petal:nth-child(4) {
+      left: 34%;
+      animation-duration: 18s;
+      animation-delay: -11s;
+    }
 
-.announcement{
-  position:relative;
-  z-index:20;
-  overflow:hidden;
-  background:#2b1e1b;
-  color:#f4e5d5;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  white-space:nowrap;
-}
+    .petal:nth-child(5) {
+      left: 47%;
+      animation-duration: 14s;
+      animation-delay: -2s;
+      transform: scale(.8);
+    }
 
-.announcement-track{
-  display:flex;
-  width:max-content;
-  animation:marquee 28s linear infinite;
-}
+    .petal:nth-child(6) {
+      left: 58%;
+      animation-duration: 19s;
+      animation-delay: -7s;
+    }
 
-.announcement-track span{
-  display:flex;
-  align-items:center;
-  gap:28px;
-  padding:10px 30px;
-}
+    .petal:nth-child(7) {
+      left: 70%;
+      animation-duration: 15s;
+      animation-delay: -9s;
+      transform: scale(.65);
+    }
 
-.announcement-track i{
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background:var(--gold);
-}
+    .petal:nth-child(8) {
+      left: 81%;
+      animation-duration: 17s;
+      animation-delay: -4s;
+    }
 
-@keyframes marquee{
-  to{
-    transform:translateX(-50%);
-  }
-}
+    .petal:nth-child(9) {
+      left: 91%;
+      animation-duration: 13s;
+      animation-delay: -6s;
+      transform: scale(.75);
+    }
 
+    @keyframes fall {
+      0% {
+        transform: translate3d(0, -80px, 0) rotate(0deg);
+      }
 
-/* =========================================================
-   HEADER
-========================================================= */
+      25% {
+        transform: translate3d(45px, 25vh, 0) rotate(100deg);
+      }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
+      50% {
+        transform: translate3d(-40px, 50vh, 0) rotate(220deg);
+      }
+
+      75% {
+        transform: translate3d(60px, 75vh, 0) rotate(300deg);
+      }
+
+      100% {
+        transform: translate3d(-30px, 110vh, 0) rotate(430deg);
+      }
+    }
+
+    /* =========================
+       ANNOUNCEMENT
+    ========================= */
+
+    .announcement {
+      position: relative;
+      z-index: 20;
+      overflow: hidden;
+      background: var(--dark);
+      color: #f4e5d5;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .announcement-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+
+    .announcement-track span {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 10px 30px;
+    }
+
+    .announcement-track i {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 17px clamp(18px, 5vw, 72px);
+      background: rgba(247, 240, 232, .93);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .logo {
+      text-decoration: none;
+      font: 400 clamp(21px, 2.2vw, 31px)/1 Georgia, serif;
+      letter-spacing: -.03em;
+    }
+
+    .logo small {
+      display: block;
+      margin-top: 6px;
+      color: #8b6d5d;
+      font: 700 8px/1 "Segoe UI", Arial, sans-serif;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 2vw, 27px);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #5a4740;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .cart-button {
+      border: 0;
+      padding: 11px 17px;
+      background: var(--ink);
+      color: white;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: .25s;
+    }
+
+    .cart-button:hover {
+      background: var(--brown-light);
+      transform: translateY(-2px);
+    }
+
+    .mobile-menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      min-height: 700px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: clamp(40px, 7vw, 100px);
+      padding: clamp(55px, 8vw, 105px) clamp(20px, 8vw, 120px);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, #fffaf5 0, transparent 34%),
+        linear-gradient(115deg, #f4e7dc, #e4cdbd);
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      animation: heroText 1.2s .3s ease both;
+    }
+
+    @keyframes heroText {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 24px;
+      color: #8a654d;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .23em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      margin: 0 0 24px;
+      font: 400 clamp(54px, 7vw, 100px)/.88 Georgia, serif;
+      letter-spacing: -.055em;
+    }
+
+    .hero h1 em {
+      color: #77524b;
+      font-style: normal;
+    }
+
+    .hero-copy p {
+      max-width: 510px;
+      color: #66514a;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 18px;
+      padding: 16px 25px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: white;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      background: #6c4a43;
+      box-shadow: 0 10px 25px rgba(43, 30, 27, .15);
+    }
+
+    .hero-visual {
+      position: relative;
+      width: min(100%, 440px);
+      justify-self: center;
+      animation: heroImage 1.2s .5s ease both;
+    }
+
+    @keyframes heroImage {
+      from {
+        opacity: 0;
+        transform: translateX(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: -24px 35px 28px -26px;
+      border: 1px solid rgba(112, 76, 64, .3);
+    }
+
+    .hero-visual img {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 510px;
+      object-fit: cover;
+      object-position: center 20%;
+      box-shadow: 25px 28px 60px rgba(71, 48, 40, .18);
+    }
+
+    .seal {
+      position: absolute;
+      right: -32px;
+      bottom: 38px;
+      z-index: 2;
+      width: 110px;
+      height: 110px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      text-align: center;
+      background: #f4e6d7;
+      border: 1px solid var(--line);
+      color: #6d4e43;
+      font: italic 16px Georgia, serif;
+      transform: rotate(-8deg);
+      box-shadow: 0 15px 35px rgba(62, 38, 30, .12);
+    }
+
+    /* =========================
+       TRUST
+    ========================= */
+
+    .trust {
+      position: relative;
+      z-index: 3;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .trust-item {
+      padding: 27px 28px;
+      border-right: 1px solid var(--line);
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-icon {
+      margin-bottom: 12px;
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 7px;
+      font: 400 17px Georgia, serif;
+    }
+
+    .trust-item span {
+      color: #806c62;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    .products {
+      position: relative;
+      z-index: 2;
+      padding: 110px 20px 120px;
+    }
+
+    .section-heading {
+      max-width: 1100px;
+      margin: 0 auto 45px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 25px;
+      align-items: end;
+    }
+
+    .section-heading small,
+    .center-heading small {
+      color: #98734d;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 9px 0 0;
+      font: 400 clamp(40px, 5vw, 64px)/1 Georgia, serif;
+    }
+
+    .section-heading p {
+      max-width: 330px;
+      margin: 0;
+      color: #806d63;
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .product-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product:nth-child(2) {
+      margin-top: 58px;
+    }
+
+    .product-image {
+      position: relative;
+      height: 410px;
+      overflow: hidden;
+      background: #e3d4ca;
+      cursor: pointer;
+    }
+
+    .product-image::after {
+      content: "Hızlı İncele";
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%, 20px);
+      padding: 10px 16px;
+      background: rgba(255, 250, 246, .93);
+      color: var(--ink);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .product:hover .product-image::after {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(.84);
+      transition: transform .7s cubic-bezier(.2, .7, .2, 1), filter .3s;
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.055);
+      filter: saturate(1);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 2;
+      padding: 8px 11px;
+      background: #fffaf5;
+      color: #765147;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 21px 4px 0;
+    }
+
+    .product-info h3 {
+      margin: 0 0 9px;
+      font: 400 24px Georgia, serif;
+    }
+
+    .product-info p {
+      color: #806d63;
+      line-height: 1.6;
+    }
+
+    .price {
+      margin: 0 0 6px;
+      color: var(--ink) !important;
+      font: 400 21px Georgia, serif;
+    }
+
+    .stock {
+      margin: 0 0 15px;
+      color: #806d63 !important;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .product-actions {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+    }
+
+    .product-action {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+
+    .product-action:hover {
+      background: var(--ink);
+      color: white;
+    }
+
+    .quick-view {
+      width: 46px;
+      border: 1px solid var(--line);
+      background: #f8eee7;
+      cursor: pointer;
+      color: var(--brown);
+    }
+
+    /* =========================
+       WHY
+    ========================= */
+
+    .why {
+      padding: 105px 20px;
+      background: #f0e2d7;
+    }
+
+    .center-heading {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .center-heading h2 {
+      margin: 12px 0;
+      font: 400 clamp(40px, 5vw, 62px) Georgia, serif;
+    }
+
+    .center-heading p {
+      max-width: 600px;
+      margin: auto;
+      color: #76625a;
+      line-height: 1.7;
+    }
+
+    .why-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .why-card {
+      padding: 35px 25px;
+      text-align: center;
+      background: rgba(255, 250, 246, .75);
+      border: 1px solid rgba(80, 55, 45, .1);
+      transition: .3s;
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .why-card .icon {
+      margin-bottom: 17px;
+      color: var(--gold);
+      font-size: 29px;
+    }
+
+    .why-card h3 {
+      margin: 0 0 10px;
+      font: 400 20px Georgia, serif;
+    }
+
+    .why-card p {
+      margin: 0;
+      color: #806d63;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       EDITORIAL
+    ========================= */
+
+    .editorial {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      min-height: 550px;
+      background: #3a2925;
+      color: #f5eadd;
+    }
+
+    .editorial-image {
+      min-height: 550px;
+      background: url("assets/products/kahve-tonlari-esarp.jpg") center 34% / cover;
+      filter: saturate(.7) sepia(.1);
+    }
+
+    .editorial-copy {
+      display: grid;
+      align-content: center;
+      padding: clamp(50px, 8vw, 110px);
+    }
+
+    .editorial-copy small {
+      color: #c6a879;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    .editorial-copy h2 {
+      margin: 20px 0 22px;
+      font: 400 clamp(42px, 5vw, 70px)/.98 Georgia, serif;
+    }
+
+    .editorial-copy p {
+      max-width: 520px;
+      color: #d8c9bf;
+      line-height: 1.9;
+    }
+
+    .editorial-copy .primary-btn {
+      width: max-content;
+      background: #f5eadd;
+      color: #3a2925;
+      border-color: #f5eadd;
+    }
+
+    /* =========================
+       EXPERIENCE
+    ========================= */
+
+    .experience {
+      padding: 120px 20px;
+      background: #fbf5ef;
+    }
+
+    .experience-heading {
+      max-width: 1050px;
+      margin: 0 auto 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: end;
+    }
+
+    .experience-heading small {
+      color: #a17b52;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+    }
+
+    .experience-heading h2 {
+      margin: 12px 0 0;
+      font: 400 clamp(42px, 5vw, 68px)/.95 Georgia, serif;
+      color: #332521;
+      letter-spacing: -.04em;
+    }
+
+    .experience-heading p {
+      max-width: 420px;
+      margin: 0;
+      color: #76635b;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .experience-grid {
+      max-width: 1050px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience-card {
+      min-height: 290px;
+      padding: 35px 28px;
+      border-right: 1px solid var(--line);
+      transition: .3s;
+    }
+
+    .experience-card:last-child {
+      border-right: 0;
+    }
+
+    .experience-card:hover {
+      background: #f2e6dc;
+      transform: translateY(-4px);
+    }
+
+    .experience-number {
+      display: block;
+      margin-bottom: 35px;
+      color: #b28a54;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .15em;
+    }
+
+    .experience-icon {
+      margin-bottom: 20px;
+      color: #8a624d;
+      font: 25px Georgia, serif;
+    }
+
+    .experience-card h3 {
+      margin: 0 0 12px;
+      font: 400 22px Georgia, serif;
+    }
+
+    .experience-card p {
+      margin: 0;
+      color: #78655c;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       GIFT
+    ========================= */
+
+    .gift {
+      padding: 100px 20px;
+      background: #fffaf6;
+    }
+
+    .gift-inner {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .gift-image {
+      min-height: 370px;
+      background:
+        linear-gradient(rgba(65, 43, 36, .15), rgba(65, 43, 36, .15)),
+        url("assets/products/gul-bahcesi-sal.webp") center / cover;
+      box-shadow: var(--shadow);
+    }
+
+    .gift-copy small {
+      color: #98734d;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .gift-copy h2 {
+      margin: 15px 0;
+      font: 400 clamp(40px, 5vw, 60px) Georgia, serif;
+    }
+
+    .gift-copy p {
+      color: #76625a;
+      line-height: 1.8;
+    }
+
+    .gift-check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 22px 0;
+      font-size: 13px;
+      color: #5d4942;
+    }
+
+    .gift-check input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--brown);
+    }
+
+    /* =========================
+       REVIEWS
+    ========================= */
+
+    .reviews {
+      padding: 105px 20px;
+      background: #eadbd0;
+    }
+
+    .reviews-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review {
+      padding: 32px;
+      background: #fffaf6;
+      border: 1px solid var(--line);
+    }
+
+    .stars {
+      color: #b58a52;
+      letter-spacing: 4px;
+      margin-bottom: 18px;
+    }
+
+    .review p {
+      color: #66534b;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .review strong {
+      font: 400 18px Georgia, serif;
+    }
+
+    /* =========================
+       INSTAGRAM
+    ========================= */
+
+    .instagram {
+      padding: 100px 20px;
+      text-align: center;
+      background: #f7efe8;
+    }
+
+    .instagram-grid {
+      max-width: 1000px;
+      margin: 45px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .insta-card {
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .insta-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    .insta-card:hover img {
+      transform: scale(1.08);
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      padding: 100px 20px;
+      text-align: center;
+      background: #efe1d5;
+    }
+
+    .about-inner {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .about h2 {
+      margin: 0 0 20px;
+      font: 400 clamp(42px, 5vw, 64px) Georgia, serif;
+    }
+
+    .about p {
+      margin: 0;
+      color: #67534c;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    /* =========================
+       SIGNATURE
+    ========================= */
+    /* =========================
+   CONTACT BANNER
+========================= */
+
+.contact-banner{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:25px;
-  padding:17px clamp(18px,5vw,72px);
-  background:rgba(247,240,232,.91);
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(18px);
-}
-
-.logo{
-  text-decoration:none;
-  font:400 clamp(21px,2.2vw,31px)/1 Georgia,serif;
-  letter-spacing:-.03em;
-}
-
-.logo small{
-  display:block;
-  margin-top:6px;
-  color:#8b6d5d;
-  font:700 8px/1 "Segoe UI",Arial,sans-serif;
-  letter-spacing:.32em;
-  text-transform:uppercase;
-}
-
-nav{
-  display:flex;
-  align-items:center;
-  gap:clamp(10px,2vw,27px);
-}
-
-nav a{
-  text-decoration:none;
-  color:#5a4740;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-}
-
-nav a:hover{
-  color:var(--gold);
-}
-
-.cart-button{
-  border:0;
-  padding:11px 17px;
-  background:var(--ink);
-  color:white;
-  cursor:pointer;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  transition:.25s;
-}
-
-.cart-button:hover{
-  background:var(--brown2);
-  transform:translateY(-2px);
-}
-
-.mobile-menu{
-  display:none;
-  border:0;
-  background:transparent;
-  font-size:25px;
-  cursor:pointer;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-  position:relative;
-  z-index:2;
-  min-height:700px;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  align-items:center;
-  gap:clamp(40px,7vw,100px);
-  padding:clamp(55px,8vw,105px) clamp(20px,8vw,120px);
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 12% 18%,#fffaf5 0,transparent 34%),
-    linear-gradient(115deg,#f4e7dc,#e4cdbd);
-}
-
-.hero-copy{
-  max-width:680px;
-  animation:heroText 1.2s .4s ease both;
-}
-
-@keyframes heroText{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.eyebrow{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin-bottom:24px;
-  color:#8a654d;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.23em;
-  text-transform:uppercase;
-}
-
-.eyebrow:before{
-  content:"";
-  width:42px;
-  height:1px;
-  background:var(--gold);
-}
-
-.hero h1{
-  margin:0 0 24px;
-  font:400 clamp(54px,7vw,100px)/.88 Georgia,serif;
-  letter-spacing:-.055em;
-}
-
-.hero h1 em{
-  color:#77524b;
-  font-style:normal;
-}
-
-.hero-copy p{
-  max-width:510px;
-  color:#66514a;
-  font-size:17px;
-  line-height:1.75;
-}
-
-.primary-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin-top:18px;
-  padding:16px 25px;
-  border:1px solid var(--ink);
-  background:var(--ink);
-  color:white;
-  text-decoration:none;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:.25s;
-}
-
-.primary-btn:hover{
-  transform:translateY(-3px);
-  background:#6c4a43;
-  box-shadow:0 10px 25px rgba(43,30,27,.15);
-}
-
-.hero-visual{
-  position:relative;
-  width:min(100%,440px);
-  justify-self:center;
-  animation:heroImage 1.2s .6s ease both;
-}
-
-@keyframes heroImage{
-  from{
-    opacity:0;
-    transform:translateX(35px);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.hero-visual:before{
-  content:"";
-  position:absolute;
-  inset:-24px 35px 28px -26px;
-  border:1px solid rgba(112,76,64,.3);
-}
-
-.hero-visual img{
-  position:relative;
-  display:block;
-  width:100%;
-  height:510px;
-  object-fit:cover;
-  object-position:center 20%;
-  box-shadow:25px 28px 60px rgba(71,48,40,.18);
-}
-
-.seal{
-  position:absolute;
-  right:-32px;
-  bottom:38px;
-  z-index:2;
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  background:#f4e6d7;
-  border:1px solid var(--line);
-  color:#6d4e43;
-  font:italic 16px Georgia,serif;
-  transform:rotate(-8deg);
-  box-shadow:0 15px 35px rgba(62,38,30,.12);
-}
-
-
-/* =========================================================
-   TRUST
-========================================================= */
-
-.trust{
-  position:relative;
-  z-index:3;
-  max-width:1100px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  background:var(--paper);
-  border:1px solid var(--line);
-  box-shadow:var(--shadow);
-}
-
-.trust-item{
-  padding:27px 28px;
-  border-right:1px solid var(--line);
-}
-
-.trust-item:last-child{
-  border:0;
-}
-
-.trust-icon{
-  margin-bottom:12px;
-  color:var(--gold);
-  font-size:20px;
-}
-
-.trust-item strong{
-  display:block;
-  margin-bottom:7px;
-  font:400 17px Georgia,serif;
-}
-
-.trust-item span{
-  color:#806c62;
-  font-size:12px;
-  line-height:1.6;
-}
-
-
-/* =========================================================
-   PRODUCTS
-========================================================= */
-
-section.products{
-  position:relative;
-  z-index:2;
-  padding:105px 20px 120px;
-}
-
-.section-heading{
-  max-width:1100px;
-  margin:0 auto 45px;
-  padding-bottom:25px;
-  border-bottom:1px solid var(--line);
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:25px;
-  align-items:end;
-}
-
-.section-heading small{
-  color:#98734d;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-}
-
-.section-heading h2{
-  margin:9px 0 0;
-  font:400 clamp(40px,5vw,64px)/1 Georgia,serif;
-}
-
-.section-heading p{
-  max-width:330px;
-  margin:0;
-  color:#806d63;
-  line-height:1.65;
-  font-size:14px;
-}
-
-.product-grid{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-
-.product{
-  position:relative;
-  min-width:0;
-}
-
-.product:nth-child(2){
-  margin-top:58px;
-}
-
-.product-image{
-  position:relative;
-  height:410px;
-  overflow:hidden;
-  background:#e3d4ca;
-  cursor:pointer;
-}
-
-.product-image:after{
-  content:"Hızlı İncele";
-  position:absolute;
-  left:50%;
-  bottom:20px;
-  transform:translate(-50%,20px);
-  padding:10px 16px;
-  background:rgba(255,250,246,.93);
-  color:var(--ink);
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  opacity:0;
-  transition:.3s;
-}
-
-.product:hover .product-image:after{
-  opacity:1;
-  transform:translate(-50%,0);
-}
-
-.product-image img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  filter:saturate(.84);
-  transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .3s;
-}
-
-.product:hover .product-image img{
-  transform:scale(1.055);
-  filter:saturate(1);
-}
-
-.product-badge{
-  position:absolute;
-  top:15px;
-  left:15px;
-  z-index:2;
-  padding:8px 11px;
-  background:#fffaf5;
-  color:#765147;
-  font-size:8px;
-  font-weight:800;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-
-.product-info{
-  padding:21px 4px 0;
-}
-
-.product-info h3{
-  margin:0 0 9px;
-  font:400 24px Georgia,serif;
-}
-
-.product-info p:not(.price):not(.stock){
-  color:#806d63;
-  line-height:1.6;
-  margin:0 0 12px;
-}
-
-.price{
-  margin:0 0 6px;
-  font:400 21px Georgia,serif;
-}
-
-.stock{
-  margin:0 0 15px;
-  color:#806d63;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-.product-actions{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:8px;
-}
-
-.product-action{
-  width:100%;
-  padding:13px;
-  border:1px solid var(--ink);
-  background:transparent;
-  color:var(--ink);
-  cursor:pointer;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  transition:.2s;
-}
-
-.product-action:hover{
-  background:var(--ink);
-  color:white;
-}
-
-.quick-view{
-  width:46px;
-  border:1px solid var(--line);
-  background:#f8eee7;
-  cursor:pointer;
-  color:var(--brown);
-}
-
-
-/* =========================================================
-   WHY US
-========================================================= */
-
-.why{
-  padding:105px 20px;
-  background:#f0e2d7;
-}
-
-.why-inner{
-  max-width:1100px;
-  margin:auto;
-}
-
-.center-heading{
-  text-align:center;
-  margin-bottom:55px;
-}
-
-.center-heading small{
-  color:#98734d;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-}
-
-.center-heading h2{
-  margin:12px 0;
-  font:400 clamp(40px,5vw,62px) Georgia,serif;
-}
-
-.center-heading p{
-  max-width:600px;
-  margin:auto;
-  color:#76625a;
-  line-height:1.7;
-}
-
-.why-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.why-card{
-  padding:35px 25px;
-  text-align:center;
-  background:rgba(255,250,246,.75);
-  border:1px solid rgba(80,55,45,.1);
-  transition:.3s;
-}
-
-.why-card:hover{
-  transform:translateY(-6px);
-  box-shadow:var(--shadow);
-}
-
-.why-card .icon{
-  margin-bottom:17px;
-  color:var(--gold);
-  font-size:29px;
-}
-
-.why-card h3{
-  margin:0 0 10px;
-  font:400 20px Georgia,serif;
-}
-
-.why-card p{
-  margin:0;
-  color:#806d63;
-  font-size:13px;
-  line-height:1.7;
-}
-
-
-/* =========================================================
-   EDITORIAL
-========================================================= */
-
-.editorial{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  min-height:550px;
-  background:#3a2925;
-  color:#f5eadd;
-}
-
-.editorial-image{
-  min-height:550px;
-  background:url("assets/products/kahve-tonlari-esarp.jpg") center 34%/cover;
-  filter:saturate(.7) sepia(.1);
-}
-
-.editorial-copy{
-  display:grid;
-  align-content:center;
-  padding:clamp(50px,8vw,110px);
-}
-
-.editorial-copy small{
-  color:#c6a879;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  font-size:10px;
-}
-
-.editorial-copy h2{
-  margin:20px 0 22px;
-  font:400 clamp(42px,5vw,70px)/.98 Georgia,serif;
-}
-
-.editorial-copy p{
-  max-width:520px;
-  color:#d8c9bf;
-  line-height:1.9;
-}
-
-.editorial-copy .primary-btn{
-  width:max-content;
-  background:#f5eadd;
-  color:#3a2925;
-  border-color:#f5eadd;
-}
-
-
-/* =========================================================
-   GIFT
-========================================================= */
-
-.gift{
-  padding:100px 20px;
-  background:#fffaf6;
-}
-
-.gift-inner{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:55px;
-  align-items:center;
-}
-
-.gift-image{
-  min-height:370px;
-  background:
-    linear-gradient(rgba(65,43,36,.15),rgba(65,43,36,.15)),
-    url("assets/products/gul-bahcesi-sal.webp") center/cover;
-  box-shadow:var(--shadow);
-}
-
-.gift-copy small{
-  color:#98734d;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-}
-
-.gift-copy h2{
-  margin:15px 0;
-  font:400 clamp(40px,5vw,60px) Georgia,serif;
-}
-
-.gift-copy p{
-  color:#76625a;
-  line-height:1.8;
-}
-
-.gift-check{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin:22px 0;
-  font-size:13px;
-  color:#5d4942;
-}
-
-.gift-check input{
-  width:18px;
-  height:18px;
-  accent-color:var(--brown);
-}
-
-
-/* =========================================================
-   REVIEWS
-========================================================= */
-
-.reviews{
-  padding:105px 20px;
+  gap:50px;
+  padding:80px max(20px, 8vw);
   background:#eadbd0;
 }
 
-.reviews-grid{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+.contact-banner small{
+  color:#99714d;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.22em;
 }
 
-.review{
-  padding:32px;
-  background:#fffaf6;
-  border:1px solid var(--line);
+.contact-banner h2{
+  margin:12px 0 18px;
+  font:400 clamp(38px,4vw,56px)/1 Georgia,serif;
+  color:#332521;
 }
 
-.stars{
-  color:#b58a52;
-  letter-spacing:4px;
-  margin-bottom:18px;
-}
-
-.review p{
-  color:#66534b;
+.contact-banner p{
+  max-width:550px;
+  margin:0;
+  color:#705b52;
   line-height:1.8;
-  font-size:14px;
 }
 
-.review strong{
-  font:400 18px Georgia,serif;
-}
-
-
-/* =========================================================
-   INSTAGRAM
-========================================================= */
-
-.instagram{
-  padding:100px 20px;
-  text-align:center;
-  background:#f7efe8;
-}
-
-.instagram-grid{
-  max-width:1000px;
-  margin:45px auto 0;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.insta-card{
-  aspect-ratio:1;
-  overflow:hidden;
-  background:#ddd;
-}
-
-.insta-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
-}
-
-.insta-card:hover img{
-  transform:scale(1.08);
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about{
-  padding:100px 20px;
-  text-align:center;
-  background:#efe1d5;
-}
-
-.about-inner{
-  max-width:850px;
-  margin:auto;
-}
-
-.about h2{
-  margin:0 0 20px;
-  font:400 clamp(42px,5vw,64px) Georgia,serif;
-}
-
-.about p{
-  margin:0;
-  color:#67534c;
-  line-height:1.9;
-  font-size:16px;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-  padding:65px 20px;
-  text-align:center;
-  background:#291e1b;
-  color:#eaded4;
-}
-
-footer h3{
-  margin:0 0 15px;
-  font:400 29px Georgia,serif;
-}
-
-footer p{
-  margin:8px 0;
-  color:#bdaea5;
-  font-size:13px;
-}
-
-footer a{
-  color:#eaded4;
-  text-decoration:none;
-}
-
-.footer-social{
+.contact-whatsapp{
+  flex-shrink:0;
   display:flex;
-  justify-content:center;
-  gap:15px;
-  margin:25px 0;
-}
-
-.footer-social a{
-  display:grid;
-  place-items:center;
-  width:38px;
-  height:38px;
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:50%;
-}
-
-
-/* =========================================================
-   CART
-========================================================= */
-
-.cart{
-  position:fixed;
-  z-index:5000;
-  top:0;
-  right:-440px;
-  width:420px;
-  max-width:100%;
-  height:100vh;
-  padding:25px;
-  overflow-y:auto;
-  background:white;
-  box-shadow:-8px 0 30px rgba(0,0,0,.2);
-  transition:right .3s ease;
-}
-
-.cart.open{
-  right:0;
-}
-
-.cart-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding-bottom:15px;
-  border-bottom:1px solid #ddd;
-}
-
-.cart-header h2{
-  margin:0;
-  font:400 27px Georgia,serif;
-}
-
-.close{
-  width:35px;
-  height:35px;
-  border:0;
-  border-radius:50%;
-  background:#eee;
-  cursor:pointer;
-}
-
-.cart-item{
-  padding:16px 0;
-  border-bottom:1px solid #eee;
-}
-
-.cart-item h4{
-  margin:0 0 7px;
-  font-size:15px;
-}
-
-.cart-item-price{
-  color:#66514a;
-  font-size:14px;
-}
-
-.quantity{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:11px;
-}
-
-.quantity button{
-  width:29px;
-  height:29px;
-  border:0;
-  border-radius:4px;
-  background:var(--brown);
-  color:white;
-  cursor:pointer;
-}
-
-.remove{
-  margin-top:9px;
-  padding:7px 10px;
-  border:0;
-  border-radius:4px;
-  background:#a93232;
-  color:white;
-  cursor:pointer;
-  font-size:12px;
-}
-
-.empty{
-  text-align:center;
-  color:#777;
-  margin:45px 0;
-}
-
-.cart-total{
-  margin:24px 0;
-  font:700 22px Georgia,serif;
-  color:var(--brown);
-}
-
-.cart-actions{
-  display:grid;
-  gap:10px;
-}
-
-.action{
-  width:100%;
-  padding:15px;
-  border:0;
-  border-radius:4px;
-  cursor:pointer;
-  font-weight:800;
-}
-
-.action-iban{
-  background:var(--ink);
-  color:white;
-}
-
-.action-whatsapp{
-  background:var(--green);
+  flex-direction:column;
+  gap:6px;
+  min-width:245px;
+  padding:24px 30px;
+  border:1px solid #4b332b;
+  background:#4b332b;
   color:white;
   text-decoration:none;
-  text-align:center;
+  transition:.25s ease;
 }
 
-.secure-note{
-  text-align:center;
-  color:#76645d;
-  font-size:12px;
-  line-height:1.5;
+.contact-whatsapp:hover{
+  background:#2e211d;
+  transform:translateY(-3px);
 }
 
-
-/* =========================================================
-   WHATSAPP FLOAT
-========================================================= */
-
-.whatsapp-float{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  z-index:4500;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:13px 18px;
-  border-radius:50px;
-  background:var(--green);
-  color:white;
-  text-decoration:none;
-  box-shadow:0 10px 30px rgba(37,211,102,.25);
-  font-size:11px;
-  font-weight:800;
-  transition:.25s;
-}
-
-.whatsapp-float:hover{
-  transform:translateY(-4px);
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal-backdrop{
-  position:fixed;
-  inset:0;
-  z-index:8000;
-  display:none;
-  place-items:center;
-  padding:20px;
-  background:rgba(45,30,25,.72);
-  backdrop-filter:blur(7px);
-}
-
-.modal-backdrop.open{
-  display:grid;
-}
-
-.modal{
-  width:min(850px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:#fffaf6;
-  box-shadow:0 30px 100px rgba(0,0,0,.3);
-  animation:modalIn .3s ease;
-}
-
-@keyframes modalIn{
-  from{
-    opacity:0;
-    transform:translateY(20px) scale(.98);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.modal-content{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-}
-
-.modal-image{
-  min-height:500px;
-}
-
-.modal-image img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-}
-
-.modal-info{
-  padding:45px;
-  position:relative;
-}
-
-.modal-close{
-  position:absolute;
-  right:18px;
-  top:18px;
-  width:35px;
-  height:35px;
-  border:0;
-  border-radius:50%;
-  background:#eee;
-  cursor:pointer;
-}
-
-.modal-info small{
-  color:#98734d;
+.contact-whatsapp span{
+  font-size:10px;
   font-weight:800;
   letter-spacing:.2em;
   text-transform:uppercase;
 }
 
-.modal-info h2{
-  margin:14px 0;
-  font:400 38px Georgia,serif;
-}
-
-.modal-info p{
-  color:#76625a;
-  line-height:1.8;
-}
-
-.modal-price{
-  margin:22px 0;
-  font:400 25px Georgia,serif;
-  color:var(--brown);
-}
-
-.gallery-buttons{
-  display:flex;
-  gap:7px;
-  margin-top:20px;
-}
-
-.gallery-buttons button{
-  width:58px;
-  height:58px;
-  padding:0;
-  border:1px solid var(--line);
-  background:white;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.gallery-buttons img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.contact-whatsapp strong{
+  font:400 22px Georgia,serif;
 }
 
 
-/* =========================================================
-   CHECKOUT
-========================================================= */
+/* =========================
+   FOOTER
+========================= */
 
-.checkout-backdrop{
-  position:fixed;
-  inset:0;
-  z-index:8500;
-  display:none;
-  place-items:center;
-  padding:20px;
-  background:rgba(54,37,32,.68);
-  backdrop-filter:blur(5px);
+footer{
+  padding:70px max(20px,8vw) 25px;
+  background:#241a17;
+  color:#eaded4;
+  text-align:left;
 }
 
-.checkout-backdrop.open{
-  display:grid;
-}
-
-.checkout{
-  width:min(640px,100%);
-  max-height:92vh;
-  overflow:auto;
-  padding:30px;
-  border-radius:14px;
-  background:#fffaf7;
-  box-shadow:0 24px 70px rgba(31,19,15,.28);
-}
-
-.checkout-head{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.checkout h2{
-  margin:0 0 6px;
+.footer-brand h3{
+  margin:0 0 10px;
   font:400 30px Georgia,serif;
 }
 
-.checkout-head p{
-  margin:0 0 24px;
-  color:#76645d;
+.footer-brand p{
+  margin:0;
+  color:#a99a91;
   font-size:13px;
 }
 
-.iban-details{
-  margin-bottom:20px;
-  padding:18px;
-  border:1px solid #dbc8be;
-  border-radius:10px;
-  background:#f7ede7;
-}
-
-.iban-details small{
-  display:block;
-  margin-bottom:5px;
-  color:#806b61;
-}
-
-.iban-owner{
-  margin-bottom:14px;
-  font:18px Georgia,serif;
-}
-
-.iban-row{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.iban-number{
-  flex:1;
-  overflow-wrap:anywhere;
-  font:700 14px ui-monospace,monospace;
-}
-
-.copy-iban{
-  padding:8px 11px;
-  border:1px solid #b99482;
-  border-radius:6px;
-  background:#fffaf7;
-  color:var(--brown);
-  font-weight:800;
-  cursor:pointer;
-}
-
-.iban-note{
-  margin:13px 0 0;
-  color:#6f5a51;
-  font-size:12px;
-  line-height:1.5;
-}
-
-.form-grid{
+.footer-links{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  max-width:500px;
+  margin:50px 0;
+  gap:70px;
 }
 
-.field{
+.footer-links h4{
+  margin:0 0 17px;
+  color:#c4a16f;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+
+.footer-links a{
+  display:block;
+  width:max-content;
+  margin-bottom:10px;
+  color:#bcaea6;
+  text-decoration:none;
+  font-size:13px;
+  transition:.2s;
+}
+
+.footer-links a:hover{
+  color:white;
+}
+
+.footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding-top:25px;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#7f716b;
+  font-size:11px;
+}
+
+
+/* =========================
+   SABİT WHATSAPP
+========================= */
+
+.floating-whatsapp{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:1500;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:12px 17px 12px 12px;
+  border-radius:50px;
+  background:#1f8f4d;
+  color:white;
+  text-decoration:none;
+  box-shadow:0 10px 35px rgba(20,80,45,.3);
+  transition:.25s ease;
+}
+
+.floating-whatsapp:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(20,80,45,.4);
+}
+
+.whatsapp-icon{
+  width:35px;
+  height:35px;
   display:grid;
-  gap:6px;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.16);
+  font-size:17px;
 }
 
-.field.full{
-  grid-column:1/-1;
-}
-
-.field label{
+.whatsapp-text{
+  display:flex;
+  flex-direction:column;
   font-size:12px;
   font-weight:800;
 }
 
-.field input,
-.field textarea{
-  width:100%;
-  padding:12px;
-  border:1px solid #d9c9c1;
-  border-radius:6px;
-  background:white;
-  color:var(--ink);
-  outline:none;
+.whatsapp-text small{
+  margin-top:2px;
+  font-size:9px;
+  font-weight:400;
+  opacity:.8;
 }
 
-.field input:focus,
-.field textarea:focus{
-  border-color:#b88972;
-  box-shadow:0 0 0 2px rgba(184,137,114,.16);
+.whatsapp-pulse{
+  position:absolute;
+  inset:-4px;
+  border:1px solid rgba(31,143,77,.45);
+  border-radius:50px;
+  animation:whatsappPulse 2.4s infinite;
 }
 
-.error{
-  min-height:20px;
-  margin:12px 0;
-  color:#a42f2f;
-  font-size:13px;
-}
+@keyframes whatsappPulse{
 
-.submit{
-  width:100%;
-  padding:15px;
-  border:0;
-  border-radius:6px;
-  background:var(--ink);
-  color:white;
-  font-weight:800;
-  cursor:pointer;
-}
-
-
-/* =========================================================
-   QUICK NOTIFICATION
-========================================================= */
-
-.toast{
-  position:fixed;
-  right:25px;
-  bottom:25px;
-  z-index:9000;
-  max-width:320px;
-  padding:15px 20px;
-  border-radius:8px;
-  background:#2d211e;
-  color:white;
-  box-shadow:0 15px 40px rgba(0,0,0,.2);
-  transform:translateY(120px);
-  opacity:0;
-  transition:.35s;
-  font-size:13px;
-}
-
-.toast.show{
-  transform:none;
-  opacity:1;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:900px){
-
-  nav a{
-    display:none;
+  0%{
+    opacity:.8;
+    transform:scale(1);
   }
 
-  .mobile-menu{
-    display:block;
+  70%{
+    opacity:0;
+    transform:scale(1.08);
   }
 
-  nav.mobile-open{
-    position:absolute;
-    left:0;
-    right:0;
-    top:100%;
-    padding:20px;
-    background:rgba(247,240,232,.98);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    border-bottom:1px solid var(--line);
+  100%{
+    opacity:0;
+    transform:scale(1.08);
   }
 
-  nav.mobile-open a{
-    display:block;
-  }
+}
 
-  .hero{
+
+/* =========================
+   MOBİL
+========================= */
+
+@media(max-width:800px){
+
+  .experience-heading{
     grid-template-columns:1fr;
-    min-height:auto;
-    padding-top:65px;
+    gap:20px;
   }
 
-  .hero-visual{
-    width:min(83%,400px);
-  }
-
-  .trust{
-    margin:0 20px;
-  }
-
-  .why-grid{
+  .experience-grid{
     grid-template-columns:1fr 1fr;
   }
 
-  .gift-inner{
-    grid-template-columns:1fr;
+  .experience-card{
+    border-bottom:1px solid rgba(45,33,30,.13);
   }
 
-  .reviews-grid{
-    grid-template-columns:1fr;
-  }
-
-  .instagram-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .modal-content{
-    grid-template-columns:1fr;
-  }
-
-  .modal-image{
-    min-height:330px;
-  }
-
-}
-
-
-@media(max-width:700px){
-
-  header{
-    padding:15px 18px;
-  }
-
-  .hero h1{
-    font-size:54px;
-  }
-
-  .hero-visual img{
-    height:440px;
-  }
-
-  .trust{
-    grid-template-columns:1fr;
-  }
-
-  .trust-item{
+  .experience-card:nth-child(2){
     border-right:0;
-    border-bottom:1px solid var(--line);
   }
 
-  .trust-item:last-child{
+  .experience-card:nth-child(3){
     border-bottom:0;
   }
 
-  .section-heading{
-    grid-template-columns:1fr;
+  .experience-card:nth-child(4){
+    border-right:0;
+    border-bottom:0;
   }
 
-  .product-grid{
-    grid-template-columns:1fr;
+  .contact-banner{
+    flex-direction:column;
+    align-items:flex-start;
   }
 
-  .product:nth-child(2){
-    margin-top:0;
-  }
-
-  .editorial{
-    grid-template-columns:1fr;
-  }
-
-  .editorial-image{
-    min-height:400px;
-  }
-
-  .why-grid{
-    grid-template-columns:1fr;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .field.full{
-    grid-column:auto;
-  }
-
-  .checkout{
-    padding:22px;
-  }
-
-  .whatsapp-float span{
-    display:none;
+  .contact-whatsapp{
+    width:100%;
   }
 
 }
 
+
+/* =========================
+   KÜÇÜK EKRAN
+========================= */
+
+@media(max-width:550px){
+
+  .experience{
+    padding:80px 20px;
+  }
+
+  .experience-grid{
+    grid-template-columns:1fr;
+  }
+
+  .experience-card,
+  .experience-card:nth-child(2),
+  .experience-card:nth-child(3),
+  .experience-card:nth-child(4){
+    border-right:0;
+    border-bottom:1px solid rgba(45,33,30,.13);
+  }
+
+  .experience-card:last-child{
+    border-bottom:0;
+  }
+
+  .signature{
+    padding:90px 20px;
+  }
+
+  .footer-links{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+  }
+
+  .floating-whatsapp{
+    right:15px;
+    bottom:15px;
+  }
+
+  .whatsapp-text{
+    display:none;
+  }
+
+  .floating-whatsapp{
+    width:50px;
+    height:50px;
+    padding:0;
+    justify-content:center;
+  }
+
+  .whatsapp-pulse{
+    border-radius:50%;
+  }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
 
 @media(prefers-reduced-motion:reduce){
 
   *,
   *::before,
   *::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-    scroll-behavior:auto!important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
   }
 
   .petals{
@@ -1628,1030 +1432,45 @@ footer a{
   }
 
 }
-</style>
-</head>
 
 
-<body class="loading">
+/* =========================
+   LOADER KAPATMA
+========================= */
 
-
-<!-- =========================================================
-     LOADER
-========================================================= -->
-
-<div class="loader" id="loader">
-
-  <div class="loader-inner">
-
-    <div class="loader-logo">
-      Eşarp ve Şal Dünyası
-    </div>
-
-    <div class="loader-sub">
-      Zarafetin yeni adresi
-    </div>
-
-    <div class="loader-line"></div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================================
-     UÇUŞAN ÇİÇEKLER
-========================================================= -->
-
-<div class="petals" aria-hidden="true">
-
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-  <span class="petal"></span>
-
-</div>
-
-
-<!-- =========================================================
-     DUYURU
-========================================================= -->
-
-<div class="announcement">
-
-  <div class="announcement-track">
-
-    <span>
-      ₺1.500 üzeri ücretsiz kargo
-      <i></i>
-
-      Özenli hediye paketi
-      <i></i>
-
-      IBAN ile kolay ödeme
-      <i></i>
-
-      Yeni sezon koleksiyonu
-      <i></i>
-    </span>
-
-    <span aria-hidden="true">
-
-      ₺1.500 üzeri ücretsiz kargo
-      <i></i>
-
-      Özenli hediye paketi
-      <i></i>
-
-      IBAN ile kolay ödeme
-      <i></i>
-
-      Yeni sezon koleksiyonu
-      <i></i>
-
-    </span>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
-<header>
-
-  <a class="logo" href="#">
-
-    Eşarp ve Şal Dünyası
-
-    <small>
-      İstanbul · 2026
-    </small>
-
-  </a>
-
-
-  <nav id="mainNav">
-
-    <a href="#">Ana Sayfa</a>
-    <a href="#urunler">Ürünler</a>
-    <a href="#neden-biz">Neden Biz</a>
-    <a href="#hakkimizda">Hakkımızda</a>
-    <a href="#iletisim">İletişim</a>
-
-    <button
-      class="cart-button"
-      type="button"
-      onclick="sepetAc()"
-    >
-
-      Sepet ·
-      <span id="sepetSayisi">0</span>
-
-    </button>
-
-  </nav>
-
-
-  <button
-    class="mobile-menu"
-    type="button"
-    onclick="mobilMenu()"
-    aria-label="Menüyü aç"
-  >
-    ☰
-  </button>
-
-</header>
-
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-
-<main>
-
-<section class="hero">
-
-  <div class="hero-copy">
-
-    <div class="eyebrow">
-      Yeni sezon seçkisi
-    </div>
-
-
-    <h1>
-      İmzanız<br>
-      <em>zarafet</em> olsun.
-    </h1>
-
-
-    <p>
-      Her bağlayışta başka bir hikâye anlatan,
-      dokusu ve deseni özenle seçilmiş eşarp ve şallar.
-      Günün ritmine eşlik eden zamansız parçaları keşfedin.
-    </p>
-
-
-    <a
-      class="primary-btn"
-      href="#urunler"
-    >
-      Koleksiyonu Keşfet
-    </a>
-
-  </div>
-
-
-  <div class="hero-visual">
-
-    <img
-      src="assets/products/gul-bahcesi-sal.webp"
-      alt="Gül Bahçesi Şal"
-    >
-
-    <div class="seal">
-      Yeni<br>
-      Koleksiyon
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     TRUST
-========================================================= -->
-
-<div class="trust">
-
-  <div class="trust-item">
-
-    <div class="trust-icon">✦</div>
-
-    <strong>
-      Özenle Seçildi
-    </strong>
-
-    <span>
-      Her desen, zarif ve zamansız bir stil için seçilir.
-    </span>
-
-  </div>
-
-
-  <div class="trust-item">
-
-    <div class="trust-icon">◇</div>
-
-    <strong>
-      Butik Paketleme
-    </strong>
-
-    <span>
-      Siparişiniz özenle hazırlanır ve hediyeye hazır gönderilir.
-    </span>
-
-  </div>
-
-
-  <div class="trust-item">
-
-  <div class="trust-icon">♡</div>
-
-  <strong>
-    Kişisel Hizmet
-  </strong>
-
-  <span>
-    Sorularınız ve siparişleriniz için bizimle iletişime geçebilirsiniz.
-  </span>
-
-</div>
-
-</div>
-      <!-- =====================================================
-     MÜŞTERİ DENEYİMİ
-===================================================== -->
-
-<section class="experience">
-
-  <div class="experience-heading">
-    <small>Butik deneyim</small>
-
-    <h2>
-      Sizin için<br>
-      özenle hazırlanır.
-    </h2>
-
-    <p>
-      Eşarp ve Şal Dünyası'nda her siparişi yalnızca bir
-      alışveriş olarak değil, kişisel bir deneyim olarak
-      görüyoruz.
-    </p>
-  </div>
-
-
-  <div class="experience-grid">
-
-    <div class="experience-card">
-
-      <span class="experience-number">01</span>
-
-      <div class="experience-icon">✦</div>
-
-      <h3>Özenli Seçim</h3>
-
-      <p>
-        Koleksiyonumuzdaki her parça; renk, desen ve
-        dokusu açısından özenle seçilir.
-      </p>
-
-    </div>
-
-
-    <div class="experience-card">
-
-      <span class="experience-number">02</span>
-
-      <div class="experience-icon">♡</div>
-
-      <h3>Kişisel Hizmet</h3>
-
-      <p>
-        Siparişinizden önce veya sonra WhatsApp üzerinden
-        bizimle iletişime geçerek destek alabilirsiniz.
-      </p>
-
-    </div>
-
-
-    <div class="experience-card">
-
-      <span class="experience-number">03</span>
-
-      <div class="experience-icon">✧</div>
-
-      <h3>Özenli Paketleme</h3>
-
-      <p>
-        Siparişiniz sizin için hazırlanır ve zarif bir
-        paketleme ile gönderime hazır hale getirilir.
-      </p>
-
-    </div>
-
-
-    <div class="experience-card">
-
-      <span class="experience-number">04</span>
-
-      <div class="experience-icon">❧</div>
-
-      <h3>Zamansız Stil</h3>
-
-      <p>
-        Günlük kullanımdan özel davetlere kadar
-        farklı stillere eşlik edecek parçalar.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     ÖZEL MESAJ
-===================================================== -->
-
-<section class="signature">
-
-  <div class="signature-inner">
-
-    <span class="signature-line"></span>
-
-    <small>Eşarp ve Şal Dünyası</small>
-
-    <h2>
-      Zarafet,<br>
-      detaylarda saklıdır.
-    </h2>
-
-    <p>
-      Kendinize yakışan parçayı keşfedin.
-      Koleksiyonumuzdaki her eşarp ve şal,
-      stilinize kendi imzanızı katmanız için seçildi.
-    </p>
-
-    <a
-      href="#urunler"
-      class="primary-btn"
-    >
-      Koleksiyonu Keşfet
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     WHATSAPP İLETİŞİM
-===================================================== -->
-
-<section class="contact-banner">
-
-  <div>
-
-    <small>
-      BİZE ULAŞIN
-    </small>
-
-    <h2>
-      Bir konuda<br>
-      yardımcı olabilir miyiz?
-    </h2>
-
-    <p>
-      Ürünler hakkında bilgi almak, sipariş vermek
-      veya koleksiyonumuz hakkında danışmak için
-      WhatsApp üzerinden bize ulaşabilirsiniz.
-    </p>
-
-  </div>
-
-
-  <a
-    class="contact-whatsapp"
-    href="https://wa.me/905313089629"
-    target="_blank"
-    rel="noopener"
-  >
-    <span>WhatsApp</span>
-    <strong>0531 308 96 29</strong>
-  </a>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer id="iletisim">
-
-  <div class="footer-brand">
-
-    <h3>Eşarp ve Şal Dünyası</h3>
-
-    <p>
-      Zarif dokunuşlar, zamansız stil.
-    </p>
-
-  </div>
-
-
-  <div class="footer-links">
-
-    <div>
-
-      <h4>Keşfet</h4>
-
-      <a href="#">Ana Sayfa</a>
-      <a href="#urunler">Koleksiyon</a>
-      <a href="#hakkimizda">Hakkımızda</a>
-
-    </div>
-
-
-    <div>
-
-      <h4>İletişim</h4>
-
-      <a href="tel:+905313089629">
-        0531 308 96 29
-      </a>
-
-      <a href="mailto:canturanpl@gmail.com">
-        canturanpl@gmail.com
-      </a>
-
-      <a
-        href="https://wa.me/905313089629"
-        target="_blank"
-        rel="noopener"
-      >
-        WhatsApp
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <div class="footer-bottom">
-
-    <span>
-      © 2026 Eşarp ve Şal Dünyası
-    </span>
-
-    <span>
-      Tüm hakları saklıdır.
-    </span>
-
-  </div>
-
-</footer>
-
-
-<!-- =====================================================
-     SABİT WHATSAPP BUTONU
-===================================================== -->
-
-<a
-  class="floating-whatsapp"
-  href="https://wa.me/905313089629"
-  target="_blank"
-  rel="noopener"
-  aria-label="WhatsApp üzerinden iletişime geç"
->
-  <span class="whatsapp-pulse"></span>
-
-  <span class="whatsapp-icon">
-    ☎
-  </span>
-
-  <span class="whatsapp-text">
-    WhatsApp
-    <small>Bizimle iletişime geçin</small>
-  </span>
-</a>
-
-
-<style>
-
-/* =====================================================
-   DENEYİM
-===================================================== */
-
-.experience {
-  padding: 120px 20px;
-  background: #fbf5ef;
-}
-
-.experience-heading {
-  max-width: 1050px;
-  margin: 0 auto 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: end;
-}
-
-.experience-heading small {
-  color: #a17b52;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-}
-
-.experience-heading h2 {
-  margin: 12px 0 0;
-  font: 400 clamp(42px, 5vw, 68px)/.95 Georgia, serif;
-  color: #332521;
-  letter-spacing: -.04em;
-}
-
-.experience-heading p {
-  max-width: 420px;
-  margin: 0;
-  color: #76635b;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-
-.experience-grid {
-  max-width: 1050px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(45,33,30,.13);
-  border-bottom: 1px solid rgba(45,33,30,.13);
-}
-
-
-.experience-card {
-  position: relative;
-  min-height: 290px;
-  padding: 35px 28px;
-  border-right: 1px solid rgba(45,33,30,.13);
-  transition: .3s ease;
-}
-
-.experience-card:last-child {
-  border-right: 0;
-}
-
-.experience-card:hover {
-  background: #f2e6dc;
-  transform: translateY(-4px);
-}
-
-
-.experience-number {
-  display: block;
-  margin-bottom: 35px;
-  color: #b28a54;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .15em;
-}
-
-
-.experience-icon {
-  margin-bottom: 20px;
-  color: #8a624d;
-  font: 25px Georgia, serif;
-}
-
-
-.experience-card h3 {
-  margin: 0 0 12px;
-  font: 400 22px Georgia, serif;
-}
-
-
-.experience-card p {
-  margin: 0;
-  color: #78655c;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-
-/* =====================================================
-   İMZA BÖLÜMÜ
-===================================================== */
-
-.signature {
-  position: relative;
-  overflow: hidden;
-  padding: 130px 20px;
-  text-align: center;
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(255,255,255,.1),
-      transparent 30%
-    ),
-    #382824;
-  color: #f5e9df;
-}
-
-
-.signature:before,
-.signature:after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  border: 1px solid rgba(201,168,125,.18);
-  border-radius: 50%;
-}
-
-.signature:before {
-  top: -100px;
-  left: -80px;
-}
-
-.signature:after {
-  right: -100px;
-  bottom: -120px;
-}
-
-
-.signature-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  margin: auto;
-}
-
-
-.signature-line {
-  display: block;
-  width: 45px;
-  height: 1px;
-  margin: 0 auto 22px;
-  background: #c5a06e;
-}
-
-
-.signature small {
-  color: #c8a878;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-}
-
-
-.signature h2 {
-  margin: 25px 0;
-  font: 400 clamp(45px, 6vw, 76px)/.95 Georgia, serif;
-  letter-spacing: -.04em;
-}
-
-
-.signature p {
-  max-width: 500px;
-  margin: 0 auto 30px;
-  color: #d3c3b8;
-  font-size: 15px;
-  line-height: 1.9;
-}
-
-
-.signature .primary-btn {
-  background: #f5e9df;
-  border-color: #f5e9df;
-  color: #382824;
-}
-
-
-/* =====================================================
-   WHATSAPP İLETİŞİM
-===================================================== */
-
-.contact-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 50px;
-  padding: 80px max(20px, 8vw);
-  background: #eadbd0;
-}
-
-
-.contact-banner small {
-  color: #99714d;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .22em;
-}
-
-
-.contact-banner h2 {
-  margin: 12px 0 18px;
-  font: 400 clamp(38px, 4vw, 56px)/1 Georgia, serif;
-}
-
-
-.contact-banner p {
-  max-width: 550px;
-  margin: 0;
-  color: #705b52;
-  line-height: 1.8;
-}
-
-
-.contact-whatsapp {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 245px;
-  padding: 24px 30px;
-  border: 1px solid #4b332b;
-  background: #4b332b;
-  color: white;
-  text-decoration: none;
-  transition: .25s ease;
-}
-
-
-.contact-whatsapp:hover {
-  background: #2e211d;
-  transform: translateY(-3px);
-}
-
-
-.contact-whatsapp span {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-}
-
-
-.contact-whatsapp strong {
-  font: 400 22px Georgia, serif;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-  padding: 70px max(20px, 8vw) 25px;
-  background: #241a17;
-  color: #eaded4;
-  text-align: left;
-}
-
-
-.footer-brand h3 {
-  margin: 0 0 10px;
-  font: 400 30px Georgia, serif;
-}
-
-
-.footer-brand p {
-  margin: 0;
-  color: #a99a91;
-  font-size: 13px;
-}
-
-
-.footer-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 500px;
-  margin: 50px 0;
-  gap: 70px;
-}
-
-
-.footer-links h4 {
-  margin: 0 0 17px;
-  color: #c4a16f;
-  font-size: 10px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-}
-
-
-.footer-links a {
-  display: block;
-  width: max-content;
-  margin-bottom: 10px;
-  color: #bcaea6;
-  text-decoration: none;
-  font-size: 13px;
-  transition: .2s;
-}
-
-
-.footer-links a:hover {
-  color: white;
-}
-
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding-top: 25px;
-  border-top: 1px solid rgba(255,255,255,.1);
-  color: #7f716b;
-  font-size: 11px;
-}
-
-
-/* =====================================================
-   SABİT WHATSAPP
-===================================================== */
-
-.floating-whatsapp {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 1500;
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 12px 17px 12px 12px;
-  border-radius: 50px;
-  background: #1f8f4d;
-  color: white;
-  text-decoration: none;
-  box-shadow: 0 10px 35px rgba(20,80,45,.3);
-  transition: .25s ease;
-}
-
-
-.floating-whatsapp:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(20,80,45,.4);
-}
-
-
-.whatsapp-icon {
-  width: 35px;
-  height: 35px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: rgba(255,255,255,.16);
-  font-size: 17px;
-}
-
-
-.whatsapp-text {
-  display: flex;
-  flex-direction: column;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-
-.whatsapp-text small {
-  margin-top: 2px;
-  font-size: 9px;
-  font-weight: 400;
-  opacity: .8;
-}
-
-
-.whatsapp-pulse {
-  position: absolute;
-  inset: -4px;
-  border: 1px solid rgba(31,143,77,.45);
-  border-radius: 50px;
-  animation: whatsappPulse 2.4s infinite;
-}
-
-
-@keyframes whatsappPulse {
-
-  0% {
-    opacity: .8;
-    transform: scale(1);
-  }
-
-  70% {
-    opacity: 0;
-    transform: scale(1.08);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(1.08);
-  }
-
-}
-
-
-/* =====================================================
-   MOBİL
-===================================================== */
-
-@media (max-width: 800px) {
-
-  .experience-heading {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-
-  .experience-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-
-  .experience-card {
-    border-bottom: 1px solid rgba(45,33,30,.13);
-  }
-
-
-  .experience-card:nth-child(2) {
-    border-right: 0;
-  }
-
-
-  .experience-card:nth-child(3) {
-    border-bottom: 0;
-  }
-
-
-  .experience-card:nth-child(4) {
-    border-right: 0;
-    border-bottom: 0;
-  }
-
-
-  .contact-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-
-  .contact-whatsapp {
-    width: 100%;
-  }
-
-}
-
-
-@media (max-width: 550px) {
-
-  .experience {
-    padding: 80px 20px;
-  }
-
-
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
-
-
-  .experience-card,
-  .experience-card:nth-child(2),
-  .experience-card:nth-child(3),
-  .experience-card:nth-child(4) {
-    border-right: 0;
-    border-bottom: 1px solid rgba(45,33,30,.13);
-  }
-
-
-  .experience-card:last-child {
-    border-bottom: 0;
-  }
-
-
-  .signature {
-    padding: 90px 20px;
-  }
-
-
-  .footer-links {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-
-  .footer-bottom {
-    flex-direction: column;
-  }
-
-
-  .floating-whatsapp {
-    right: 15px;
-    bottom: 15px;
-  }
-
+.loader.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
 }
 
 </style>
+
+
+<!-- =========================
+     LOADER JAVASCRIPT
+========================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+  const loader=document.getElementById("loader");
+
+  setTimeout(function(){
+
+    if(loader){
+      loader.classList.add("hide");
+    }
+
+    document.body.classList.remove("loading");
+
+  },1000);
+
+});
+
+</script>
+
+
+</body>
+</html>
