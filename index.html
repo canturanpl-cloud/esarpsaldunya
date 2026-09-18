@@ -7,6 +7,7 @@
 <title>Eşarp ve Şal Dünyası</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -31,7 +32,9 @@ body {
     color: var(--ink);
 }
 
-/* ÜST DUYURU */
+/* =========================================
+   ÜST DUYURU
+========================================= */
 
 .announcement {
     overflow: hidden;
@@ -71,16 +74,22 @@ body {
     }
 }
 
-/* HEADER */
+/* =========================================
+   HEADER
+========================================= */
 
 header {
     position: sticky;
     top: 0;
     z-index: 1000;
+
     padding: 17px clamp(20px, 5vw, 72px);
+
     background: rgba(247,240,232,.94);
     color: var(--ink);
+
     border-bottom: 1px solid var(--line);
+
     backdrop-filter: blur(14px);
 
     display: flex;
@@ -90,17 +99,22 @@ header {
 
 header h1 {
     margin: 0;
+
     font-family: Georgia, serif;
     font-size: clamp(21px, 2.3vw, 31px);
     font-weight: 400;
+
     letter-spacing: -.02em;
 }
 
 header h1 span {
     display: block;
     margin-top: 3px;
+
     color: #8b6d5d;
+
     font: 600 8px/1.2 "Avenir Next", sans-serif;
+
     letter-spacing: .34em;
     text-transform: uppercase;
 }
@@ -114,8 +128,10 @@ nav {
 nav a {
     color: #5a4740;
     text-decoration: none;
+
     font-size: 12px;
     font-weight: 700;
+
     letter-spacing: .1em;
     text-transform: uppercase;
 }
@@ -126,64 +142,99 @@ nav a:hover {
 
 .cart-button {
     padding: 10px 17px;
+
     background: var(--ink);
     color: #fffaf4;
+
     border-radius: 2px;
+
     font-size: 12px;
     letter-spacing: .07em;
+
     cursor: pointer;
 }
 
-/* HERO */
+/* =========================================
+   HERO
+========================================= */
 
 .hero {
     position: relative;
+
     min-height: 670px;
-    padding: clamp(60px, 8vw, 105px) clamp(20px, 8vw, 120px);
+
+    padding:
+        clamp(60px, 8vw, 105px)
+        clamp(20px, 8vw, 120px);
 
     display: grid;
-    grid-template-columns: minmax(0,1.05fr) minmax(280px,.95fr);
+
+    grid-template-columns:
+        minmax(0,1.05fr)
+        minmax(280px,.95fr);
+
     align-items: center;
+
     gap: clamp(40px,7vw,110px);
 
     overflow: hidden;
 
     background:
-        radial-gradient(circle at 12% 18%, #fffaf4 0, transparent 34%),
-        linear-gradient(115deg,#f4e7dc,#e5d0c0);
+        radial-gradient(
+            circle at 12% 18%,
+            #fffaf4 0,
+            transparent 34%
+        ),
+        linear-gradient(
+            115deg,
+            #f4e7dc,
+            #e5d0c0
+        );
 }
 
 .hero-copy {
     position: relative;
     z-index: 10;
+
     max-width: 680px;
 }
 
 .eyebrow {
     display: flex;
     align-items: center;
+
     gap: 13px;
     margin-bottom: 25px;
+
     color: #8a654d;
+
     font-size: 11px;
     font-weight: 700;
+
     letter-spacing: .24em;
     text-transform: uppercase;
 }
 
 .eyebrow:before {
     content: "";
+
     width: 42px;
     height: 1px;
+
     background: var(--gold);
 }
 
 .hero h2 {
     margin: 0 0 25px;
+
     font-family: Georgia, serif;
+
     font-size: clamp(55px,7vw,102px);
+
     font-weight: 400;
+
     line-height: .89;
+
     letter-spacing: -.055em;
 }
 
@@ -194,186 +245,439 @@ nav a:hover {
 
 .hero p {
     max-width: 500px;
+
     color: #66514a;
+
     font-size: 17px;
     line-height: 1.75;
 }
 
 .button {
     display: inline-block;
+
     margin-top: 20px;
+
     padding: 16px 25px;
+
     background: var(--ink);
     color: white;
+
     text-decoration: none;
+
     font-size: 11px;
     font-weight: bold;
+
     letter-spacing: .16em;
     text-transform: uppercase;
+
     transition: .2s;
 }
 
 .button:hover {
     transform: translateY(-3px);
+
     background: #6c4a43;
 }
 
 .hero-visual {
     position: relative;
     z-index: 5;
+
     width: min(100%,440px);
+
     justify-self: center;
 }
 
 .hero-visual:before {
     content: "";
+
     position: absolute;
+
     inset: -24px 35px 28px -26px;
+
     border: 1px solid rgba(112,76,64,.3);
 }
 
 .hero-visual img {
     position: relative;
+
     width: 100%;
     height: 510px;
+
     object-fit: cover;
+
     object-position: center 20%;
+
     filter: saturate(.82) contrast(.96);
-    box-shadow: 25px 28px 60px rgba(71,48,40,.18);
+
+    box-shadow:
+        25px 28px 60px
+        rgba(71,48,40,.18);
 }
 
 .hero-seal {
     position: absolute;
+
     right: -34px;
     bottom: 42px;
+
     z-index: 10;
 
     width: 112px;
     height: 112px;
 
     border-radius: 50%;
+
     background: #f4e6d7;
+
     border: 1px solid rgba(87,59,58,.2);
 
     display: grid;
     place-items: center;
 
     color: #6d4e43;
+
     font: italic 16px Georgia,serif;
+
     text-align: center;
 
     transform: rotate(-8deg);
-    box-shadow: 0 12px 35px rgba(62,41,34,.16);
+
+    box-shadow:
+        0 12px 35px
+        rgba(62,41,34,.16);
 }
 
-/* ÇİÇEKLER */
+/* =========================================
+   MEVCUT ÇİÇEKLER
+========================================= */
 
 .floating-flower {
     position: absolute;
+
     z-index: 2;
+
     width: 75px;
     height: 75px;
+
     pointer-events: none;
+
     opacity: .65;
-    animation: flowerFloat 10s ease-in-out infinite;
+
+    animation:
+        flowerFloat 10s ease-in-out infinite;
 }
 
 .floating-flower::before,
 .floating-flower::after {
     content: "✿";
+
     position: absolute;
+
     color: #b88782;
+
     font-size: 55px;
 }
 
 .floating-flower::before {
     top: 0;
     left: 0;
+
     transform: rotate(20deg);
 }
 
 .floating-flower::after {
     top: 8px;
     left: 8px;
+
     color: #d3a39b;
-    transform: rotate(-25deg) scale(.75);
+
+    transform:
+        rotate(-25deg)
+        scale(.75);
 }
 
 .flower-1 {
     top: 14%;
     left: 4%;
+
     animation-duration: 12s;
 }
 
 .flower-2 {
     top: 68%;
     left: 48%;
+
     transform: scale(.7);
+
     animation-duration: 15s;
 }
 
 .flower-3 {
     top: 20%;
     right: 5%;
+
     transform: scale(.65);
+
     animation-duration: 13s;
 }
 
 .flower-4 {
     bottom: 7%;
     right: 30%;
+
     transform: scale(.8);
+
     animation-duration: 17s;
 }
 
 .flower-5 {
     top: 45%;
     left: 27%;
+
     transform: scale(.45);
+
     animation-duration: 11s;
 }
 
 @keyframes flowerFloat {
+
     0% {
-        transform: translate(0,0) rotate(0deg);
+        transform:
+            translate(0,0)
+            rotate(0deg);
     }
 
     25% {
-        transform: translate(18px,-25px) rotate(90deg);
+        transform:
+            translate(18px,-25px)
+            rotate(90deg);
     }
 
     50% {
-        transform: translate(-12px,-45px) rotate(180deg);
+        transform:
+            translate(-12px,-45px)
+            rotate(180deg);
     }
 
     75% {
-        transform: translate(-25px,-15px) rotate(270deg);
+        transform:
+            translate(-25px,-15px)
+            rotate(270deg);
     }
 
     100% {
-        transform: translate(0,0) rotate(360deg);
+        transform:
+            translate(0,0)
+            rotate(360deg);
     }
 }
 
-/* GÜVEN */
+/* =========================================
+   YENİ SAKURA ÇİÇEKLERİ
+========================================= */
+
+.sakura {
+    position: absolute;
+
+    z-index: 3;
+
+    width: 42px;
+    height: 42px;
+
+    pointer-events: none;
+
+    opacity: .62;
+
+    animation:
+        sakuraFloat 22s ease-in-out infinite;
+}
+
+.sakura::before {
+    content: "✿";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    color: #d99aa8;
+
+    font-size: 34px;
+
+    text-shadow:
+        0 2px 8px
+        rgba(150,87,100,.15);
+}
+
+.sakura::after {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    left: 18px;
+    top: 18px;
+
+    border-radius: 50%;
+
+    background: #e7b47f;
+
+    box-shadow:
+        0 0 7px
+        rgba(190,130,100,.25);
+}
+
+/* Sakura konumları */
+
+.sakura-1 {
+    top: 10%;
+    left: 16%;
+
+    transform: scale(.72);
+
+    animation-duration: 24s;
+}
+
+.sakura-2 {
+    top: 27%;
+    left: 42%;
+
+    transform: scale(.46);
+
+    animation-duration: 27s;
+
+    animation-delay: -8s;
+}
+
+.sakura-3 {
+    top: 15%;
+    right: 16%;
+
+    transform: scale(.85);
+
+    animation-duration: 25s;
+
+    animation-delay: -13s;
+}
+
+.sakura-4 {
+    top: 56%;
+    right: 7%;
+
+    transform: scale(.56);
+
+    animation-duration: 23s;
+
+    animation-delay: -5s;
+}
+
+.sakura-5 {
+    bottom: 12%;
+    left: 9%;
+
+    transform: scale(.68);
+
+    animation-duration: 28s;
+
+    animation-delay: -17s;
+}
+
+.sakura-6 {
+    bottom: 8%;
+    right: 39%;
+
+    transform: scale(.42);
+
+    animation-duration: 26s;
+
+    animation-delay: -10s;
+}
+
+.sakura-7 {
+    top: 72%;
+    left: 35%;
+
+    transform: scale(.52);
+
+    animation-duration: 29s;
+
+    animation-delay: -14s;
+}
+
+/* Sakura yavaş dönüş */
+
+@keyframes sakuraFloat {
+
+    0% {
+        transform:
+            translate3d(0,0,0)
+            rotate(0deg);
+    }
+
+    20% {
+        transform:
+            translate3d(20px,-15px,0)
+            rotate(55deg);
+    }
+
+    40% {
+        transform:
+            translate3d(42px,10px,0)
+            rotate(125deg);
+    }
+
+    60% {
+        transform:
+            translate3d(18px,38px,0)
+            rotate(200deg);
+    }
+
+    80% {
+        transform:
+            translate3d(-25px,18px,0)
+            rotate(285deg);
+    }
+
+    100% {
+        transform:
+            translate3d(0,0,0)
+            rotate(360deg);
+    }
+}
+
+/* =========================================
+   GÜVEN
+========================================= */
 
 .trust-strip {
     position: relative;
+
     z-index: 20;
 
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
 
     max-width: 1100px;
+
     margin: -1px auto 0;
 
     border: 1px solid var(--line);
+
     background: var(--paper);
 }
 
 .trust-item {
     padding: 25px 30px;
-    border-right: 1px solid var(--line);
+
+    border-right:
+        1px solid var(--line);
 }
 
 .trust-item:last-child {
@@ -382,62 +686,93 @@ nav a:hover {
 
 .trust-item strong {
     display: block;
+
     margin-bottom: 7px;
+
     font-family: Georgia,serif;
+
     font-size: 17px;
+
     font-weight: 400;
 }
 
 .trust-item span {
     color: #806c62;
+
     font-size: 12px;
 }
 
-/* ÜRÜNLER */
+/* =========================================
+   ÜRÜNLER
+========================================= */
 
 .products {
-    padding: 110px 20px 125px;
+    padding:
+        110px 20px
+        125px;
 }
 
 .section-heading {
     display: grid;
-    grid-template-columns: 1fr auto;
+
+    grid-template-columns:
+        1fr auto;
+
     align-items: end;
 
     max-width: 1100px;
+
     margin: 0 auto 48px;
 
-    border-bottom: 1px solid var(--line);
+    border-bottom:
+        1px solid var(--line);
+
     padding-bottom: 25px;
 }
 
 .section-heading small {
     color: #98734d;
+
     font-weight: 700;
+
     letter-spacing: .2em;
+
     text-transform: uppercase;
 }
 
 .products h2 {
     margin: 9px 0 0;
+
     font-family: Georgia,serif;
-    font-size: clamp(39px,5vw,64px);
+
+    font-size:
+        clamp(39px,5vw,64px);
+
     font-weight: 400;
 }
 
 .section-heading p {
     max-width: 330px;
+
     margin: 0;
+
     color: #806d63;
+
     line-height: 1.65;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     max-width: 1100px;
+
     margin: auto;
+
     gap: 22px;
+
     align-items: start;
 }
 
@@ -451,25 +786,33 @@ nav a:hover {
 
 .product-image {
     height: 410px;
+
     overflow: hidden;
+
     background: #e3d4ca;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
+
     display: block;
+
     object-fit: cover;
+
     object-position: center 24%;
+
     filter: saturate(.82);
 
     transition:
-        transform .7s cubic-bezier(.2,.7,.2,1),
+        transform .7s
+        cubic-bezier(.2,.7,.2,1),
         filter .3s;
 }
 
 .product:hover .product-image img {
     transform: scale(1.045);
+
     filter: saturate(1);
 }
 
@@ -479,61 +822,85 @@ nav a:hover {
 
 .product-info h3 {
     margin: 0 0 10px;
+
     font-family: Georgia,serif;
+
     font-size: 24px;
+
     font-weight: 400;
 }
 
 .product-info p:not(.price):not(.stock) {
     color: #806d63;
+
     line-height: 1.6;
 }
 
 .price {
     color: var(--ink);
+
     font-family: Georgia,serif;
+
     font-size: 21px;
+
     font-weight: 400;
 }
 
 .stock {
     font-size: 11px;
+
     letter-spacing: .08em;
+
     text-transform: uppercase;
 }
 
 .product button {
     width: 100%;
+
     padding: 13px;
 
-    border: 1px solid var(--ink);
+    border:
+        1px solid var(--ink);
+
     border-radius: 0;
 
     background: transparent;
+
     color: var(--ink);
 
     font-size: 11px;
+
     font-weight: 700;
+
     letter-spacing: .15em;
+
     text-transform: uppercase;
 
     cursor: pointer;
+
     transition: .2s;
 }
 
 .product button:hover {
     background: var(--ink);
+
     color: white;
 }
 
-/* EDİTORYAL */
+/* =========================================
+   EDİTORYAL
+========================================= */
 
 .editorial {
     display: grid;
-    grid-template-columns: 1.1fr .9fr;
+
+    grid-template-columns:
+        1.1fr .9fr;
+
     min-height: 550px;
 
     background: #3a2925;
+
     color: #f5eadd;
 }
 
@@ -544,88 +911,128 @@ nav a:hover {
         url("assets/products/kahve-tonlari-esarp.jpg")
         center 34% / cover;
 
-    filter: saturate(.65) sepia(.12);
+    filter:
+        saturate(.65)
+        sepia(.12);
 }
 
 .editorial-copy {
     display: grid;
+
     align-content: center;
-    padding: clamp(55px,8vw,110px);
+
+    padding:
+        clamp(55px,8vw,110px);
 }
 
 .editorial-copy small {
     color: #c6a879;
+
     letter-spacing: .22em;
+
     text-transform: uppercase;
 }
 
 .editorial-copy h2 {
     margin: 20px 0 22px;
-    font: 400 clamp(42px,5vw,70px)/.98 Georgia,serif;
+
+    font:
+        400 clamp(42px,5vw,70px)/.98
+        Georgia,serif;
 }
 
 .editorial-copy p {
     max-width: 520px;
+
     color: #d8c9bf;
+
     line-height: 1.9;
 }
 
-/* HAKKIMIZDA */
+/* =========================================
+   HAKKIMIZDA
+========================================= */
 
 .about {
     position: relative;
+
     overflow: hidden;
+
     padding: 100px 20px;
+
     background: #efe1d5;
+
     text-align: center;
 }
 
 .about div {
     position: relative;
+
     z-index: 5;
+
     max-width: 860px;
+
     margin: auto;
 }
 
 .about h2 {
     font-family: Georgia,serif;
-    font-size: clamp(42px,5vw,64px);
+
+    font-size:
+        clamp(42px,5vw,64px);
+
     font-weight: 400;
 }
 
 .about p {
     color: #67534c;
+
     line-height: 1.8;
+
     font-size: 17px;
 }
 
-/* FOOTER */
+/* =========================================
+   FOOTER
+========================================= */
 
 footer {
     padding: 65px 20px;
+
     background: #291e1b;
+
     color: #eaded4;
+
     text-align: center;
 }
 
 footer h3 {
-    font: 400 28px Georgia,serif;
+    font:
+        400 28px
+        Georgia,serif;
 }
 
 footer p {
     color: #bdaea5;
+
     font-size: 13px;
 }
 
-/* SEPET */
+/* =========================================
+   SEPET
+========================================= */
 
 .cart {
     position: fixed;
+
     right: -420px;
+
     top: 0;
 
     width: 400px;
+
     max-width: 100%;
+
     height: 100vh;
 
     padding: 25px;
@@ -634,7 +1041,9 @@ footer p {
 
     z-index: 3000;
 
-    box-shadow: -5px 0 20px rgba(0,0,0,.2);
+    box-shadow:
+        -5px 0 20px
+        rgba(0,0,0,.2);
 
     transition: .3s;
 
@@ -647,16 +1056,22 @@ footer p {
 
 .cart-header {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
-    border-bottom: 1px solid #ddd;
+    border-bottom:
+        1px solid #ddd;
+
     padding-bottom: 15px;
 }
 
 .close-cart {
     border: none;
+
     background: #eee;
+
     border-radius: 50%;
 
     width: 35px;
@@ -666,7 +1081,9 @@ footer p {
 }
 
 .cart-item {
-    border-bottom: 1px solid #eee;
+    border-bottom:
+        1px solid #eee;
+
     padding: 15px 0;
 }
 
@@ -676,30 +1093,42 @@ footer p {
 
 .quantity {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
+
     margin-top: 10px;
 }
 
 .quantity button {
     border: none;
+
     background: #5b3a32;
+
     color: white;
 
     width: 28px;
     height: 28px;
 
     border-radius: 4px;
+
     cursor: pointer;
 }
 
 .remove {
     margin-top: 8px;
+
     background: #b33a3a;
+
     color: white;
+
     border: none;
+
     padding: 7px 10px;
+
     border-radius: 4px;
+
     cursor: pointer;
 }
 
@@ -709,49 +1138,53 @@ footer p {
     color: #5b3a32;
 
     font-size: 22px;
+
     font-weight: bold;
 }
 
-.card-payment,
 .bank-payment {
     width: 100%;
-    margin-bottom: 10px;
+
     padding: 15px;
 
     border: 0;
+
     border-radius: 5px;
 
     background: #5b3a32;
+
     color: white;
 
     font-size: 16px;
+
     font-weight: bold;
 
     cursor: pointer;
 }
 
-.bank-payment {
-    background: #f1e4dc;
-    color: #5b3a32;
-    border: 1px solid #ccb3a7;
-}
-
 .secure-note {
     margin: 12px 0;
+
     color: #76645d;
+
     font-size: 12px;
+
     text-align: center;
 }
 
 .whatsapp {
     display: block;
+
     width: 100%;
+
     padding: 15px;
 
     background: #25D366;
+
     color: white;
 
     text-align: center;
+
     text-decoration: none;
 
     border-radius: 5px;
@@ -759,20 +1192,25 @@ footer p {
     font-weight: bold;
 }
 
-/* CHECKOUT */
+/* =========================================
+   CHECKOUT
+========================================= */
 
 .checkout-backdrop {
     position: fixed;
+
     inset: 0;
 
     z-index: 4000;
 
     display: none;
+
     place-items: center;
 
     padding: 20px;
 
-    background: rgba(54,37,32,.68);
+    background:
+        rgba(54,37,32,.68);
 
     backdrop-filter: blur(5px);
 }
@@ -783,7 +1221,9 @@ footer p {
 
 .checkout-panel {
     width: min(620px,100%);
+
     max-height: 92vh;
+
     overflow: auto;
 
     padding: 30px;
@@ -792,34 +1232,45 @@ footer p {
 
     background: #fffaf7;
 
-    box-shadow: 0 24px 70px rgba(31,19,15,.28);
+    box-shadow:
+        0 24px 70px
+        rgba(31,19,15,.28);
 }
 
 .checkout-title {
     display: flex;
+
     align-items: start;
+
     justify-content: space-between;
+
     gap: 20px;
 }
 
 .checkout-title h2 {
     margin: 0 0 6px;
+
     font-family: Georgia,serif;
 }
 
 .checkout-title p {
     margin: 0 0 24px;
+
     color: #76645d;
 }
 
 .checkout-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap: 15px;
 }
 
 .checkout-field {
     display: grid;
+
     gap: 6px;
 }
 
@@ -829,99 +1280,78 @@ footer p {
 
 .checkout-field label {
     font-size: 13px;
+
     font-weight: bold;
 }
 
 .checkout-field input,
 .checkout-field textarea {
     width: 100%;
+
     padding: 12px;
 
-    border: 1px solid #d9c9c1;
+    border:
+        1px solid #d9c9c1;
+
     border-radius: 6px;
 
     background: white;
 
     font: inherit;
+
     color: #493832;
 }
 
-.payment-methods {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 10px;
-
-    margin: 0 0 22px;
-    padding: 5px;
-
-    border-radius: 10px;
-
-    background: #efe3dc;
-}
-
-.payment-method {
-    padding: 12px;
-
-    border: 1px solid transparent;
-    border-radius: 7px;
-
-    background: transparent;
-    color: #76645d;
-
-    font: inherit;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.payment-method.active {
-    border-color: #dac2b7;
-    background: #fffaf7;
-    color: #5b3a32;
-}
-
 .iban-details {
-    display: none;
-
     margin: 0 0 20px;
+
     padding: 18px;
 
-    border: 1px solid #dbc8be;
+    border:
+        1px solid #dbc8be;
+
     border-radius: 10px;
 
     background: #f7ede7;
 }
 
-.iban-details.open {
-    display: block;
-}
-
 .iban-details small {
     display: block;
+
     margin-bottom: 5px;
+
     color: #806b61;
 }
 
 .iban-owner {
     margin-bottom: 14px;
+
     font-family: Georgia,serif;
+
     font-size: 18px;
+
     color: #4d342d;
 }
 
 .iban-row {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 }
 
 .iban-number {
     flex: 1;
+
     overflow-wrap: anywhere;
 
-    font-family: ui-monospace,monospace;
+    font-family:
+        ui-monospace,
+        monospace;
+
     font-size: 15px;
+
     font-weight: bold;
 }
 
@@ -930,13 +1360,17 @@ footer p {
 
     padding: 8px 11px;
 
-    border: 1px solid #b99482;
+    border:
+        1px solid #b99482;
+
     border-radius: 6px;
 
     background: #fffaf7;
+
     color: #5b3a32;
 
     font-weight: bold;
+
     cursor: pointer;
 }
 
@@ -946,28 +1380,35 @@ footer p {
     color: #6f5a51;
 
     font-size: 13px;
+
     line-height: 1.5;
 }
 
 .checkout-error {
     min-height: 20px;
+
     margin: 12px 0;
 
     color: #a42f2f;
+
     font-size: 14px;
 }
 
 .checkout-submit {
     width: 100%;
+
     padding: 15px;
 
     border: 0;
+
     border-radius: 6px;
 
     background: #5b3a32;
+
     color: white;
 
     font-weight: bold;
+
     font-size: 16px;
 
     cursor: pointer;
@@ -975,48 +1416,37 @@ footer p {
 
 .empty {
     text-align: center;
+
     color: #777;
+
     margin-top: 40px;
 }
 
-.payment-message {
-    max-width: 760px;
-    margin: 24px auto;
-    padding: 15px 20px;
-
-    border-radius: 8px;
-
-    text-align: center;
-}
-
-.payment-message.success {
-    color: #245f3b;
-    background: #e3f2e7;
-}
-
-.payment-message.failed {
-    color: #8a2929;
-    background: #f8e3e0;
-}
-
-/* MOBİL */
+/* =========================================
+   MOBİL
+========================================= */
 
 @media(max-width:800px) {
 
     header {
         display: block;
+
         text-align: center;
     }
 
     nav {
         justify-content: center;
+
         flex-wrap: wrap;
+
         margin-top: 14px;
     }
 
     .hero {
         min-height: auto;
+
         grid-template-columns: 1fr;
+
         padding-top: 65px;
     }
 
@@ -1030,16 +1460,20 @@ footer p {
 
     .trust-strip {
         grid-template-columns: 1fr;
+
         margin: 0 20px;
     }
 
     .trust-item {
         border-right: 0;
-        border-bottom: 1px solid var(--line);
+
+        border-bottom:
+            1px solid var(--line);
     }
 
     .section-heading {
         grid-template-columns: 1fr;
+
         gap: 18px;
     }
 
@@ -1070,10 +1504,6 @@ footer p {
         height: 440px;
     }
 
-    .payment-methods {
-        grid-template-columns: 1fr;
-    }
-
     .checkout-grid {
         grid-template-columns: 1fr;
     }
@@ -1093,12 +1523,17 @@ footer p {
     .floating-flower {
         opacity: .35;
     }
+
+    .sakura {
+        opacity: .38;
+    }
 }
 
 @media(prefers-reduced-motion: reduce) {
 
     .announcement-track,
-    .floating-flower {
+    .floating-flower,
+    .sakura {
         animation: none;
     }
 
@@ -1106,72 +1541,134 @@ footer p {
         scroll-behavior: auto;
     }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- DUYURU -->
+<!-- =========================================
+     DUYURU
+========================================= -->
 
 <div class="announcement">
+
     <div class="announcement-track">
+
         <span>
+
             ₺1.500 üzeri ücretsiz kargo
+
             <i></i>
+
             Seçili ürünlerde ikinci ürüne %15 indirim
+
             <i></i>
+
             IBAN ile güvenli ödeme
+
             <i></i>
+
             Özenli hediye paketi
+
             <i></i>
+
         </span>
 
         <span aria-hidden="true">
+
             ₺1.500 üzeri ücretsiz kargo
+
             <i></i>
+
             Seçili ürünlerde ikinci ürüne %15 indirim
+
             <i></i>
+
             IBAN ile güvenli ödeme
+
             <i></i>
+
             Özenli hediye paketi
+
             <i></i>
+
         </span>
+
     </div>
+
 </div>
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header>
 
     <h1>
+
         Eşarp ve Şal Dünyası
-        <span>İstanbul · 2026</span>
+
+        <span>
+            İstanbul · 2026
+        </span>
+
     </h1>
 
     <nav>
-        <a href="#">Ana Sayfa</a>
-        <a href="#urunler">Ürünler</a>
-        <a href="#hakkimizda">Hakkımızda</a>
-        <a href="#iletisim">İletişim</a>
 
-        <span class="cart-button" onclick="sepetAc()">
-            Sepet · <span id="sepetSayisi">0</span>
+        <a href="#">
+            Ana Sayfa
+        </a>
+
+        <a href="#urunler">
+            Ürünler
+        </a>
+
+        <a href="#hakkimizda">
+            Hakkımızda
+        </a>
+
+        <a href="#iletisim">
+            İletişim
+        </a>
+
+        <span
+            class="cart-button"
+            onclick="sepetAc()">
+
+            Sepet ·
+            <span id="sepetSayisi">0</span>
+
         </span>
+
     </nav>
 
 </header>
 
-<!-- HERO -->
+<!-- =========================================
+     HERO
+========================================= -->
 
 <section class="hero">
 
-    <!-- DÖNEN ÇİÇEKLER -->
+    <!-- MEVCUT ÇİÇEKLER -->
 
     <div class="floating-flower flower-1"></div>
     <div class="floating-flower flower-2"></div>
     <div class="floating-flower flower-3"></div>
     <div class="floating-flower flower-4"></div>
     <div class="floating-flower flower-5"></div>
+
+    <!-- YENİ SAKURA ÇİÇEKLERİ -->
+
+    <div class="sakura sakura-1"></div>
+    <div class="sakura sakura-2"></div>
+    <div class="sakura sakura-3"></div>
+    <div class="sakura sakura-4"></div>
+    <div class="sakura sakura-5"></div>
+    <div class="sakura sakura-6"></div>
+    <div class="sakura sakura-7"></div>
 
     <div class="hero-copy">
 
@@ -1180,18 +1677,31 @@ footer p {
         </div>
 
         <h2>
+
             İmzanız<br>
-            <em>zarafet</em> olsun.
+
+            <em>
+                zarafet
+            </em>
+
+            olsun.
+
         </h2>
 
         <p>
+
             Her bağlayışta başka bir hikâye anlatan,
             dokusu ve deseni özenle seçilmiş eşarp ve şallar.
             Günün ritmine eşlik eden zamansız parçaları keşfedin.
+
         </p>
 
-        <a href="#urunler" class="button">
+        <a
+            href="#urunler"
+            class="button">
+
             Koleksiyonu Keşfet
+
         </a>
 
     </div>
@@ -1204,62 +1714,93 @@ footer p {
         >
 
         <div class="hero-seal">
+
             Yeni<br>
+
             Koleksiyon
+
         </div>
 
     </div>
 
 </section>
 
-<!-- GÜVEN -->
+<!-- =========================================
+     GÜVEN
+========================================= -->
 
 <div class="trust-strip">
 
     <div class="trust-item">
-        <strong>Özenle Seçildi</strong>
+
+        <strong>
+            Özenle Seçildi
+        </strong>
+
         <span>
             Her desen, gardırobunuzla uyum için seçilir.
         </span>
+
     </div>
 
     <div class="trust-item">
-        <strong>Güvenli Alışveriş</strong>
+
+        <strong>
+            Güvenli Alışveriş
+        </strong>
+
         <span>
             IBAN ve WhatsApp üzerinden kolay sipariş.
         </span>
+
     </div>
 
     <div class="trust-item">
-        <strong>Butik Paketleme</strong>
+
+        <strong>
+            Butik Paketleme
+        </strong>
+
         <span>
             Siparişiniz hediyeye hazır özenle paketlenir.
         </span>
+
     </div>
 
 </div>
 
-<!-- ÜRÜNLER -->
+<!-- =========================================
+     ÜRÜNLER
+========================================= -->
 
-<section class="products" id="urunler">
+<section
+    class="products"
+    id="urunler">
 
-    <div id="paymentMessage"
-         class="payment-message">
+    <div
+        id="paymentMessage"
+        class="payment-message">
     </div>
 
     <div class="section-heading">
 
         <div>
-            <small>Sezonun seçkisi</small>
+
+            <small>
+                Sezonun seçkisi
+            </small>
 
             <h2>
                 Yeni Koleksiyon
             </h2>
+
         </div>
 
         <p>
+
             Yumuşak dokular, incelikli desenler
             ve gün boyu konfor için bir araya getirilen favoriler.
+
         </p>
 
     </div>
@@ -1295,13 +1836,21 @@ footer p {
                 </p>
 
                 <p class="stock">
+
                     Stok:
-                    <span id="stok1">250</span>
+                    <span id="stok1">
+                        250
+                    </span>
+
                     adet
+
                 </p>
 
-                <button onclick="sepeteEkle(1)">
+                <button
+                    onclick="sepeteEkle(1)">
+
                     Sepete Ekle
+
                 </button>
 
             </div>
@@ -1323,6 +1872,7 @@ footer p {
             </div>
 
             <div class="product-info">
+
 
                 <h3>
                     Aydınlık ve Gece Tonları Eşarp
