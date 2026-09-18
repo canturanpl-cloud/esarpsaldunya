@@ -1,0 +1,8 @@
+{
+  "name": "esarpsaldunya",
+  "private": true,
+  "dependencies": {
+    "@netlify/functions": "^4.2.5",
+    "iyzipay": "^2.0.65"
+  }
+}
